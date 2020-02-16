@@ -12,8 +12,8 @@ int main(int argc, char *argv[])
   int socket_fd;
   struct addrinfo host_info;
   struct addrinfo *host_info_list;
-  const char *hostname = argv[1];
-  const char *port     = "4444";
+  const char *hostname = "sakai.duke.edu";
+  const char *port     = "443";
   
   if (argc < 2) {
       cout << "Syntax: client <hostname>\n" << endl;
@@ -53,7 +53,15 @@ int main(int argc, char *argv[])
   send(socket_fd, message, strlen(message), 0);
 
   freeaddrinfo(host_info_list);
+
+    char buffer[1000];
+  recv(socket_fd, buffer, 999, 0);
+  buffer[999] = 0;
+
+  cout << "Server received: " << buffer << endl;
+
   close(socket_fd);
+
 
   return 0;
 }
