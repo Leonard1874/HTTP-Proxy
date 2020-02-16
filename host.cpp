@@ -10,28 +10,41 @@ int client(const char* hostname,const char *port);
 
 bool response_parser(string & hostname, string & port, string& log_raw){
   size_t position = log_raw.find("Host:");
-  if(found == string::npos){
+  if(position == string::npos){
     cout<<"We cannot find the hostname\n";
     return false;
   }
   else{
-    int i = position;
+    size_t i = position;
     while(i < log_raw.size()){
       if(log_raw[i] != ' '){
 	i++;
       }
+      else{
+	i ++;
+	break;
+      }
     }
-    i++;
+    
     while( i < log_raw.size()){
       if(log_raw[i] != ':'){
 	hostname += log_raw[i];
 	i++;
       }
+      else{
+	i++;
+	break;
+      }
     }
-    i++;
-    while( i < log_raw.size()){
-      port += log_raw[i];
-      i++;
+    
+    while(i < log_raw.size()){
+      if(isdigit(log_raw[i])){
+	port += log_raw[i];
+	i++;
+      }
+      else{
+	break;
+      }
     }
     return true;
   }
@@ -43,7 +56,7 @@ int main(int argc, char *argv[])
   int socket_fd;
   struct addrinfo host_info;
   struct addrinfo *host_info_list;
-  const char *hostname = "vcm-12330.vm.duke.edu";
+  const char *hostname = "vcm-12398.vm.duke.edu";
   const char *port     = "12345";
 
   memset(&host_info, 0, sizeof(host_info));
@@ -95,25 +108,30 @@ int main(int argc, char *argv[])
   } //if
 
   char buffer[1000];
-  recv(client_connection_fd, buffer, 999, 0);
-  buffer[999] = 0;
+  int numbytes = recv(client_connection_fd, buffer, 999, 0);
+  buffer[numbytes] = '\0';
   string log_raw(buffer);
 
   cout << "Server received: " << buffer << endl;
-  string hostname = new string();
-  string port = new string();
+  string hostname_client;
+  string port_client;
 
-  if(!response_parser(hostname, port, log_raw)){
+  if(!response_parser(hostname_client, port_client, log_raw)){
     cout << "Wrong format of log\n";
   }
   
-  int socket_client_fd = client(hostname, port);
-  
-  char buffer[1000];
-  recv(socket_client_fd, buffer, 999, 0);
-  buffer[999] = 0;
+  int socket_client_fd = client(hostname_client.c_str(), port_client.c_str());
 
-  cout << "Server received: " << buffer << endl;
+  //send to org server
+  const char *message = "hi there!";
+  send(socket_client_fd, message, strlen(message), 0);
+
+  //recv org server
+  char buffer_client[1000];
+  int num = recv(socket_client_fd, buffer_client, 999, 0);
+  buffer_client[num] = '\0';
+  
+  cout << "Server received: " << buffer_client << endl;
 
   close(socket_fd);
   close(socket_client_fd);
@@ -124,12 +142,15 @@ int main(int argc, char *argv[])
 }
 
 
-int client(const char* hostname,const char *port)
+int client(const char* hostname, const char* port)
 {
   int status;
   int socket_fd;
   struct addrinfo host_info;
   struct addrinfo *host_info_list;
+
+  cout << "/" << hostname << "/" <<endl;
+  cout << "/" <<port << "/" << endl;
   
   memset(&host_info, 0, sizeof(host_info));
   host_info.ai_family   = AF_UNSPEC;
@@ -159,6 +180,7 @@ int client(const char* hostname,const char *port)
     cerr << "  (" << hostname << "," << port << ")" << endl;
     return -1;
   } //if
-freeaddrinfo(host_info_list);
+  freeaddrinfo(host_info_list);
+ 
   return socket_fd;
 }
