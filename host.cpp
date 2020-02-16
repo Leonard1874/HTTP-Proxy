@@ -123,15 +123,19 @@ int main(int argc, char *argv[])
   int socket_client_fd = client(hostname_client.c_str(), port_client.c_str());
 
   //send to org server
-  const char *message = "hi there!";
+  const char *message = log_raw.c_str();
   send(socket_client_fd, message, strlen(message), 0);
 
   //recv org server
   char buffer_client[1000];
   int num = recv(socket_client_fd, buffer_client, 999, 0);
   buffer_client[num] = '\0';
-  
   cout << "Server received: " << buffer_client << endl;
+
+  const char* temp = "<html><head><title>500 Internal Server Error</title></head><body bgcolor=\"white\"><center><h1>500 Internal Server Error</h1></center><hr><center>Server</center></body></html>";
+
+  //send back
+   send(client_connection_fd, temp, strlen(temp), 0);
 
   close(socket_fd);
   close(socket_client_fd);
