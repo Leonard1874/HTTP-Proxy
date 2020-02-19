@@ -14,7 +14,7 @@
 #include <sstream>
 #include <vector>
 #include <algorithm>
-//
+
 #define MAXDATASIZE 100
 class Proxy{
 private:
@@ -85,20 +85,22 @@ public:
   
   bool recieve(int sockfd, std::string& toGet){
     int numbytes = 0;
-    char temp[3000];
+    char temp[65536];
+    std::string endMark = "\0\r\n\r\n";
     while(true){
       memset(temp,'\0',sizeof(temp));
-      if((numbytes = recv(sockfd, temp, 2999, 0)) == -1) {
+      if((numbytes = recv(sockfd, temp, 65535, 0)) == -1) {
         std::perror("recv");
         return false;
       }
-      std::cout << numbytes << std::endl;
-      if(numbytes < 3000){
-        //temp[numbytes] = '\0';
+      std::string tempStr(temp);
+      if(tempStr.find(endMark) != std::string::npos){
         toGet += temp;
+        //std::cout << "end! " <<toGet << std::endl;
         break;
       }
       else{
+        //std::cout << toGet << std::endl;
         toGet += temp;
       }
     }
