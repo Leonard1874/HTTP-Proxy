@@ -82,11 +82,13 @@ public:
     }
     return true;
   }
-  
-  bool recieve(int sockfd, std::string& toGet){
+
+
+
+  bool recieve_origin(int sockfd, std::string& toGet){
     int numbytes = 0;
     char temp[65536];
-    std::string endMark = "\0\r\n\r\n";
+    std::string endMark = "</html>";
     while(true){
       memset(temp,'\0',sizeof(temp));
       if((numbytes = recv(sockfd, temp, 65535, 0)) == -1) {
@@ -95,6 +97,34 @@ public:
       }
       std::string tempStr(temp);
       if(tempStr.find(endMark) != std::string::npos){
+        toGet += temp;
+        //std::cout << "end! " <<toGet << std::endl;
+	
+        break;
+      }
+      else{
+        //std::cout << toGet << std::endl;
+	
+        toGet += temp;
+	break;
+      }
+    }
+    //std::cout << "client: received " << toGet << std::endl;
+    
+    return true;
+  }
+  
+  bool recieve(int sockfd, std::string& toGet){
+    int numbytes = 0;
+    char temp[65536];
+    while(true){
+      memset(temp,'\0',sizeof(temp));
+      if((numbytes = recv(sockfd, temp, 65535, 0)) == -1) {
+        std::perror("recv");
+        return false;
+      }
+      std::string tempStr(temp);
+      if(numbytes < 65536){
         toGet += temp;
         //std::cout << "end! " <<toGet << std::endl;
         break;

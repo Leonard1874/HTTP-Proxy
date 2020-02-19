@@ -71,12 +71,23 @@ int main(int argc, char* argv[]){
   }
   
   std::string getInfo;
-  if(!myProxy.recieve(myProxy.getSockfdO(),getInfo)){
+  if(!myProxy.recieve_origin(myProxy.getSockfdO(),getInfo)){
+    std::cerr << "recv from origin error" << std::endl;
+    return EXIT_FAILURE;
+  }
+
+    if(!myProxy.Send(myProxy.getSockfdO(),info.c_str())){
+    std::cerr << "send to origin error" << std::endl;
+    return EXIT_FAILURE;
+  }
+
+   std::string getInfo1;
+  if(!myProxy.recieve_origin(myProxy.getSockfdO(),getInfo1)){
     std::cerr << "recv from origin error" << std::endl;
     return EXIT_FAILURE;
   }
   
-  std::cout << getInfo << std::endl;
+  std::cout << getInfo + getInfo1 << std::endl;
   
   if(!myProxy.Send(myProxy.getSockfdB(),getInfo)){
     std::cerr << "send to browser" << std::endl;
