@@ -14,9 +14,8 @@
 #include <sstream>
 #include <vector>
 #include <algorithm>
-
+//
 #define MAXDATASIZE 100
-
 class Proxy{
 private:
   int sockfd_own;
@@ -86,13 +85,16 @@ public:
   
   bool recieve(int sockfd, std::string& toGet){
     int numbytes = 0;
+    char temp[3000];
     while(true){
-      char temp[65536];
-      if((numbytes = recv(sockfd, temp, 65535, 0)) == -1) {
+      memset(temp,'\0',sizeof(temp));
+      if((numbytes = recv(sockfd, temp, 2999, 0)) == -1) {
         std::perror("recv");
         return false;
       }
-      if(numbytes < 65536){
+      std::cout << numbytes << std::endl;
+      if(numbytes < 3000){
+        //temp[numbytes] = '\0';
         toGet += temp;
         break;
       }
@@ -152,6 +154,7 @@ public:
       std::cerr << "  (" << hostname << ":" << port << ")" << std::endl;
       return -1;
     }
+    freeaddrinfo(host_info_list);
     return 0;
   }
 
@@ -198,7 +201,7 @@ public:
       std::cerr << "  (" << hostname << "," << port << ")" << std::endl;
       return -1;
     }
-
+    freeaddrinfo(host_info_list);
     return 0;
   }
 
