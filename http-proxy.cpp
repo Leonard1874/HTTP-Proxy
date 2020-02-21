@@ -1,33 +1,46 @@
 #include "proxy.hpp"
 
-int getReq(Proxy& myProxy, std::string& info, std::vector<std::string>& parsedInfo){
-  std::string originHostName;
-  if(!myProxy.response_parser(originHostName,parsedInfo[1])){
-    std::cerr << "parse error" << std::endl;
+  int Proxy::listenBrowser(const char* hostname, const char* port){
+  if(setupSocket(hostname,port) < 0){
+    std::cerr << "setup socket to browser error" << std::endl;
+    return EXIT_FAILURE;
   }
-  
-  if(myProxy.connectToSocket(originHostName.c_str(),"80") < 0){
+  if(acceptSocket() < 0){
+    std::cerr << "accept from browser" << std::endl;
+    return EXIT_FAILURE;
+  }
+  return EXIT_SUCCESS;
+}
+
+int Proxy::getRequest(std::string& request){
+  if(!recieve(getSockfdB(),request)){
+    std::cerr << "accept from browser" << std::endl;
+    return EXIT_FAILURE;
+  }
+  return EXIT_SUCCESS;
+}
+
+int Proxy::getServerSendBrowser(const std::string& originHostName, const std::string& requestInfo, std::string& getInfo){
+  if(connectToSocket(originHostName.c_str(),"80") < 0){
     std::cerr << "connect to origin host error" << std::endl;
     return EXIT_FAILURE;
   }
 
-  if(!myProxy.Send(myProxy.getSockfdO(),info.c_str())){
+  if(!Send(getSockfdO(),requestInfo.c_str())){
     std::cerr << "send to origin error" << std::endl;
     return EXIT_FAILURE;
   }
-  
-  std::string getInfo;
-  if(!myProxy.recieve(myProxy.getSockfdO(),getInfo)){
+ 
+  if(!recieve_origin(getSockfdO(),getInfo)){
     std::cerr << "recv from origin error" << std::endl;
     return EXIT_FAILURE;
   }
   
-  std::cout << getInfo << std::endl;
-  
-  if(!myProxy.Send(myProxy.getSockfdB(),getInfo)){
+  if(!Send(getSockfdB(),getInfo)){
     std::cerr << "send to browser" << std::endl;
     return EXIT_FAILURE;
   }
+  
   return EXIT_SUCCESS;
 }
 
@@ -38,61 +51,35 @@ int main(int argc, char* argv[]){
   const char *hostname = argv[1];
   const char *port     = argv[2];
   Proxy myProxy;
-  if(myProxy.setupSocket(hostname,port) < 0){
-    std::cerr << "setup socket to browser error" << std::endl;
+  std::string requestInfo;
+  if(myProxy.listenBrowser(hostname, port)){
+    std::cerr <<"listen error!"<< std::endl;
     return EXIT_FAILURE;
   }
-  if(myProxy.acceptSocket() < 0){
-    std::cerr << "accept from browser" << std::endl;
-    return EXIT_FAILURE;
-  }
-  std::string info;
-  if(!myProxy.recieve(myProxy.getSockfdB(),info)){
-    std::cerr << "accept from browser" << std::endl;
-    return EXIT_FAILURE;
-  }
-  std::cout << info << std::endl;
-  std::vector<std::string> parsedInfo = myProxy.parseInputLines(info);
 
-  //getReq(myProxy,info,parsedInfo);
+  std::string request;
+  if(myProxy.getRequest(request)){
+    std::cerr << "get request error" << std::endl;
+  }
+  
+  std::cout << requestInfo << std::endl;
+  std::vector<std::string> parsedInfo = myProxy.parseInputLines(requestInfo);
+
   std::string originHostName;
   if(!myProxy.response_parser(originHostName,parsedInfo[1])){
     std::cerr << "parse error" << std::endl;
   }
-  
-  if(myProxy.connectToSocket(originHostName.c_str(),"80") < 0){
-    std::cerr << "connect to origin host error" << std::endl;
-    return EXIT_FAILURE;
-  }
 
-  if(!myProxy.Send(myProxy.getSockfdO(),info.c_str())){
-    std::cerr << "send to origin error" << std::endl;
-    return EXIT_FAILURE;
-  }
+  /*check request*/
+  /*check cache*/
   
   std::string getInfo;
-  if(!myProxy.recieve_origin(myProxy.getSockfdO(),getInfo)){
-    std::cerr << "recv from origin error" << std::endl;
+  if(myProxy.getServerSendBrowser(originHostName, requestInfo, getInfo)){
+    std::cerr <<"get error!"<< std::endl;
     return EXIT_FAILURE;
   }
 
-    if(!myProxy.Send(myProxy.getSockfdO(),info.c_str())){
-    std::cerr << "send to origin error" << std::endl;
-    return EXIT_FAILURE;
-  }
-
-   std::string getInfo1;
-  if(!myProxy.recieve_origin(myProxy.getSockfdO(),getInfo1)){
-    std::cerr << "recv from origin error" << std::endl;
-    return EXIT_FAILURE;
-  }
-  
-  std::cout << getInfo + getInfo1 << std::endl;
-  
-  if(!myProxy.Send(myProxy.getSockfdB(),getInfo)){
-    std::cerr << "send to browser" << std::endl;
-    return EXIT_FAILURE;
-  }
-  
+  /*update cache*/
+    
   return EXIT_SUCCESS;
 }

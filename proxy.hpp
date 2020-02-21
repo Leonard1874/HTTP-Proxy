@@ -24,7 +24,6 @@ private:
   std::vector<std::string> stringFromBrowser;
 public:
   Proxy() = default;
-
   int getSockfdOwn(){
     return sockfd_own;
   }
@@ -36,7 +35,10 @@ public:
   int getSockfdO(){
     return sockfd_to_origin;
   }
-
+public:
+  int listenBrowser(const char* hostname, const char* port);
+  int getRequest(std::string& reuqest);
+  int getServerSendBrowser(const std::string& originHostName, const std::string& requestInfo, std::string& getInfo);
   bool response_parser(std::string & hostname, std::string& log_raw){
     size_t position = log_raw.find("Host:");
     if(position == std::string::npos){
@@ -63,7 +65,6 @@ public:
     }
   }
 
-
   std::vector<std::string> parseInputLines(std::string& recv){
     std::stringstream ss(recv);
     std::string temp;
@@ -75,6 +76,7 @@ public:
     return res;
   }
   
+private:
   bool Send(int sendFd, std::string toSend){
     if (send(sendFd, toSend.c_str(), strlen(toSend.c_str()), 0) == -1){ 
       std::perror("send port number");
@@ -82,9 +84,7 @@ public:
     }
     return true;
   }
-
-
-
+  
   bool recieve_origin(int sockfd, std::string& toGet){
     int numbytes = 0;
     char temp[65536];
@@ -97,20 +97,16 @@ public:
       }
       std::string tempStr(temp);
       if(tempStr.find(endMark) != std::string::npos){
-        toGet += temp;
-        //std::cout << "end! " <<toGet << std::endl;
-	
+        toGet += temp;	
         break;
       }
       else{
-        //std::cout << toGet << std::endl;
-	
         toGet += temp;
-	break;
+        if(toGet.find("HTTP/1.1 200 OK") == std::string::npos){
+          break;
+        }
       }
     }
-    //std::cout << "client: received " << toGet << std::endl;
-    
     return true;
   }
   
@@ -134,7 +130,6 @@ public:
         toGet += temp;
       }
     }
-    //std::cout << "client: received " << toGet << std::endl;
     return true;
   }
 
@@ -236,7 +231,8 @@ public:
     freeaddrinfo(host_info_list);
     return 0;
   }
-
+  
+public:
   ~Proxy(){
     close(sockfd_own);
     close(sockfd_to_browser);
