@@ -1,6 +1,6 @@
 #include "proxy.hpp"
 
-  int Proxy::listenBrowser(const char* hostname, const char* port){
+int Proxy::listenBrowser(const char* hostname, const char* port){
   if(setupSocket(hostname,port) < 0){
     std::cerr << "setup socket to browser error" << std::endl;
     return EXIT_FAILURE;
@@ -30,11 +30,13 @@ int Proxy::getServerSendBrowser(const std::string& originHostName, const std::st
     std::cerr << "send to origin error" << std::endl;
     return EXIT_FAILURE;
   }
- 
+  
+  std::cout << "1" << std::endl;
   if(!recieve_origin(getSockfdO(),getInfo)){
     std::cerr << "recv from origin error" << std::endl;
     return EXIT_FAILURE;
   }
+  std::cout << "2" << std::endl;
   
   if(!Send(getSockfdB(),getInfo)){
     std::cerr << "send to browser" << std::endl;
@@ -51,35 +53,46 @@ int main(int argc, char* argv[]){
   const char *hostname = argv[1];
   const char *port     = argv[2];
   Proxy myProxy;
-  std::string requestInfo;
+  
   if(myProxy.listenBrowser(hostname, port)){
     std::cerr <<"listen error!"<< std::endl;
     return EXIT_FAILURE;
   }
 
-  std::string request;
-  if(myProxy.getRequest(request)){
-    std::cerr << "get request error" << std::endl;
-  }
-  
-  std::cout << requestInfo << std::endl;
-  std::vector<std::string> parsedInfo = myProxy.parseInputLines(requestInfo);
+  while(true){
+    std::string requestInfo;
+    while(requestInfo.empty()){
+      if(myProxy.getRequest(requestInfo)){
+        std::cerr << "get request error" << std::endl;
+        return EXIT_FAILURE;
+      }
+    }
+    std::cout << "req: " <<requestInfo << std::endl;
+    std::vector<std::string> parsedInfo = myProxy.parseInputLines(requestInfo);
 
-  std::string originHostName;
-  if(!myProxy.response_parser(originHostName,parsedInfo[1])){
-    std::cerr << "parse error" << std::endl;
-  }
+    std::string originHostName;
+    if(!myProxy.response_parser(originHostName,parsedInfo[1])){
+      std::cerr << "parse error" << std::endl;
+    }
 
-  /*check request*/
-  /*check cache*/
-  
-  std::string getInfo;
-  if(myProxy.getServerSendBrowser(originHostName, requestInfo, getInfo)){
-    std::cerr <<"get error!"<< std::endl;
-    return EXIT_FAILURE;
-  }
-
-  /*update cache*/
+    std::cout << originHostName << std::endl;
+    //std::string originHostName;
+    //std::string requestType;
+    //std::string orginPort;
     
+    /*check request*/
+    /*check cache*/
+  
+    std::string getInfo;
+    if(myProxy.getServerSendBrowser(originHostName, requestInfo, getInfo)){
+      std::cerr <<"get error!"<< std::endl;
+      return EXIT_FAILURE;
+    }
+    
+    std::cout << "111: " <<getInfo << std::endl;
+
+    /*update cache*/
+  }
+  
   return EXIT_SUCCESS;
 }

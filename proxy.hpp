@@ -39,6 +39,7 @@ public:
   int listenBrowser(const char* hostname, const char* port);
   int getRequest(std::string& reuqest);
   int getServerSendBrowser(const std::string& originHostName, const std::string& requestInfo, std::string& getInfo);
+  
   bool response_parser(std::string & hostname, std::string& log_raw){
     size_t position = log_raw.find("Host:");
     if(position == std::string::npos){
@@ -96,6 +97,7 @@ private:
         return false;
       }
       std::string tempStr(temp);
+      std::cout << tempStr << std::endl;
       if(tempStr.find(endMark) != std::string::npos){
         toGet += temp;	
         break;
@@ -103,7 +105,7 @@ private:
       else{
         toGet += temp;
         if(toGet.find("HTTP/1.1 200 OK") == std::string::npos){
-          break;
+        break;
         }
       }
     }
