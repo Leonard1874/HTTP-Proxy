@@ -20,13 +20,13 @@ int Proxy::getRequest(std::string& request){
   return EXIT_SUCCESS;
 }
 
-int Proxy::getServerSendBrowser(const std::string& originHostName, const std::string& requestInfo, std::string& getInfo){
-  if(connectToSocket(originHostName.c_str(),"80") < 0){
+int Proxy::getServerSendBrowser(Request& reqObj, std::string& getInfo){
+  if(connectToSocket(reqObj.getHostname().c_str(),"80") < 0){ // port to be check
     std::cerr << "connect to origin host error" << std::endl;
     return EXIT_FAILURE;
   }
 
-  if(!Send(getSockfdO(),requestInfo.c_str())){
+  if(!Send(getSockfdO(),reqObj.getRequestInfo().c_str())){
     std::cerr << "send to origin error" << std::endl;
     return EXIT_FAILURE;
   }
@@ -66,20 +66,14 @@ int main(int argc, char* argv[]){
       }
     }
     std::cout << "req: " <<requestInfo << std::endl;
-    std::vector<std::string> parsedInfo = myProxy.parseInputLines(requestInfo);
 
-    std::string originHostName;
-    if(!myProxy.response_parser(originHostName,parsedInfo[1])){
-      std::cerr << "parse error" << std::endl;
-    }
-
-    std::cout << originHostName << std::endl;
+    Request reqObj(requestInfo);
     
     /*check request*/
     /*check cache*/
   
     std::string getInfo;
-    if(myProxy.getServerSendBrowser(originHostName, requestInfo, getInfo)){
+    if(myProxy.getServerSendBrowser(reqObj,getInfo)){
       std::cerr <<"get error!"<< std::endl;
       return EXIT_FAILURE;
     }

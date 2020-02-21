@@ -1,3 +1,4 @@
+#include "Request.cpp"
 #include <cstdio>
 #include <cstdlib>
 #include <unistd.h>
@@ -14,7 +15,6 @@
 #include <sstream>
 #include <vector>
 #include <algorithm>
-
 #define MAXDATASIZE 100
 class Proxy{
 private:
@@ -45,45 +45,7 @@ public:
 public:
   int listenBrowser(const char* hostname, const char* port);
   int getRequest(std::string& reuqest);
-  int getServerSendBrowser(const std::string& originHostName, const std::string& requestInfo, std::string& getInfo);
-  
-  bool response_parser(std::string & hostname, std::string& log_raw){
-    size_t position = log_raw.find("Host:");
-    if(position == std::string::npos){
-      std::cout<<"We cannot find the hostname\n";
-      return false;
-    }
-    else{
-      size_t i = position;
-      while(i < log_raw.size()){
-        if(log_raw[i] != ' '){
-          i++;
-        }
-        else{
-          i ++;
-          break;
-        }
-      }
-    
-      while(i < log_raw.size()-1){
-        hostname += log_raw[i];
-        i++;
-      }
-      return true;
-    }
-  }
-
-  std::vector<std::string> parseInputLines(std::string& recv){
-    std::stringstream ss(recv);
-    std::string temp;
-    std::vector<std::string> res;
-    while(std::getline(ss,temp,'\n')){
-      temp[temp.size()-1] = '\n';
-      //std::cout << temp.length() << std::endl;
-      res.push_back(temp);
-    }
-    return res;
-  }
+  int getServerSendBrowser(Request& reqObj, std::string& getInfo);
   
 private:
   bool Send(int sendFd, std::string toSend){
