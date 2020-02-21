@@ -24,6 +24,12 @@ private:
   std::vector<std::string> stringFromBrowser;
 public:
   Proxy() = default;
+  void closeSockfds(){
+    close(sockfd_own);
+    close(sockfd_to_browser);
+    close(sockfd_to_origin);
+  }
+  
   int getSockfdOwn(){
     return sockfd_own;
   }
@@ -35,6 +41,7 @@ public:
   int getSockfdO(){
     return sockfd_to_origin;
   }
+  
 public:
   int listenBrowser(const char* hostname, const char* port);
   int getRequest(std::string& reuqest);
@@ -72,6 +79,7 @@ public:
     std::vector<std::string> res;
     while(std::getline(ss,temp,'\n')){
       temp[temp.size()-1] = '\n';
+      //std::cout << temp.length() << std::endl;
       res.push_back(temp);
     }
     return res;
@@ -85,28 +93,79 @@ private:
     }
     return true;
   }
+
+  int getLength(std::string& recv){
+    size_t pos = recv.find("Content-Length: ");
+    if(pos == std::string::npos){
+      std::cerr << "can't find length!" << std::endl;
+      return -1;
+    }
+    else{
+      std::string lengthStr;
+      while(recv[pos]!='\n'){
+        if(isdigit(recv[pos])){
+          lengthStr += recv[pos];
+        }
+        pos ++;
+      }
+      std::cout << lengthStr << std::endl;
+      return std::stoi(lengthStr);
+    }
+  }
+
+  int getHeadLength(std::string& recv){
+    size_t pos = recv.find("\r\n\r\n");
+    if(pos == std::string::npos){
+      std::cerr << "can't find empty line!" << std::endl;
+      return -1;
+    }
+    return pos;
+  }
   
   bool recieve_origin(int sockfd, std::string& toGet){
     int numbytes = 0;
+    int recvNum = 0;
+    int allLen = 0;
+    int len = 0;
+    int headlen = 0;
+    int hasGot = 0;
     char temp[65536];
-    std::string endMark = "</html>";
     while(true){
-      memset(temp,'\0',sizeof(temp));
+   
       if((numbytes = recv(sockfd, temp, 65535, 0)) == -1) {
         std::perror("recv");
         return false;
       }
+
+      hasGot += numbytes;
       std::string tempStr(temp);
       std::cout << tempStr << std::endl;
-      if(tempStr.find(endMark) != std::string::npos){
-        toGet += temp;	
+      if(!recvNum){
+        if(tempStr.find("HTTP/1.1 200 OK") == std::string::npos){
+          allLen = 0;
+        }
+        else{
+          len = getLength(tempStr);
+          if(len < 0){
+            return false;
+          }
+          headlen = getHeadLength(tempStr);
+          if(headlen < 0){
+            return false;
+          }
+          allLen = headlen + len;
+        }
+        recvNum ++;
+      }
+
+      std::cout << hasGot << " : " << allLen << std::endl;
+      
+      if(hasGot >= allLen){
+        toGet += tempStr;	
         break;
       }
       else{
-        toGet += temp;
-        if(toGet.find("HTTP/1.1 200 OK") == std::string::npos){
-        break;
-        }
+        toGet += tempStr;
       }
     }
     return true;
@@ -235,11 +294,7 @@ private:
   }
   
 public:
-  ~Proxy(){
-    close(sockfd_own);
-    close(sockfd_to_browser);
-    close(sockfd_to_origin);
-  }
+  ~Proxy(){}
 };
 /*
   char myIP[16];

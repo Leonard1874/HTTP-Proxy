@@ -31,12 +31,10 @@ int Proxy::getServerSendBrowser(const std::string& originHostName, const std::st
     return EXIT_FAILURE;
   }
   
-  std::cout << "1" << std::endl;
   if(!recieve_origin(getSockfdO(),getInfo)){
     std::cerr << "recv from origin error" << std::endl;
     return EXIT_FAILURE;
   }
-  std::cout << "2" << std::endl;
   
   if(!Send(getSockfdB(),getInfo)){
     std::cerr << "send to browser" << std::endl;
@@ -54,12 +52,12 @@ int main(int argc, char* argv[]){
   const char *port     = argv[2];
   Proxy myProxy;
   
-  if(myProxy.listenBrowser(hostname, port)){
-    std::cerr <<"listen error!"<< std::endl;
-    return EXIT_FAILURE;
-  }
-
   while(true){
+    if(myProxy.listenBrowser(hostname, port)){
+      std::cerr <<"listen error!"<< std::endl;
+      return EXIT_FAILURE;
+    }
+
     std::string requestInfo;
     while(requestInfo.empty()){
       if(myProxy.getRequest(requestInfo)){
@@ -76,9 +74,6 @@ int main(int argc, char* argv[]){
     }
 
     std::cout << originHostName << std::endl;
-    //std::string originHostName;
-    //std::string requestType;
-    //std::string orginPort;
     
     /*check request*/
     /*check cache*/
@@ -88,11 +83,10 @@ int main(int argc, char* argv[]){
       std::cerr <<"get error!"<< std::endl;
       return EXIT_FAILURE;
     }
-    
-    std::cout << "111: " <<getInfo << std::endl;
-
+    std::cout << getInfo << std::endl;
     /*update cache*/
-  }
+    myProxy.closeSockfds();
+   }
   
   return EXIT_SUCCESS;
 }
