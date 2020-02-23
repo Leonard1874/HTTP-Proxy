@@ -1,5 +1,4 @@
 #include "proxy.hpp"
-#include "Request.hpp"
 #include "logger.hpp"
 #include "cache.hpp"
 
@@ -63,6 +62,7 @@ int main(int argc, char* argv[]){
   const char *port     = argv[2];
   Proxy myProxy;
   Cache myCache(20);
+  Timer myTimer;
   int ID = 0;
   logger my_logger;
   
@@ -95,6 +95,7 @@ int main(int argc, char* argv[]){
           return EXIT_FAILURE;
         }
         my_logger.printCache("in cache", ID);
+        /*in cache situations*/
       }
       else{
         /*logger*/
@@ -106,10 +107,9 @@ int main(int argc, char* argv[]){
           return EXIT_FAILURE;
         }
         std::cout << "res: " <<getInfo << std::endl;
-        Response resObj(getInfo,reqObj.getType());
+        Response resObj(getInfo,reqObj.getType(),myTimer.getCurrentDateTime());
         /*update cache*/
-        std::string value = resObj.getValue();
-        if(!value.empty()){
+        if(!resObj.canCache()){
           myCache.put(reqObj.getKey(),resObj);
         }
         my_logger.printCache("not in cache", ID);

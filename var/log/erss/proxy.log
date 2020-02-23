@@ -8,3 +8,34 @@
 8: not in cache
 9: GET http://httpbin.org/favicon.ico HTTP/1.1 from 34.230.193.231 @ 2020-02-23 16:51:32
 10: Requesting GET http://httpbin.org/favicon.ico HTTP/1.1 from httpbin.org
+1: not in cache
+2: GET http://httpbin.org/ HTTP/1.1 from 3.232.168.170 @ 2020-02-23 16:56:29
+3: Requesting GET http://httpbin.org/ HTTP/1.1 from httpbin.org
+4: not in cache
+5: GET http://httpbin.org/flasgger_static/swagger-ui-bundle.js HTTP/1.1 from 3.232.168.170 @ 2020-02-23 16:56:31
+6: Requesting GET http://httpbin.org/flasgger_static/swagger-ui-bundle.js HTTP/1.1 from httpbin.org
+7: in cache
+8: not in cache
+9: GET http://httpbin.org/flasgger_static/swagger-ui-standalone-preset.js HTTP/1.1 from 3.232.168.170 @ 2020-02-23 16:56:31
+10: Requesting GET http://httpbin.org/flasgger_static/swagger-ui-standalone-preset.js HTTP/1.1 from httpbin.org
+11: not in cache
+12: GET http://httpbin.org/flasgger_static/lib/jquery.min.js HTTP/1.1 from 3.232.168.170 @ 2020-02-23 16:56:32
+13: Requesting GET http://httpbin.org/flasgger_static/lib/jquery.min.js HTTP/1.1 from httpbin.org
+14: not in cache
+15: GET http://httpbin.org/static/favicon.ico HTTP/1.1 from 3.232.168.170 @ 2020-02-23 16:56:32
+16: Requesting GET http://httpbin.org/static/favicon.ico HTTP/1.1 from httpbin.org
+17: in cache
+18: not in cache
+19: GET http://httpbin.org/favicon.ico HTTP/1.1 from 3.232.168.170 @ 2020-02-23 16:56:35
+20: Requesting GET http://httpbin.org/favicon.ico HTTP/1.1 from httpbin.org
+21: in cache
+22: in cache
+23: not in cache
+24: GET http://httpbin.org/favicon.ico HTTP/1.1 from 3.232.168.170 @ 2020-02-23 16:56:39
+25: Requesting GET http://httpbin.org/favicon.ico HTTP/1.1 from httpbin.org
+26: in cache
+27: in cache
+28: not in cache
+29: GET http://httpbin.org/favicon.ico HTTP/1.1 from 3.232.168.170 @ 2020-02-23 16:56:40
+30: Requesting GET http://httpbin.org/favicon.ico HTTP/1.1 from httpbin.org
+31: in cache

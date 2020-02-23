@@ -15,11 +15,10 @@ class Response{
 private:
   std::string responseInfo;
   std::string type;
+  std::string time;
   
 public:
-  Response(const std::string& resInfo, const std::string& rtype):responseInfo(resInfo), type(rtype){
-    //std::cout << "@@@@@@@@@@@@@@@" <<responseInfo << std::endl;
-  }
+  Response(const std::string& resInfo, const std::string& rtype, const std::string& rtime):responseInfo(resInfo), type(rtype), time(rtime){}
 
   //test 
   std::string getResponseInfo(){
@@ -28,16 +27,6 @@ public:
   }
 
   //for cache
-  std::string getValue(){
-    if(!canCache()){
-      return "";
-    }
-    else{
-      return responseInfo;
-    }
-  }
-  
-private:
   bool canCache(){
     if(type != "GET"){
       return false;
