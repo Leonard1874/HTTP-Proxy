@@ -1,0 +1,8 @@
+1: GET http://httpbin.org/forms/post HTTP/1.1 from 52.202.2.199 @ 2020-02-23 14:47:22
+2: Requesting GET http://httpbin.org/forms/post HTTP/1.1 from httpbin.org
+3: GET http://httpbin.org/favicon.ico HTTP/1.1 from 3.232.168.170 @ 2020-02-23 14:47:23
+4: Requesting GET http://httpbin.org/favicon.ico HTTP/1.1 from httpbin.org
+5: GET http://httpbin.org/forms/post HTTP/1.1 from 3.232.168.170 @ 2020-02-23 14:47:24
+6: Requesting GET http://httpbin.org/forms/post HTTP/1.1 from httpbin.org
+7: GET http://httpbin.org/favicon.ico HTTP/1.1 from 3.232.168.170 @ 2020-02-23 14:47:25
+8: Requesting GET http://httpbin.org/favicon.ico HTTP/1.1 from httpbin.org
