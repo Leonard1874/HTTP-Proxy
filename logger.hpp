@@ -19,7 +19,7 @@ string filePath = "./var/log/erss/proxy.log";
  os.close();
   }
 
-  void printCache(string content,int ID){
+  void printCache(string content,int& ID){
     ID++;
     string temp;
     temp += to_string(ID);
