@@ -83,37 +83,38 @@ int main(int argc, char* argv[]){
     std::cout << "req: " <<requestInfo << std::endl;
 
     Request reqObj(requestInfo);
-    
-    /*check request*/
-    /*check cache*/
-    std::cout << reqObj.getKey() << std::endl;
-    std::string cached = myCache.get(reqObj.getKey());
-    if(!cached.empty()){
-      //      my_logger.printCache("in cache");
-      std::cout << "*******************Cache: found " << std::endl;
-      if(myProxy.sendCacheBrowser(cached)){
-        std::cerr <<"get error!"<< std::endl;
-        return EXIT_FAILURE;
+    if(reqObj.getType()!="CONNECT"){
+      /*check request*/
+      /*check cache*/
+      std::cout << reqObj.getKey() << std::endl;
+      std::string cached = myCache.get(reqObj.getKey());
+      if(!cached.empty()){
+        //      my_logger.printCache("in cache");
+        std::cout << "*******************Cache: found " << std::endl;
+        if(myProxy.sendCacheBrowser(cached)){
+          std::cerr <<"get error!"<< std::endl;
+          return EXIT_FAILURE;
+        }
       }
-    }
-    else{
-      /*logger*/
-      //  my_logger.printCache("not in cache");
-      std::cout << "**************Cache: not found" << std::endl;
-      my_logger.getrequest(ID, reqObj);
-      my_logger.printlogline();
+      else{
+        /*logger*/
+        //  my_logger.printCache("not in cache");
+        std::cout << "**************Cache: not found" << std::endl;
+        my_logger.getrequest(ID, reqObj);
+        my_logger.printlogline();
     
-      std::string getInfo;
-      if(myProxy.getServerSendBrowser(reqObj.getHostname(), reqObj.getRequestInfo(), getInfo)){
-        std::cerr <<"get error!"<< std::endl;
-        return EXIT_FAILURE;
-      }
-      std::cout << getInfo << std::endl;
-      Response resObj(getInfo,reqObj.getType());
-      /*update cache*/
-      std::string value = resObj.getValue();
-      if(!value.empty()){
-        myCache.put(reqObj.getKey(),value,10);
+        std::string getInfo;
+        if(myProxy.getServerSendBrowser(reqObj.getHostname(), reqObj.getRequestInfo(), getInfo)){
+          std::cerr <<"get error!"<< std::endl;
+          return EXIT_FAILURE;
+        }
+        std::cout << getInfo << std::endl;
+        Response resObj(getInfo,reqObj.getType());
+        /*update cache*/
+        std::string value = resObj.getValue();
+        if(!value.empty()){
+          myCache.put(reqObj.getKey(),value,10);
+        }
       }
     }
     myProxy.closeSockfds();

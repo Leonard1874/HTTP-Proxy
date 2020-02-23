@@ -37,8 +37,9 @@ public:
       int texpTime = (*LRUMap[key]).expTime; 
       LRUlist.erase(LRUMap[key]); //remove old place
       LRUlist.emplace_back(key, tinfo, texpTime); // insert to end
-      LRUMap[key] = LRUlist.end();// update Map
-      LRUMap[key] --;
+      std::list<LRUNode>::iterator it = LRUlist.end();
+      it --;
+      LRUMap[key] = it;// update Map
       return tinfo;
     }
   }
@@ -48,8 +49,9 @@ public:
       {
         LRUlist.erase(LRUMap[key]); // remove old place, add end
         LRUlist.emplace_back(key, info, expTime); // insert to end
-        LRUMap[key] = LRUlist.end(); // update Map
-        LRUMap[key] --;
+        std::list<LRUNode>::iterator it = LRUlist.end();
+        it --;
+        LRUMap[key] = it;// update Map
       }
     else{ // not exist
       if(LRUlist.size() >= capacity){ // not enough space
@@ -57,9 +59,9 @@ public:
         LRUlist.pop_front();
       }
       LRUlist.emplace_back(key, info, expTime); // insert to end
-      LRUMap[key] = LRUlist.end(); // update Map
-      LRUMap[key] --;
+      std::list<LRUNode>::iterator it = LRUlist.end();
+      it --;
+      LRUMap[key] = it;// update Map
     }
-  }
-  
+  } 
 };
