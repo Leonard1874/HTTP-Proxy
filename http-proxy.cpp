@@ -65,6 +65,7 @@ int main(int argc, char* argv[]){
   Proxy myProxy;
   Cache myCache(20);
   int ID = 0;
+  logger my_logger;
   
   while(true){
     if(myProxy.listenBrowser(hostname, port)){
@@ -88,6 +89,7 @@ int main(int argc, char* argv[]){
     std::cout << reqObj.getKey() << std::endl;
     std::string cached = myCache.get(reqObj.getKey());
     if(!cached.empty()){
+      //      my_logger.printCache("in cache");
       std::cout << "*******************Cache: found " << std::endl;
       if(myProxy.sendCacheBrowser(cached)){
         std::cerr <<"get error!"<< std::endl;
@@ -96,8 +98,8 @@ int main(int argc, char* argv[]){
     }
     else{
       /*logger*/
+      //  my_logger.printCache("not in cache");
       std::cout << "**************Cache: not found" << std::endl;
-      logger my_logger;
       my_logger.getrequest(ID, reqObj);
       my_logger.printlogline();
     
