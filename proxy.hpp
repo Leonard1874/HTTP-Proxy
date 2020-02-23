@@ -99,6 +99,8 @@ private:
       }
       hasGot += numbytes;
       std::string tempStr(temp);
+      std::cout << "---------------------------" << std::endl;
+      std::cout << tempStr << std::endl;
       if(!recvNum){
         if(tempStr.find("HTTP/1.1 200 OK") == std::string::npos){
           allLen = 0;
@@ -133,19 +135,20 @@ private:
     char temp[65536];
     while(true){
       memset(temp,'\0',sizeof(temp));
+      std::string endMark = "\r\n\r\n";
       if((numbytes = recv(sockfd, temp, 65535, 0)) == -1) {
         std::perror("recv");
         return false;
       }
       std::string tempStr(temp);
-      if(numbytes < 65536){
-        toGet += temp;
+      if(tempStr.find(endMark)!=std::string::npos){
+        toGet += tempStr;
         //std::cout << "end! " <<toGet << std::endl;
         break;
       }
       else{
         //std::cout << toGet << std::endl;
-        toGet += temp;
+        toGet += tempStr;
       }
     }
     return true;
