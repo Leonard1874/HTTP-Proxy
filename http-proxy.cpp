@@ -1,7 +1,7 @@
 #include "proxy.hpp"
-#include "Request.cpp"
-#include "logger.cpp"
-#include "cache.cpp"
+#include "Request.hpp"
+#include "logger.hpp"
+#include "cache.hpp"
 
 int Proxy::listenBrowser(const char* hostname, const char* port){
   if(setupSocket(hostname,port) < 0){
@@ -89,7 +89,7 @@ int main(int argc, char* argv[]){
       std::string cached = myCache.get(reqObj.getKey());
       if(!cached.empty()){
         std::cout << "*******************Cache: found " << std::endl;
-        std::cout << cached << std::endl;
+        //std::cout << cached << std::endl;
         if(myProxy.sendCacheBrowser(cached)){
           std::cerr <<"get error!"<< std::endl;
           return EXIT_FAILURE;
@@ -105,7 +105,7 @@ int main(int argc, char* argv[]){
           std::cerr <<"get error!"<< std::endl;
           return EXIT_FAILURE;
         }
-        std::cout << getInfo << std::endl;
+        std::cout << "res: " <<getInfo << std::endl;
         Response resObj(getInfo,reqObj.getType());
         /*update cache*/
         std::string value = resObj.getValue();

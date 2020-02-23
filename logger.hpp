@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <string>
 #include <iostream>
-#include<fstream>
+#include <fstream>
 using namespace std;
 class logger{
  private:

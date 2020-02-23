@@ -1,4 +1,4 @@
-#include "Response.cpp"
+#include "Response.hpp"
 #include <cstdio>
 #include <cstdlib>
 #include <unistd.h>
@@ -33,12 +33,13 @@ public:
       return "";
     }
     else{
-      Response& tVal = (*LRUMap[key]).value; 
+      Response tVal = (*LRUMap[key]).value; 
       LRUlist.emplace_back(key, tVal); // insert to end
       LRUlist.erase(LRUMap[key]); //remove old place
       std::list<LRUNode>::iterator it = LRUlist.end();
       it --;
       LRUMap[key] = it;// update Map
+      //std::cout << "##############" <<tVal.getResponseInfo() << std::endl;
       return tVal.getResponseInfo();
     }
   }
@@ -57,8 +58,6 @@ public:
         LRUMap.erase(LRUlist.front().key);
         LRUlist.pop_front();
       }
-      std::cout << "------------value here!--------"<<std::endl;
-      std::cout << value.getResponseInfo()<<std::endl;
       LRUlist.emplace_back(key, value); // insert to end
       std::list<LRUNode>::iterator it = LRUlist.end();
       it --;

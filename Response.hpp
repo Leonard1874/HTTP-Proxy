@@ -17,10 +17,13 @@ private:
   std::string type;
   
 public:
-  Response(const std::string& resInfo, const std::string& rtype):responseInfo(resInfo), type(rtype){}
+  Response(const std::string& resInfo, const std::string& rtype):responseInfo(resInfo), type(rtype){
+    //std::cout << "@@@@@@@@@@@@@@@" <<responseInfo << std::endl;
+  }
 
   //test 
   std::string getResponseInfo(){
+    //std::cout << "cache get: " << responseInfo << std::endl;
     return responseInfo;
   }
 
