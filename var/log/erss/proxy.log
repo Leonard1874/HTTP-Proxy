@@ -1,0 +1,10 @@
+1: not in cache
+1: GET http://httpbin.org/forms/post HTTP/1.1 from 52.202.2.199 @ 2020-02-23 15:47:12
+2: Requesting GET http://httpbin.org/forms/post HTTP/1.1 from httpbin.org
+3: not in cache
+3: GET http://httpbin.org/favicon.ico HTTP/1.1 from 52.202.2.199 @ 2020-02-23 15:47:12
+4: Requesting GET http://httpbin.org/favicon.ico HTTP/1.1 from httpbin.org
+5: in cache
+5: not in cache
+5: GET http://httpbin.org/favicon.ico HTTP/1.1 from 52.202.2.199 @ 2020-02-23 15:47:14
+6: Requesting GET http://httpbin.org/favicon.ico HTTP/1.1 from httpbin.org

@@ -19,7 +19,20 @@ string filePath = "./var/log/erss/proxy.log";
  os.close();
   }
 
-   string getCurrentDateTime( string s ){
+  void printCache(string content,int ID){
+    ID++;
+    string temp;
+    temp += to_string(ID);
+    temp += ": ";
+    temp  = temp + content +"\n";
+string filePath = "./var/log/erss/proxy.log";
+ ofstream os(filePath, ios::app );
+ os << temp;
+ os.close();
+  }
+
+
+  string getCurrentDateTime( string s ){
     time_t now = time(0);
     struct tm  tstruct;
     char  buf[80];
