@@ -1,4 +1,5 @@
 #include "proxy.hpp"
+#include "Request.cpp"
 
 int Proxy::listenBrowser(const char* hostname, const char* port){
   if(setupSocket(hostname,port) < 0){
@@ -20,13 +21,13 @@ int Proxy::getRequest(std::string& request){
   return EXIT_SUCCESS;
 }
 
-int Proxy::getServerSendBrowser(Request& reqObj, std::string& getInfo){
-  if(connectToSocket(reqObj.getHostname().c_str(),"80") < 0){ // port to be check
+int Proxy::getServerSendBrowser(const std::string& hostName, const std::string& requestInfo, std::string& getInfo){
+  if(connectToSocket(hostName.c_str(),"80") < 0){ // port to be check
     std::cerr << "connect to origin host error" << std::endl;
     return EXIT_FAILURE;
   }
 
-  if(!Send(getSockfdO(),reqObj.getRequestInfo().c_str())){
+  if(!Send(getSockfdO(),requestInfo.c_str())){
     std::cerr << "send to origin error" << std::endl;
     return EXIT_FAILURE;
   }
@@ -71,9 +72,9 @@ int main(int argc, char* argv[]){
     
     /*check request*/
     /*check cache*/
-  
+
     std::string getInfo;
-    if(myProxy.getServerSendBrowser(reqObj,getInfo)){
+    if(myProxy.getServerSendBrowser(reqObj.getHostname(), reqObj.getRequestInfo(), getInfo)){
       std::cerr <<"get error!"<< std::endl;
       return EXIT_FAILURE;
     }

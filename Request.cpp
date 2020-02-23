@@ -18,7 +18,13 @@ private:
   std::string requestInfo;
   std::string hostname;
   std::string port;
+  std::string type;
   void parseRequest(){
+    size_t start = 0;
+    while(isupper(requestInfo[start])){
+      type += requestInfo[start];
+      start ++;
+    }
     size_t pos = requestInfo.find("Host: "); //exception? To be done
     std::string hostLine = requestInfo.substr(pos+strlen("Host: "));
     size_t endPos = hostLine.find_first_of("\r\n");
@@ -33,7 +39,7 @@ private:
       port = "";
       hostname = hostLine;
     }
-    //std::cout << "/" << hostname << "/:/" << port << "/" <<std::endl;
+    //std::cout << "/" << type << "/" << hostname << "/:/" << port << "/" <<std::endl;
   }
   
 public:
@@ -47,6 +53,10 @@ public:
 
   std::string getPort(){
     return port;
+  }
+
+  std::string getType(){
+    return type;
   }
 
   std::string getRequestInfo(){

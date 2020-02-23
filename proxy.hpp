@@ -1,4 +1,3 @@
-#include "Request.cpp"
 #include <cstdio>
 #include <cstdlib>
 #include <unistd.h>
@@ -45,7 +44,7 @@ public:
 public:
   int listenBrowser(const char* hostname, const char* port);
   int getRequest(std::string& reuqest);
-  int getServerSendBrowser(Request& reqObj, std::string& getInfo);
+  int getServerSendBrowser(const std::string& hostName, const std::string& requestInfo, std::string& getInfo);
   
 private:
   bool Send(int sendFd, std::string toSend){
@@ -98,10 +97,8 @@ private:
         std::perror("recv");
         return false;
       }
-
       hasGot += numbytes;
       std::string tempStr(temp);
-      std::cout << tempStr << std::endl;
       if(!recvNum){
         if(tempStr.find("HTTP/1.1 200 OK") == std::string::npos){
           allLen = 0;
@@ -119,8 +116,6 @@ private:
         }
         recvNum ++;
       }
-
-      std::cout << hasGot << " : " << allLen << std::endl;
       
       if(hasGot >= allLen){
         toGet += tempStr;	
