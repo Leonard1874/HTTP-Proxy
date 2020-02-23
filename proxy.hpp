@@ -45,7 +45,7 @@ public:
   int listenBrowser(const char* hostname, const char* port);
   int getRequest(std::string& reuqest);
   int getServerSendBrowser(const std::string& hostName, const std::string& requestInfo, std::string& getInfo);
-  
+  int sendCacheBrowser(const std::string& cachedInfo);
 private:
   bool Send(int sendFd, std::string toSend){
     if (send(sendFd, toSend.c_str(), strlen(toSend.c_str()), 0) == -1){ 
@@ -99,8 +99,8 @@ private:
       }
       hasGot += numbytes;
       std::string tempStr(temp);
-      std::cout << "---------------------------" << std::endl;
-      std::cout << tempStr << std::endl;
+      //std::cout << "---------------------------" << std::endl;
+      //std::cout << tempStr << std::endl;
       if(!recvNum){
         if(tempStr.find("HTTP/1.1 200 OK") == std::string::npos){
           allLen = 0;

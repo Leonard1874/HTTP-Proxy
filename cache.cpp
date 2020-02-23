@@ -12,8 +12,7 @@
 #include <list>
 
 class Cache {
-private:
-  
+private:  
   class LRUNode{
   public:
     std::string key;
@@ -31,14 +30,15 @@ public:
     
   std::string get(std::string key) {
     if(LRUMap.count(key) == 0){
-      return NULL;
+      return "";
     }
     else{
       std::string tinfo = (*LRUMap[key]).info;
       int texpTime = (*LRUMap[key]).expTime; 
       LRUlist.erase(LRUMap[key]); //remove old place
       LRUlist.emplace_back(key, tinfo, texpTime); // insert to end
-      LRUMap[key] = LRUlist.end(); // update Map
+      LRUMap[key] = LRUlist.end();// update Map
+      LRUMap[key] --;
       return tinfo;
     }
   }
@@ -49,6 +49,7 @@ public:
         LRUlist.erase(LRUMap[key]); // remove old place, add end
         LRUlist.emplace_back(key, info, expTime); // insert to end
         LRUMap[key] = LRUlist.end(); // update Map
+        LRUMap[key] --;
       }
     else{ // not exist
       if(LRUlist.size() >= capacity){ // not enough space
@@ -57,6 +58,7 @@ public:
       }
       LRUlist.emplace_back(key, info, expTime); // insert to end
       LRUMap[key] = LRUlist.end(); // update Map
+      LRUMap[key] --;
     }
   }
   

@@ -16,10 +16,12 @@
 class Request{
 private:
   std::string requestInfo;
+  std::string key;
   std::string hostname;
   std::string port;
   std::string type;
   void parseRequest(){
+    key = requestInfo.substr(0,requestInfo.find_first_of("\r\n"));
     size_t start = 0;
     while(isupper(requestInfo[start])){
       type += requestInfo[start];
@@ -29,7 +31,6 @@ private:
     std::string hostLine = requestInfo.substr(pos+strlen("Host: "));
     size_t endPos = hostLine.find_first_of("\r\n");
     hostLine = hostLine.substr(0,endPos); // get this line
-    //std::cout << "/" <<hostLine << "/" <<std::endl;
     size_t portPos = hostLine.find(":");
     if(portPos != std::string::npos){
       hostname = hostLine.substr(0,portPos);
@@ -39,7 +40,6 @@ private:
       port = "";
       hostname = hostLine;
     }
-    //std::cout << "/" << type << "/" << hostname << "/:/" << port << "/" <<std::endl;
   }
   
 public:
@@ -59,10 +59,13 @@ public:
     return type;
   }
 
+  std::string getKey(){
+    return key;
+  }
+
   std::string getRequestInfo(){
     return requestInfo;
   }
-  
 };
 /*
   bool response_parser(std::string & hostname, std::string& log_raw){
