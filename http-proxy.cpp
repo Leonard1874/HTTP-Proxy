@@ -1,6 +1,5 @@
 #include "proxy.hpp"
 #include "Request.cpp"
-#include "Response.cpp"
 #include "logger.cpp"
 #include "cache.cpp"
 
@@ -89,19 +88,17 @@ int main(int argc, char* argv[]){
       std::cout << reqObj.getKey() << std::endl;
       std::string cached = myCache.get(reqObj.getKey());
       if(!cached.empty()){
-        my_logger.printCache("in cache", ID);
         std::cout << "*******************Cache: found " << std::endl;
+        std::cout << cached << std::endl;
         if(myProxy.sendCacheBrowser(cached)){
           std::cerr <<"get error!"<< std::endl;
           return EXIT_FAILURE;
         }
+        my_logger.printCache("in cache", ID);
       }
       else{
         /*logger*/
-        my_logger.printCache("not in cache", ID);
         std::cout << "**************Cache: not found" << std::endl;
-        my_logger.getrequest(ID, reqObj);
-        my_logger.printlogline();
     
         std::string getInfo;
         if(myProxy.getServerSendBrowser(reqObj.getHostname(), reqObj.getRequestInfo(), getInfo)){
@@ -113,8 +110,11 @@ int main(int argc, char* argv[]){
         /*update cache*/
         std::string value = resObj.getValue();
         if(!value.empty()){
-          myCache.put(reqObj.getKey(),value,10);
+          myCache.put(reqObj.getKey(),resObj);
         }
+        my_logger.printCache("not in cache", ID);
+        my_logger.getrequest(ID, reqObj);
+        my_logger.printlogline();
       }
     }
     myProxy.closeSockfds();

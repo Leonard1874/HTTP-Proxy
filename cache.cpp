@@ -1,3 +1,4 @@
+#include "Response.cpp"
 #include <cstdio>
 #include <cstdlib>
 #include <unistd.h>
@@ -16,9 +17,8 @@ private:
   class LRUNode{
   public:
     std::string key;
-    std::string info;
-    int expTime;
-    LRUNode(const std::string& rkey, const std::string& rinfo, const int rexpTime): key(rkey), info(rinfo), expTime(rexpTime){}
+    Response value;
+    LRUNode(const std::string& rkey, const Response& rval): key(rkey), value(rval){}
   };
   
   std::map<std::string,std::list<LRUNode>::iterator> LRUMap;
@@ -28,27 +28,26 @@ public:
   size_t capacity;
   Cache(size_t rcapacity): capacity(rcapacity) {}
     
-  std::string get(std::string key) {
+  std::string get(const std::string& key) {
     if(LRUMap.count(key) == 0){
       return "";
     }
     else{
-      std::string tinfo = (*LRUMap[key]).info;
-      int texpTime = (*LRUMap[key]).expTime; 
+      Response& tVal = (*LRUMap[key]).value; 
+      LRUlist.emplace_back(key, tVal); // insert to end
       LRUlist.erase(LRUMap[key]); //remove old place
-      LRUlist.emplace_back(key, tinfo, texpTime); // insert to end
       std::list<LRUNode>::iterator it = LRUlist.end();
       it --;
       LRUMap[key] = it;// update Map
-      return tinfo;
+      return tVal.getResponseInfo();
     }
   }
     
-  void put(std::string key, std::string info, int expTime) {
+  void put(const std::string& key, const Response& value) {
     if(LRUMap.count(key) != 0) //exist
       {
         LRUlist.erase(LRUMap[key]); // remove old place, add end
-        LRUlist.emplace_back(key, info, expTime); // insert to end
+        LRUlist.emplace_back(key, value); // insert to end
         std::list<LRUNode>::iterator it = LRUlist.end();
         it --;
         LRUMap[key] = it;// update Map
@@ -58,7 +57,7 @@ public:
         LRUMap.erase(LRUlist.front().key);
         LRUlist.pop_front();
       }
-      LRUlist.emplace_back(key, info, expTime); // insert to end
+      LRUlist.emplace_back(key, value); // insert to end
       std::list<LRUNode>::iterator it = LRUlist.end();
       it --;
       LRUMap[key] = it;// update Map

@@ -8,3 +8,121 @@
 5: not in cache
 5: GET http://httpbin.org/favicon.ico HTTP/1.1 from 52.202.2.199 @ 2020-02-23 15:47:14
 6: Requesting GET http://httpbin.org/favicon.ico HTTP/1.1 from httpbin.org
+1: not in cache
+1: GET http://httpbin.org/ HTTP/1.1 from 3.232.168.170 @ 2020-02-23 15:59:17
+2: Requesting GET http://httpbin.org/ HTTP/1.1 from httpbin.org
+3: not in cache
+3: GET http://httpbin.org/flasgger_static/swagger-ui-bundle.js HTTP/1.1 from 3.232.168.170 @ 2020-02-23 15:59:21
+4: Requesting GET http://httpbin.org/flasgger_static/swagger-ui-bundle.js HTTP/1.1 from httpbin.org
+5: not in cache
+5: GET http://httpbin.org/flasgger_static/swagger-ui-standalone-preset.js HTTP/1.1 from 3.232.168.170 @ 2020-02-23 15:59:22
+6: Requesting GET http://httpbin.org/flasgger_static/swagger-ui-standalone-preset.js HTTP/1.1 from httpbin.org
+7: not in cache
+7: GET http://httpbin.org/flasgger_static/lib/jquery.min.js HTTP/1.1 from 3.232.168.170 @ 2020-02-23 15:59:22
+8: Requesting GET http://httpbin.org/flasgger_static/lib/jquery.min.js HTTP/1.1 from httpbin.org
+9: not in cache
+9: GET http://httpbin.org/static/favicon.ico HTTP/1.1 from 3.232.168.170 @ 2020-02-23 15:59:22
+10: Requesting GET http://httpbin.org/static/favicon.ico HTTP/1.1 from httpbin.org
+11: in cache
+11: in cache
+11: not in cache
+11: GET http://httpbin.org/forms/post HTTP/1.1 from 3.232.168.170 @ 2020-02-23 15:59:37
+12: Requesting GET http://httpbin.org/forms/post HTTP/1.1 from httpbin.org
+13: in cache
+13: in cache
+13: in cache
+13: in cache
+13: in cache
+13: in cache
+13: not in cache
+13: GET http://httpbin.org/favicon.ico HTTP/1.1 from 52.202.2.199 @ 2020-02-23 16:00:32
+14: Requesting GET http://httpbin.org/favicon.ico HTTP/1.1 from httpbin.org
+15: in cache
+15: not in cache
+15: GET http://httpbin.org/favicon.ico HTTP/1.1 from 52.202.2.199 @ 2020-02-23 16:00:40
+16: Requesting GET http://httpbin.org/favicon.ico HTTP/1.1 from httpbin.org
+17: in cache
+17: not in cache
+17: GET http://httpbin.org/favicon.ico HTTP/1.1 from 52.202.2.199 @ 2020-02-23 16:00:47
+18: Requesting GET http://httpbin.org/favicon.ico HTTP/1.1 from httpbin.org
+19: in cache
+19: not in cache
+19: GET http://httpbin.org/favicon.ico HTTP/1.1 from 52.202.2.199 @ 2020-02-23 16:00:49
+20: Requesting GET http://httpbin.org/favicon.ico HTTP/1.1 from httpbin.org
+21: in cache
+21: not in cache
+21: GET http://httpbin.org/favicon.ico HTTP/1.1 from 52.202.2.199 @ 2020-02-23 16:01:03
+22: Requesting GET http://httpbin.org/favicon.ico HTTP/1.1 from httpbin.org
+23: in cache
+23: not in cache
+23: GET http://httpbin.org/favicon.ico HTTP/1.1 from 34.230.193.231 @ 2020-02-23 16:01:14
+24: Requesting GET http://httpbin.org/favicon.ico HTTP/1.1 from httpbin.org
+25: in cache
+25: not in cache
+25: GET http://httpbin.org/favicon.ico HTTP/1.1 from 34.230.193.231 @ 2020-02-23 16:01:16
+26: Requesting GET http://httpbin.org/favicon.ico HTTP/1.1 from httpbin.org
+27: in cache
+27: in cache
+27: in cache
+27: in cache
+27: in cache
+27: not in cache
+27: POST http://httpbin.org/post HTTP/1.1 from 3.232.168.170 @ 2020-02-23 16:01:45
+28: Requesting POST http://httpbin.org/post HTTP/1.1 from httpbin.org
+29: not in cache
+29: GET http://httpbin.org/post HTTP/1.1 from 3.232.168.170 @ 2020-02-23 16:01:48
+30: Requesting GET http://httpbin.org/post HTTP/1.1 from httpbin.org
+31: not in cache
+31: GET http://httpbin.org/favicon.ico HTTP/1.1 from 3.232.168.170 @ 2020-02-23 16:01:48
+32: Requesting GET http://httpbin.org/favicon.ico HTTP/1.1 from httpbin.org
+33: not in cache
+33: GET http://httpbin.org/forms/ HTTP/1.1 from 3.232.168.170 @ 2020-02-23 16:01:55
+34: Requesting GET http://httpbin.org/forms/ HTTP/1.1 from httpbin.org
+35: not in cache
+35: GET http://httpbin.org/favicon.ico HTTP/1.1 from 3.232.168.170 @ 2020-02-23 16:01:55
+36: Requesting GET http://httpbin.org/favicon.ico HTTP/1.1 from httpbin.org
+37: in cache
+37: not in cache
+37: GET http://httpbin.org/favicon.ico HTTP/1.1 from 35.170.216.115 @ 2020-02-23 16:01:58
+38: Requesting GET http://httpbin.org/favicon.ico HTTP/1.1 from httpbin.org
+39: in cache
+39: in cache
+39: not in cache
+39: GET http://httpbin.org/favicon.ico HTTP/1.1 from 35.170.216.115 @ 2020-02-23 16:02:05
+40: Requesting GET http://httpbin.org/favicon.ico HTTP/1.1 from httpbin.org
+1: not in cache
+1: GET http://httpbin.org/forms/post HTTP/1.1 from 34.230.193.231 @ 2020-02-23 16:03:41
+2: Requesting GET http://httpbin.org/forms/post HTTP/1.1 from httpbin.org
+3: not in cache
+3: GET http://httpbin.org/favicon.ico HTTP/1.1 from 34.230.193.231 @ 2020-02-23 16:03:41
+4: Requesting GET http://httpbin.org/favicon.ico HTTP/1.1 from httpbin.org
+5: in cache
+1: not in cache
+1: GET http://httpbin.org/forms/post HTTP/1.1 from 52.202.2.199 @ 2020-02-23 16:05:13
+2: Requesting GET http://httpbin.org/forms/post HTTP/1.1 from httpbin.org
+3: in cache
+3: not in cache
+3: GET http://httpbin.org/favicon.ico HTTP/1.1 from 52.202.2.199 @ 2020-02-23 16:05:18
+4: Requesting GET http://httpbin.org/favicon.ico HTTP/1.1 from httpbin.org
+5: in cache
+5: not in cache
+5: GET http://httpbin.org/favicon.ico HTTP/1.1 from 52.202.2.199 @ 2020-02-23 16:05:28
+6: Requesting GET http://httpbin.org/favicon.ico HTTP/1.1 from httpbin.org
+7: in cache
+7: not in cache
+7: GET http://httpbin.org/favicon.ico HTTP/1.1 from 52.202.2.199 @ 2020-02-23 16:05:35
+8: Requesting GET http://httpbin.org/favicon.ico HTTP/1.1 from httpbin.org
+9: in cache
+9: not in cache
+9: GET http://httpbin.org/favicon.ico HTTP/1.1 from 52.202.2.199 @ 2020-02-23 16:05:42
+10: Requesting GET http://httpbin.org/favicon.ico HTTP/1.1 from httpbin.org
+1: not in cache
+1: GET http://httpbin.org/forms/post HTTP/1.1 from 3.232.168.170 @ 2020-02-23 16:05:55
+2: Requesting GET http://httpbin.org/forms/post HTTP/1.1 from httpbin.org
+3: not in cache
+3: GET http://httpbin.org/favicon.ico HTTP/1.1 from 3.232.168.170 @ 2020-02-23 16:05:55
+4: Requesting GET http://httpbin.org/favicon.ico HTTP/1.1 from httpbin.org
+5: in cache
+5: not in cache
+5: GET http://httpbin.org/favicon.ico HTTP/1.1 from 3.232.168.170 @ 2020-02-23 16:05:59
+6: Requesting GET http://httpbin.org/favicon.ico HTTP/1.1 from httpbin.org
