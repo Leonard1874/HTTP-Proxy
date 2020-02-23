@@ -126,3 +126,13 @@
 5: not in cache
 5: GET http://httpbin.org/favicon.ico HTTP/1.1 from 3.232.168.170 @ 2020-02-23 16:05:59
 6: Requesting GET http://httpbin.org/favicon.ico HTTP/1.1 from httpbin.org
+1: not in cache
+1: GET http://httpbin.org/forms/post HTTP/1.1 from 34.230.193.231 @ 2020-02-23 16:11:53
+2: Requesting GET http://httpbin.org/forms/post HTTP/1.1 from httpbin.org
+3: not in cache
+3: GET http://httpbin.org/favicon.ico HTTP/1.1 from 34.230.193.231 @ 2020-02-23 16:11:53
+4: Requesting GET http://httpbin.org/favicon.ico HTTP/1.1 from httpbin.org
+5: in cache
+5: not in cache
+5: GET http://httpbin.org/favicon.ico HTTP/1.1 from 34.230.193.231 @ 2020-02-23 16:12:02
+6: Requesting GET http://httpbin.org/favicon.ico HTTP/1.1 from httpbin.org

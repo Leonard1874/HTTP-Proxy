@@ -57,6 +57,8 @@ public:
         LRUMap.erase(LRUlist.front().key);
         LRUlist.pop_front();
       }
+      std::cout << "------------value here!--------"<<std::endl;
+      std::cout << value.getResponseInfo()<<std::endl;
       LRUlist.emplace_back(key, value); // insert to end
       std::list<LRUNode>::iterator it = LRUlist.end();
       it --;
