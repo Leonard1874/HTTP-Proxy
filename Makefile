@@ -4,7 +4,7 @@ CPPFLAGS=-ggdb3 -Wall -Werror -pedantic -std=gnu++11
 
 http-proxy: $(OBJS)
 	g++ $(CPPFLAGS) -o http-proxy $(OBJS)
-%.o: %.cpp proxy.hpp Request.cpp
+%.o: %.cpp proxy.hpp Request.cpp logger.cpp
 	g++ $(CPPFLAGS) -c $<
 clean:
 	rm http-proxy *~ *.o

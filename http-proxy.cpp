@@ -1,6 +1,6 @@
 #include "proxy.hpp"
 #include "Request.cpp"
-
+#include "logger.cpp"
 int Proxy::listenBrowser(const char* hostname, const char* port){
   if(setupSocket(hostname,port) < 0){
     std::cerr << "setup socket to browser error" << std::endl;
@@ -52,6 +52,7 @@ int main(int argc, char* argv[]){
   const char *hostname = argv[1];
   const char *port     = argv[2];
   Proxy myProxy;
+  int ID = 0;
   
   while(true){
     if(myProxy.listenBrowser(hostname, port)){
@@ -73,6 +74,11 @@ int main(int argc, char* argv[]){
     /*check request*/
     /*check cache*/
 
+    /*logger*/
+    logger my_logger;
+    my_logger.getrequest(ID, reqObj);
+    my_logger.printlogline();
+    
     std::string getInfo;
     if(myProxy.getServerSendBrowser(reqObj.getHostname(), reqObj.getRequestInfo(), getInfo)){
       std::cerr <<"get error!"<< std::endl;
