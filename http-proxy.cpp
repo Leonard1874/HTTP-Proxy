@@ -85,10 +85,9 @@ int main(int argc, char* argv[]){
     if(reqObj.getType()!="CONNECT"){
       /*check request*/
       /*check cache*/
-      std::cout << reqObj.getKey() << std::endl;
       std::string cached = myCache.get(reqObj.getKey());
       if(!cached.empty()){
-        std::cout << "*******************Cache: found " << std::endl;
+        std::cout << "****************Cache: found*******************" << std::endl;
         //std::cout << cached << std::endl;
         if(myProxy.sendCacheBrowser(cached)){
           std::cerr <<"get error!"<< std::endl;
@@ -99,7 +98,7 @@ int main(int argc, char* argv[]){
       }
       else{
         /*logger*/
-        std::cout << "**************Cache: not found" << std::endl;
+        std::cout << "**************Cache: not found******************" << std::endl;
     
         std::string getInfo;
         if(myProxy.getServerSendBrowser(reqObj.getHostname(), reqObj.getRequestInfo(), getInfo)){
@@ -107,9 +106,9 @@ int main(int argc, char* argv[]){
           return EXIT_FAILURE;
         }
         std::cout << "res: " <<getInfo << std::endl;
-        Response resObj(getInfo,reqObj.getType(),myTimer.getCurrentDateTime());
+        Response resObj(getInfo,reqObj.getType(),myTimer.getCurrentDateTime("now"));
         /*update cache*/
-        if(!resObj.canCache()){
+        if(resObj.canCache()){
           myCache.put(reqObj.getKey(),resObj);
         }
         my_logger.printCache("not in cache", ID);

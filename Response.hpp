@@ -1,3 +1,4 @@
+#include "ResponseParser.hpp"
 #include <cstdio>
 #include <cstdlib>
 #include <unistd.h>
@@ -13,19 +14,24 @@
 
 class Response{
 private:
+  ResponseParser myParser;
   std::string responseInfo;
   std::string type;
   std::string time;
+  double freshtime;
+  bool revalidate;
   
 public:
-  Response(const std::string& resInfo, const std::string& rtype, const std::string& rtime):responseInfo(resInfo), type(rtype), time(rtime){}
-
+  Response(const std::string& resInfo, const std::string& rtype, const std::string& rtime):myParser(), responseInfo(resInfo), type(rtype), time(rtime){
+    freshtime = myParser.parseExpire(responseInfo);
+    revalidate = myParser.needValidate(responseInfo);
+  }
+  
   //test 
   std::string getResponseInfo(){
-    //std::cout << "cache get: " << responseInfo << std::endl;
     return responseInfo;
   }
-
+  
   //for cache
   bool canCache(){
     if(type != "GET"){
