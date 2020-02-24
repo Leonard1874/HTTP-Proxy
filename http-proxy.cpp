@@ -1,7 +1,6 @@
 #include "proxy.hpp"
 #include "logger.hpp"
 #include "cache.hpp"
-
 int Proxy::listenBrowser(const char* hostname, const char* port){
   if(setupSocket(hostname,port) < 0){
     std::cerr << "setup socket to browser error" << std::endl;
@@ -49,10 +48,11 @@ int Proxy::getServerSendBrowser(const std::string& hostName, const std::string& 
   if(!Send(getSockfdB(),getInfo)){
     std::cerr << "send to browser" << std::endl;
     return EXIT_FAILURE;
-  }
-  
+  }  
   return EXIT_SUCCESS;
 }
+
+
 
 int main(int argc, char* argv[]){
   if(argc < 3){

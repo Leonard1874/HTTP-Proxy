@@ -38,7 +38,6 @@ public:
         std::string tempKey = (*LRUMap[key]).key;
         LRUlist.erase(LRUMap[key]); //remove old place
         LRUMap.erase(tempKey);
-        //std::cout << "^^^^^^^^^^^^^^Expired!" << std::endl;
         return "";
       }
       else{ 
@@ -47,7 +46,6 @@ public:
         std::list<LRUNode>::iterator it = LRUlist.end();
         it --;
         LRUMap[key] = it;// update Map
-        //std::cout << "##############" <<tVal.getResponseInfo() << std::endl;
         return tVal.getResponseInfo();
       }
     }

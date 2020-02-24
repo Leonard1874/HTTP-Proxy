@@ -18,7 +18,6 @@ private:
   std::string responseInfo;
   std::string type;
   double arriveTime;
-  //double freshtime;
   double expireTime;
   bool revalidate;
   

@@ -18,6 +18,6 @@ public:
 
   double getCurrentSec(){
     return time(0);
-  }
+  } 
   
 };
