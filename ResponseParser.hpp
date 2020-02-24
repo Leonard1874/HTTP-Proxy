@@ -1,3 +1,4 @@
+#include <climits>
 #include <cstdio>
 #include <cstdlib>
 #include <unistd.h>
@@ -30,8 +31,28 @@ public:
     month["Dec"] = 11;
   }
   
+  bool needValidate(const std::string& responseInfo){
+    bool need = false;
+    if(responseInfo.find("cache-control") != std::string::npos){
+      if(responseInfo.find("must-revalidate") != std::string::npos || responseInfo.find("proxy-revalidate") != std::string::npos){
+        need = true;
+      }
+    }
+    return need;
+  }
+
+  bool canCache(const std::string& responseInfo){
+    bool cache = true;
+    if(responseInfo.find("cache-control") != std::string::npos){
+      if(responseInfo.find("no-cache")!=std::string::npos || responseInfo.find("no-share")!=std::string::npos || responseInfo.find("private")!=std::string::npos){
+        cache = false;
+    }
+  }
+    return cache;
+ }
+
   double parseExpire(const std::string& responseInfo){
-    double freshtime = 0;
+    double freshtime = INT_MAX;
     if(responseInfo.find("Cache-Control: ") != std::string::npos){
       std::cout << "cache-contrl found!" << std::endl;
       freshtime = freshExpireControl(responseInfo);
@@ -49,24 +70,11 @@ public:
     }
     return freshtime;
   }
-
-  bool needValidate(const std::string& responseInfo){
-    bool need = false;
-    if(responseInfo.find("cache-control") != std::string::npos){
-      if(responseInfo.find("must-revalidate") != std::string::npos || responseInfo.find("proxy-revalidate") != std::string::npos){
-        need = true;
-      }
-    }
-    return need;
-  }
   
 private:
  
   double freshExpireControl(std::string strToParse){
-    if(strToParse.find("no-cache")!=std::string::npos || strToParse.find("no-share")!=std::string::npos || strToParse.find("private")!=std::string::npos){
-      return -1;
-    }
-    else if(strToParse.find("max-age")!=std::string::npos || strToParse.find("s-maxage")!=std::string::npos){
+    if(strToParse.find("max-age")!=std::string::npos || strToParse.find("s-maxage")!=std::string::npos){
       if(strToParse.find("max-age")!=std::string::npos){
         return std::stoi(getMarkedLine("max-age=",strToParse));
       }
@@ -96,7 +104,6 @@ private:
     if(!isExp){
       freshTime /= 10; 
     }
-    std::cout << freshTime << std::endl;
     return freshTime;
   }
 
@@ -123,7 +130,7 @@ private:
     struct tm res;
     res.tm_mday = std::stoi(times[0]);
     res.tm_mon = month[times[1]];
-    res.tm_year = std::stoi(times[2]);
+    res.tm_year = std::stoi(times[2]) - 1900;
     res.tm_hour = std::stoi(times[3]);
     res.tm_min = std::stoi(times[4]);
     res.tm_sec = std::stoi(times[5]);

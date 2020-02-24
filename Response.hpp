@@ -17,19 +17,25 @@ private:
   ResponseParser myParser;
   std::string responseInfo;
   std::string type;
-  std::string time;
-  double freshtime;
+  double arriveTime;
+  //double freshtime;
+  double expireTime;
   bool revalidate;
   
 public:
-  Response(const std::string& resInfo, const std::string& rtype, const std::string& rtime):myParser(), responseInfo(resInfo), type(rtype), time(rtime){
-    freshtime = myParser.parseExpire(responseInfo);
+  Response(const std::string& resInfo, const std::string& rtype, const double rtime):myParser(), responseInfo(resInfo), type(rtype), arriveTime(rtime){
+    expireTime = myParser.parseExpire(responseInfo) + arriveTime;
     revalidate = myParser.needValidate(responseInfo);
+    std::cout << expireTime << std::endl;
   }
   
   //test 
   std::string getResponseInfo(){
     return responseInfo;
+  }
+
+  double getExpireTime(){
+    return expireTime;
   }
   
   //for cache
@@ -40,7 +46,7 @@ public:
     else if(responseInfo.find("HTTP/1.1 200 OK") == std::string::npos){
       return false;
     }
-    else if(freshtime < 0){
+    else if(!myParser.canCache(responseInfo)){
       return false;
     }
     else{

@@ -82,39 +82,39 @@ int main(int argc, char* argv[]){
     std::cout << "req: " <<requestInfo << std::endl;
 
     Request reqObj(requestInfo);
-    if(reqObj.getType()!="CONNECT"){
-      /*check request*/
-      /*check cache*/
-      std::string cached = myCache.get(reqObj.getKey());
-      if(!cached.empty()){
-        std::cout << "****************Cache: found*******************" << std::endl;
-        //std::cout << cached << std::endl;
-        if(myProxy.sendCacheBrowser(cached)){
-          std::cerr <<"get error!"<< std::endl;
-          return EXIT_FAILURE;
-        }
-        my_logger.printCache("in cache", ID);
-        /*in cache situations*/
-      }
-      else{
-        /*logger*/
-        std::cout << "**************Cache: not found******************" << std::endl;
+    /*check request*/
+    /*check cache*/
     
-        std::string getInfo;
-        if(myProxy.getServerSendBrowser(reqObj.getHostname(), reqObj.getRequestInfo(), getInfo)){
-          std::cerr <<"get error!"<< std::endl;
-          return EXIT_FAILURE;
-        }
-        std::cout << "res: " <<getInfo << std::endl;
-        Response resObj(getInfo,reqObj.getType(),myTimer.getCurrentDateTime("now"));
-        /*update cache*/
-        if(resObj.canCache()){
-          myCache.put(reqObj.getKey(),resObj);
-        }
-        my_logger.printCache("not in cache", ID);
-        my_logger.getrequest(ID, reqObj);
-        my_logger.printlogline();
+    std::string cached = "";
+    if(reqObj.getType() == "GET"){
+      cached = myCache.get(reqObj.getKey(), myTimer.getCurrentSec());
+    }    
+    if(!cached.empty()){
+      std::cout << "****************Cache: found*******************" << std::endl;
+      //std::cout << cached << std::endl;
+      if(myProxy.sendCacheBrowser(cached)){
+        std::cerr <<"get error!"<< std::endl;
+        return EXIT_FAILURE;
       }
+      my_logger.printCache("in cache", ID);
+      /*in cache situations*/
+    }
+    else{
+      /*logger*/ 
+      std::string getInfo;
+      if(myProxy.getServerSendBrowser(reqObj.getHostname(), reqObj.getRequestInfo(), getInfo)){
+        std::cerr <<"get error!"<< std::endl;
+        return EXIT_FAILURE;
+      }
+      std::cout << "res: " <<getInfo << std::endl;
+      Response resObj(getInfo,reqObj.getType(),myTimer.getCurrentSec());
+      /*update cache*/
+      if(resObj.canCache()){
+        myCache.put(reqObj.getKey(),resObj);
+      }
+      my_logger.printCache("not in cache", ID);
+      my_logger.getrequest(ID, reqObj);
+      my_logger.printlogline();
     }
     myProxy.closeSockfds();
   }

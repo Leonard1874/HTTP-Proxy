@@ -15,9 +15,9 @@ public:
       strftime(buf, sizeof(buf), "%Y-%m-%d", &tstruct);
     return std::string(buf);
   }
-  /*
-  struct tm getRespondTime(std::string rawTimeStr){
-    
+
+  double getCurrentSec(){
+    return time(0);
   }
-  */
+  
 };

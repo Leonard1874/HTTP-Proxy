@@ -28,19 +28,28 @@ public:
   size_t capacity;
   Cache(size_t rcapacity): capacity(rcapacity) {}
     
-  std::string get(const std::string& key) {
+  std::string get(const std::string& key, const double curTime) {
     if(LRUMap.count(key) == 0){
       return "";
     }
     else{
-      Response tVal = (*LRUMap[key]).value; 
-      LRUlist.emplace_back(key, tVal); // insert to end
-      LRUlist.erase(LRUMap[key]); //remove old place
-      std::list<LRUNode>::iterator it = LRUlist.end();
-      it --;
-      LRUMap[key] = it;// update Map
-      //std::cout << "##############" <<tVal.getResponseInfo() << std::endl;
-      return tVal.getResponseInfo();
+      Response tVal = (*LRUMap[key]).value;
+      if(tVal.getExpireTime() < curTime){
+        std::string tempKey = (*LRUMap[key]).key;
+        LRUlist.erase(LRUMap[key]); //remove old place
+        LRUMap.erase(tempKey);
+        //std::cout << "^^^^^^^^^^^^^^Expired!" << std::endl;
+        return "";
+      }
+      else{ 
+        LRUlist.emplace_back(key, tVal); // insert to end
+        LRUlist.erase(LRUMap[key]); //remove old place
+        std::list<LRUNode>::iterator it = LRUlist.end();
+        it --;
+        LRUMap[key] = it;// update Map
+        //std::cout << "##############" <<tVal.getResponseInfo() << std::endl;
+        return tVal.getResponseInfo();
+      }
     }
   }
     

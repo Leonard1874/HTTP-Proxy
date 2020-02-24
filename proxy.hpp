@@ -252,7 +252,66 @@ private:
     freeaddrinfo(host_info_list);
     return 0;
   }
-  
+  /*
+  int selectPort(std::vector<int>& sockets, int ownNum, int playerNum){
+    int fdmax = *(std::max_element(sockets.begin(),sockets.end()));
+    fd_set sockfds;
+    FD_ZERO(&sockfds);
+    for(size_t i = 0; i < sockets.size(); i++){
+      FD_SET(sockets[i], &sockfds);
+    }
+    while(true){
+      fd_set sockfds_temp = sockfds; // copy it
+      if (select(fdmax+1, &sockfds_temp, NULL, NULL, NULL) == -1) {
+        std::perror("select");
+        return -1;
+      }
+      // run through the existing connections looking for data to read
+      for(int i = 0; i <= fdmax; i++) {
+        if (FD_ISSET(i, &sockfds_temp)) {
+          if (i == sockets[0]) { //ringmaster
+            struct potato p;
+            int gameStatus = getMsg(p,i);
+            if(gameStatus < 0){
+              std::cerr << "get potato from host error" << std::endl;
+              return -1;
+            }
+            else if(gameStatus > 0){
+              sendEnd(sockets,1);
+              sendEnd(sockets,2);
+              return 0;
+            }
+            int status = handlePotato(p,sockets,ownNum,playerNum);
+            if(status < 0){
+              std::cerr << "handle potato from host error" << std::endl;
+              return -1;
+            }
+          }
+          else{ //clients
+            struct potato p;
+            int gameStatusClient = getMsg(p,i);
+            if(gameStatusClient < 0){
+              std::cerr << "get potato from client error" << std::endl;
+              return -1;
+            }
+            else if(gameStatusClient > 0){
+              sendEnd(sockets,1);
+              sendEnd(sockets,2);
+              return 0;
+            }
+            int status = handlePotato(p,sockets,ownNum,playerNum);
+            if(status < 0){
+              std::cerr << "handle potato from client error" << std::endl;
+              return -1;
+            }
+          }
+        }
+      }
+    }
+    return 0;
+  }
+
+  */
 public:
   ~Proxy(){}
 };
