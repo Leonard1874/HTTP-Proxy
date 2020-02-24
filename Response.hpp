@@ -40,6 +40,9 @@ public:
     else if(responseInfo.find("HTTP/1.1 200 OK") == std::string::npos){
       return false;
     }
+    else if(freshtime < 0){
+      return false;
+    }
     else{
       return true;
     }

@@ -66,11 +66,20 @@ private:
     if(strToParse.find("no-cache")!=std::string::npos || strToParse.find("no-share")!=std::string::npos || strToParse.find("private")!=std::string::npos){
       return -1;
     }
+    else if(strToParse.find("max-age")!=std::string::npos || strToParse.find("s-maxage")!=std::string::npos){
+      if(strToParse.find("max-age")!=std::string::npos){
+        return std::stoi(getMarkedLine("max-age=",strToParse));
+      }
+      else{
+        return std::stoi(getMarkedLine("s-maxage=",strToParse));
+      }
+    }
     else{
-      
+      std::cout << "other cache control!" << std::endl;
+      return -1;
     }
   }
-  
+
   double freshExpireLastModifyExp(std::string strToParse, bool isExp){
     double freshTime;
     std::string date = getMarkedLine("Date: ", strToParse);
