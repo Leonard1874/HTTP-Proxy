@@ -325,3 +325,24 @@
 4: not in cache
 5: GET http://httpbin.org/favicon.ico HTTP/1.1 from 3.232.168.170 @ 2020-02-24 17:50:25
 6: Requesting GET http://httpbin.org/favicon.ico HTTP/1.1 from httpbin.org
+1: not in cache
+2: GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from 152.3.72.105 @ 2020-02-24 19:40:34
+3: Requesting GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from people.duke.edu
+4: not in cache
+5: GET http://people.duke.edu/~bmr23/style.css HTTP/1.1 from 152.3.72.105 @ 2020-02-24 19:40:34
+6: Requesting GET http://people.duke.edu/~bmr23/style.css HTTP/1.1 from people.duke.edu
+7: not in cache
+8: GET http://people.duke.edu/favicon.ico HTTP/1.1 from 152.3.72.105 @ 2020-02-24 19:40:34
+9: Requesting GET http://people.duke.edu/favicon.ico HTTP/1.1 from people.duke.edu
+1: not in cache
+2: GET http://httpbin.org/post HTTP/1.1 from 3.232.168.170 @ 2020-02-24 20:44:29
+3: Requesting GET http://httpbin.org/post HTTP/1.1 from httpbin.org
+4: not in cache
+5: GET http://httpbin.org/favicon.ico HTTP/1.1 from 3.232.168.170 @ 2020-02-24 20:44:30
+6: Requesting GET http://httpbin.org/favicon.ico HTTP/1.1 from httpbin.org
+1: not in cache
+2: GET http://httpbin.org/forms/post HTTP/1.1 from 52.202.2.199 @ 2020-02-24 21:57:02
+3: Requesting GET http://httpbin.org/forms/post HTTP/1.1 from httpbin.org
+4: not in cache
+5: GET http://httpbin.org/favicon.ico HTTP/1.1 from 52.202.2.199 @ 2020-02-24 21:57:03
+6: Requesting GET http://httpbin.org/favicon.ico HTTP/1.1 from httpbin.org

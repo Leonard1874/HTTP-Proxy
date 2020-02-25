@@ -34,7 +34,7 @@ private:
     size_t portPos = hostLine.find(":");
     if(portPos != std::string::npos){
       hostname = hostLine.substr(0,portPos);
-      port = hostLine.substr(portPos);
+      port = hostLine.substr(portPos+1);
     }
     else{
       port = "";

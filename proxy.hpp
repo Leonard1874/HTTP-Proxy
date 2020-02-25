@@ -76,6 +76,13 @@ public:
     return EXIT_SUCCESS;
   }
 
+  int handleConnect(Request& reqObj){
+    if(myKit.selectBrowserServer(reqObj.getHostname(),reqObj.getPort())){
+      return EXIT_FAILURE;
+    }
+    return EXIT_SUCCESS;
+  }
+
   void closeSockfds(){
     myKit.closeSockfds();
   }

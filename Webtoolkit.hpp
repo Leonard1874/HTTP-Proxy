@@ -61,6 +61,83 @@ public:
     }
     return EXIT_SUCCESS;
   }
+
+  int selectBrowserServer(const std::string& hostName, const std::string& port){
+    if(connectToSocket(hostName.c_str(),port.c_str()) < 0){ // port to be check
+      std::cerr << "connect to origin host error" << std::endl;
+      return EXIT_FAILURE;
+    }
+    
+    if(!Send(getSockfdB(),"HTTP/1.1 200 OK\r\n\r\n")){
+      std::cerr << "send 200 OK to client error" << std::endl;
+      return EXIT_FAILURE;
+    }
+
+    std::cout << getSockfdB() << " " << getSockfdO() << std::endl;
+    int fdmax = ((getSockfdB() > getSockfdO()) ? getSockfdB() : getSockfdO());
+    bool isOver = false;
+    fd_set sockfds;
+    FD_ZERO(&sockfds);
+    fd_set sockfds_temp;
+    FD_ZERO(&sockfds_temp);
+    FD_SET(getSockfdB(), &sockfds);
+    FD_SET(getSockfdO(), &sockfds);
+    while(!isOver){
+      fd_set sockfds_temp = sockfds; // copy it
+      if (select(fdmax+1, &sockfds_temp, NULL, NULL, NULL) == -1) {
+        std::perror("select");
+        return EXIT_FAILURE;
+      }
+      for(int i = 4; i <= fdmax; i++) {
+        std::cout << i << std::endl;
+        if (FD_ISSET(i, &sockfds)) {
+          if(i == getSockfdB()){
+            std::cout << "B:" <<getSockfdB() << std::endl;
+            char temp[65536];
+            //memset(temp,'\0',sizeof(temp));
+            int numbytes = 0;
+            if((numbytes = recv(getSockfdB(), temp, 65535, 0)) == -1) {
+              std::perror("recv client");
+              return EXIT_FAILURE;
+            }
+            std::cout << "recv client: " << temp << " length: " << strlen(temp) << " numbytes: " << numbytes << std::endl;
+            if(numbytes == 0){
+              isOver = true;
+              break;
+            }
+            std::string tempStr(temp);
+            std::cout << tempStr << std::endl;
+            if(!Send(getSockfdO(),tempStr)){
+              std::cerr << "send to origin error" << std::endl;
+              return EXIT_FAILURE;
+            }
+          }
+        }
+        else{
+          std::cout << "O: " <<getSockfdO() << std::endl;
+          char temp[65536];
+          //memset(temp,'\0',sizeof(temp));
+          int numbytes = 0;
+          if((numbytes = recv(getSockfdO(), temp, 65535, 0)) == -1) {
+            std::perror("recv server");
+            return EXIT_FAILURE;
+          }
+          std::cout << "recv client: " <<temp <<" length: "<< strlen(temp) << " numbytes: " << numbytes << std::endl;
+          if(numbytes == 0){
+            isOver = true;
+            break;
+          }
+          std::string tempStr(temp);
+          std::cout << tempStr << std::endl;
+          if(!Send(getSockfdB(),tempStr)){
+            std::cerr << "send to client error" << std::endl;
+            return EXIT_FAILURE;
+          }
+        }
+      }
+    }
+    return EXIT_SUCCESS;
+  }
   
   int getServerSendBrowser(const std::string& hostName, const std::string& requestInfo, std::string& getInfo){
     if(connectToSocket(hostName.c_str(),"80") < 0){ // port to be check
@@ -72,16 +149,25 @@ public:
       std::cerr << "send to origin error" << std::endl;
       return EXIT_FAILURE;
     }
-  
-    if(!recieve_origin(getSockfdO(),getInfo)){
+
+    int chunck = recieve_origin(getSockfdO(),getInfo);
+    if(chunck < 0){
       std::cerr << "recv from origin error" << std::endl;
       return EXIT_FAILURE;
     }
+   
+    if(chunck == 0){
+      if(!recieve_unchunck(getSockfdO(),getInfo)){
+        std::cerr << "recv from unchuncked origin error" << std::endl;
+        return EXIT_FAILURE;
+      }
+      std::cout << getInfo << std::endl;
+      if(!Send(getSockfdB(),getInfo)){
+        std::cerr << "send to browser" << std::endl;
+        return EXIT_FAILURE;
+      }
+    }
   
-    if(!Send(getSockfdB(),getInfo)){
-      std::cerr << "send to browser" << std::endl;
-      return EXIT_FAILURE;
-    }  
     return EXIT_SUCCESS;
   }
   
@@ -129,43 +215,33 @@ private:
     }
     return pos;
   }
-  
-  bool recieve_origin(int sockfd, std::string& toGet){
-    int numbytes = 0;
-    int recvNum = 0;
+
+  bool recieve_unchunck(int sockfd, std::string& toGet){
     int allLen = 0;
-    int len = 0;
-    int headlen = 0;
-    int hasGot = 0;
-    char temp[65536];
-    while(true){
-   
+    int hasGot = toGet.size();
+    int numbytes = 0;
+    if(toGet.find("HTTP/1.1 200 OK") == std::string::npos){
+      allLen = 0;
+    }
+    else{
+      int len = getLength(toGet);
+      if(len < 0){
+        return false;
+      }
+      int headlen = getHeadLength(toGet);
+      if(headlen < 0){
+        return false;
+      }
+      allLen = headlen + len;
+    }
+    while(hasGot < allLen){
+      char temp[65536];
       if((numbytes = recv(sockfd, temp, 65535, 0)) == -1) {
         std::perror("recv");
         return false;
       }
       hasGot += numbytes;
       std::string tempStr(temp);
-      //std::cout << "---------------------------" << std::endl;
-      //std::cout << tempStr << std::endl;
-      if(!recvNum){
-        if(tempStr.find("HTTP/1.1 200 OK") == std::string::npos){
-          allLen = 0;
-        }
-        else{
-          len = getLength(tempStr);
-          if(len < 0){
-            return false;
-          }
-          headlen = getHeadLength(tempStr);
-          if(headlen < 0){
-            return false;
-          }
-          allLen = headlen + len;
-        }
-        recvNum ++;
-      }
-      
       if(hasGot >= allLen){
         toGet += tempStr;	
         break;
@@ -175,6 +251,43 @@ private:
       }
     }
     return true;
+  }
+
+  /*
+  bool recieve_chunck(){
+    
+  }
+  */
+  bool isChuncked(const std::string& header){
+    bool chunck = false;
+    if(header.find("Transfer-Encoding:") != std::string::npos){
+      if(header.find("Chuncked") != std::string::npos){
+        chunck = true;
+      }
+    }
+    return chunck;
+  }
+  
+  int recieve_origin(int sockfd, std::string& toGet){
+    int numbytes = 0;
+    int hasGot = 0;
+    char temp[65536];
+    if((numbytes = recv(sockfd, temp, 65535, 0)) == -1) {
+      std::perror("recv");
+      return -1;
+    }
+    hasGot += numbytes;
+    std::string tempStr(temp);
+    toGet += tempStr;
+    if(tempStr.find("HTTP/1.1 200 OK") == std::string::npos){
+      return 0;
+    }
+    else{
+      if(isChuncked(tempStr)){
+        return 1;
+      }
+    }
+    return 0;
   }
   
   bool recieve(int sockfd, std::string& toGet){
@@ -300,66 +413,66 @@ private:
     return 0;
   }
 };
-  /*
-    int selectPort(std::vector<int>& sockets, int ownNum, int playerNum){
-    int fdmax = *(std::max_element(sockets.begin(),sockets.end()));
-    fd_set sockfds;
-    FD_ZERO(&sockfds);
-    for(size_t i = 0; i < sockets.size(); i++){
-    FD_SET(sockets[i], &sockfds);
-    }
-    while(true){
-    fd_set sockfds_temp = sockfds; // copy it
-    if (select(fdmax+1, &sockfds_temp, NULL, NULL, NULL) == -1) {
-    std::perror("select");
-    return -1;
-    }
-    // run through the existing connections looking for data to read
-    for(int i = 0; i <= fdmax; i++) {
-    if (FD_ISSET(i, &sockfds_temp)) {
-    if (i == sockets[0]) { //ringmaster
-    struct potato p;
-    int gameStatus = getMsg(p,i);
-    if(gameStatus < 0){
-    std::cerr << "get potato from host error" << std::endl;
-    return -1;
-    }
-    else if(gameStatus > 0){
-    sendEnd(sockets,1);
-    sendEnd(sockets,2);
-    return 0;
-    }
-    int status = handlePotato(p,sockets,ownNum,playerNum);
-    if(status < 0){
-    std::cerr << "handle potato from host error" << std::endl;
-    return -1;
-    }
-    }
-    else{ //clients
-    struct potato p;
-    int gameStatusClient = getMsg(p,i);
-    if(gameStatusClient < 0){
-    std::cerr << "get potato from client error" << std::endl;
-    return -1;
-    }
-    else if(gameStatusClient > 0){
-    sendEnd(sockets,1);
-    sendEnd(sockets,2);
-    return 0;
-    }
-    int status = handlePotato(p,sockets,ownNum,playerNum);
-    if(status < 0){
-    std::cerr << "handle potato from client error" << std::endl;
-    return -1;
-    }
-    }
-    }
-    }
-    }
-    return 0;
-    }
+/*
+  int selectPort(std::vector<int>& sockets, int ownNum, int playerNum){
+  int fdmax = *(std::max_element(sockets.begin(),sockets.end()));
+  fd_set sockfds;
+  FD_ZERO(&sockfds);
+  for(size_t i = 0; i < sockets.size(); i++){
+  FD_SET(sockets[i], &sockfds);
+  }
+  while(true){
+  fd_set sockfds_temp = sockfds; // copy it
+  if (select(fdmax+1, &sockfds_temp, NULL, NULL, NULL) == -1) {
+  std::perror("select");
+  return -1;
+  }
+  // run through the existing connections looking for data to read
+  for(int i = 0; i <= fdmax; i++) {
+  if (FD_ISSET(i, &sockfds_temp)) {
+  if (i == sockets[0]) { //ringmaster
+  struct potato p;
+  int gameStatus = getMsg(p,i);
+  if(gameStatus < 0){
+  std::cerr << "get potato from host error" << std::endl;
+  return -1;
+  }
+  else if(gameStatus > 0){
+  sendEnd(sockets,1);
+  sendEnd(sockets,2);
+  return 0;
+  }
+  int status = handlePotato(p,sockets,ownNum,playerNum);
+  if(status < 0){
+  std::cerr << "handle potato from host error" << std::endl;
+  return -1;
+  }
+  }
+  else{ //clients
+  struct potato p;
+  int gameStatusClient = getMsg(p,i);
+  if(gameStatusClient < 0){
+  std::cerr << "get potato from client error" << std::endl;
+  return -1;
+  }
+  else if(gameStatusClient > 0){
+  sendEnd(sockets,1);
+  sendEnd(sockets,2);
+  return 0;
+  }
+  int status = handlePotato(p,sockets,ownNum,playerNum);
+  if(status < 0){
+  std::cerr << "handle potato from client error" << std::endl;
+  return -1;
+  }
+  }
+  }
+  }
+  }
+  return 0;
+  }
 
-  */
+*/
 /*
   char myIP[16];
   unsigned int myPort;

@@ -14,7 +14,7 @@ int main(int argc, char* argv[]){
       return EXIT_FAILURE;
     }
     Request reqObj(requestInfo);
-    std::string cached = "";
+    //std::string cached = "";
     if(reqObj.getType() == "GET"){
       myProxy.handleGet(reqObj);
     }
@@ -23,6 +23,7 @@ int main(int argc, char* argv[]){
     }
     else{
       continue;
+      //myProxy.handleConnect(reqObj);
     }
     myProxy.closeSockfds();
   }  
