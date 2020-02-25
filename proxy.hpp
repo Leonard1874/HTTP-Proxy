@@ -36,7 +36,7 @@ class Proxy {
 
   int handleGet(Request & reqObj) {
     std::string cached = myCache.get(reqObj.getKey(), myTimer.getCurrentSec());
-    if (!cached.empty()) {
+    if (cached == ) {
       std::cout << "****************Cache: found*******************" << std::endl;
       //std::cout << cached << std::endl;
       if (myKit.sendCacheBrowser(cached)) {
@@ -58,6 +58,7 @@ class Proxy {
       Response resObj(getInfo, reqObj.getType(), myTimer.getCurrentSec());
 
       if (resObj.canCache()) {
+	
         myCache.put(reqObj.getKey(), resObj);
       }
       myLogger.printCache("not in cache", ID);
@@ -83,6 +84,7 @@ class Proxy {
 
   int handleConnect(Request & reqObj) {
     myLogger.getrequest(ID, reqObj);
+    myLogger.printlogline();
     if (myKit.selectBrowserServer(reqObj.getHostname(), reqObj.getPort())) {
       return EXIT_FAILURE;
     }

@@ -35,7 +35,7 @@ public:
 
   std::string get(const std::string & key, const double curTime) {
     if (LRUMap.count(key) == 0) {
-      return "";
+      return "notfound";
     }
     else if (LRUMap[key]->information["revalidate"] == "true") {
       return "revalidate";
@@ -46,7 +46,7 @@ public:
         std::string tempKey = (*LRUMap[key]).key;
         LRUlist.erase(LRUMap[key]);  //remove old place
         LRUMap.erase(tempKey);
-        return "";
+        return "expires";
       }
       else {
         LRUlist.emplace_back(key, tVal);  // insert to end
@@ -54,14 +54,13 @@ public:
         std::list<LRUNode>::iterator it = LRUlist.end();
         it--;
         LRUMap[key] = it;  // update Map
-        return tVal.getResponseInfo();
+        return ;
       }
     }
   }
 
   void put(const std::string & key, Response & value) {
-    if (value.canCache()) {
-      if (LRUMap.count(key) != 0)  //exist
+         if (LRUMap.count(key) != 0)  //exist
         {
           LRUlist.erase(LRUMap[key]);        // remove old place, add end
           LRUlist.emplace_back(key, value);  // insert to end
@@ -93,6 +92,5 @@ public:
           it->information["revalidate"] = "false";
         }
       }
-    }
   }
 };

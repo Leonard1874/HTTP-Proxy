@@ -1,0 +1,15 @@
+1: CONNECT incoming.telemetry.mozilla.org:443 HTTP/1.1 from 52.11.65.185 @ 2020-02-25 18:09:21
+2: Requesting CONNECT incoming.telemetry.mozilla.org:443 HTTP/1.1 from incoming.telemetry.mozilla.org
+1: CONNECT img-getpocket.cdn.mozilla.net:443 HTTP/1.1 from 23.208.130.27 @ 2020-02-25 18:09:54
+2: Requesting CONNECT img-getpocket.cdn.mozilla.net:443 HTTP/1.1 from img-getpocket.cdn.mozilla.net
+1: CONNECT www.google.com:443 HTTP/1.1 from 172.217.0.68 @ 2020-02-25 18:10:17
+2: Requesting CONNECT www.google.com:443 HTTP/1.1 from www.google.com
+3: Tunnel closed
+4: not in cache
+5: GET http://detectportal.firefox.com/success.txt HTTP/1.1 from 204.85.32.96 @ 2020-02-25 18:10:47
+6: Requesting GET http://detectportal.firefox.com/success.txt HTTP/1.1 from detectportal.firefox.com
+7: not in cache
+8: GET http://detectportal.firefox.com/success.txt?ipv4 HTTP/1.1 from 204.85.32.96 @ 2020-02-25 18:10:48
+9: Requesting GET http://detectportal.firefox.com/success.txt?ipv4 HTTP/1.1 from detectportal.firefox.com
+10: CONNECT firefox.settings.services.mozilla.com:443 HTTP/1.1 from 13.249.122.13 @ 2020-02-25 18:10:48
+11: Requesting CONNECT firefox.settings.services.mozilla.com:443 HTTP/1.1 from firefox.settings.services.mozilla.com
