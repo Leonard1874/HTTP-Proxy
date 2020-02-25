@@ -34,7 +34,8 @@ public:
   bool needValidate(const std::string& responseInfo){
     bool need = false;
     if(responseInfo.find("cache-control") != std::string::npos){
-      if(responseInfo.find("must-revalidate") != std::string::npos || responseInfo.find("proxy-revalidate") != std::string::npos){
+      //responseInfo.find("must-revalidate") != std::string::npos
+      if(responseInfo.find("no-cache")!=std::string::npos || responseInfo.find("proxy-revalidate") != std::string::npos){
         need = true;
       }
     }
@@ -44,7 +45,7 @@ public:
   bool canCache(const std::string& responseInfo){
     bool cache = true;
     if(responseInfo.find("cache-control") != std::string::npos){
-      if(responseInfo.find("no-cache")!=std::string::npos || responseInfo.find("no-share")!=std::string::npos || responseInfo.find("private")!=std::string::npos){
+      if(responseInfo.find("no-store")!=std::string::npos || responseInfo.find("private")!=std::string::npos){
         cache = false;
     }
   }

@@ -11,11 +11,13 @@
 #include <vector>
 #include <map>
 #include <list>
-
+#include <unordered_map>
+using namespace std;
 class Cache {
 private:  
   class LRUNode{
   public:
+    std::unordered_map<string,string> information;//Storing all the information about the node
     std::string key;
     Response value;
     LRUNode(const std::string& rkey, const Response& rval): key(rkey), value(rval){}
@@ -61,6 +63,7 @@ public:
         LRUMap[key] = it;// update Map
       }
     else{ // not exist
+      if(Response.canCache){
       if(LRUlist.size() >= capacity){ // not enough space
         LRUMap.erase(LRUlist.front().key);
         LRUlist.pop_front();
@@ -69,6 +72,7 @@ public:
       std::list<LRUNode>::iterator it = LRUlist.end();
       it --;
       LRUMap[key] = it;// update Map
+      }
     }
   } 
 };
