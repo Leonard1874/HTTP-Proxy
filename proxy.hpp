@@ -36,7 +36,7 @@ class Proxy {
 
   int handleGet(Request & reqObj) {
     std::string cached = myCache.get(reqObj.getKey(), myTimer.getCurrentSec());
-    if (cached == ) {
+    if (cached != "notfound" && cached != "revalidate") {
       std::cout << "****************Cache: found*******************" << std::endl;
       //std::cout << cached << std::endl;
       if (myKit.sendCacheBrowser(cached)) {
@@ -47,7 +47,7 @@ class Proxy {
       /*in cache situations*/
       return EXIT_SUCCESS;
     }
-    else {
+    else if (cached == "notfound") {
       /*update cache*/
       std::string getInfo;
       if (myKit.getServerSendBrowser(
@@ -58,12 +58,15 @@ class Proxy {
       Response resObj(getInfo, reqObj.getType(), myTimer.getCurrentSec());
 
       if (resObj.canCache()) {
-	
         myCache.put(reqObj.getKey(), resObj);
       }
       myLogger.printCache("not in cache", ID);
       myLogger.getrequest(ID, reqObj);
       myLogger.printlogline();
+      return EXIT_SUCCESS;
+    }
+    //Need revalidate
+    else {
       return EXIT_SUCCESS;
     }
   }
