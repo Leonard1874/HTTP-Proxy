@@ -346,3 +346,66 @@
 4: not in cache
 5: GET http://httpbin.org/favicon.ico HTTP/1.1 from 52.202.2.199 @ 2020-02-24 21:57:03
 6: Requesting GET http://httpbin.org/favicon.ico HTTP/1.1 from httpbin.org
+1: not in cache
+2: GET http://detectportal.firefox.com/success.txt HTTP/1.1 from 204.85.32.88 @ 2020-02-25 12:59:22
+3: Requesting GET http://detectportal.firefox.com/success.txt HTTP/1.1 from detectportal.firefox.com
+4: not in cache
+5: GET http://detectportal.firefox.com/success.txt?ipv4 HTTP/1.1 from 204.85.32.88 @ 2020-02-25 12:59:22
+6: Requesting GET http://detectportal.firefox.com/success.txt?ipv4 HTTP/1.1 from detectportal.firefox.com
+7: not in cache
+8: GET http://detectportal.firefox.com/success.txt?ipv6 HTTP/1.1 from 204.85.32.88 @ 2020-02-25 12:59:22
+9: Requesting GET http://detectportal.firefox.com/success.txt?ipv6 HTTP/1.1 from detectportal.firefox.com
+1: not in cache
+2: GET http://detectportal.firefox.com/success.txt HTTP/1.1 from 23.55.62.177 @ 2020-02-25 13:02:21
+3: Requesting GET http://detectportal.firefox.com/success.txt HTTP/1.1 from detectportal.firefox.com
+4: not in cache
+5: GET http://detectportal.firefox.com/success.txt?ipv4 HTTP/1.1 from 23.55.62.177 @ 2020-02-25 13:02:22
+6: Requesting GET http://detectportal.firefox.com/success.txt?ipv4 HTTP/1.1 from detectportal.firefox.com
+7: not in cache
+8: GET http://detectportal.firefox.com/success.txt?ipv6 HTTP/1.1 from 23.55.62.177 @ 2020-02-25 13:02:22
+9: Requesting GET http://detectportal.firefox.com/success.txt?ipv6 HTTP/1.1 from detectportal.firefox.com
+1: not in cache
+2: GET http://detectportal.firefox.com/success.txt HTTP/1.1 from 204.85.32.96 @ 2020-02-25 13:05:52
+3: Requesting GET http://detectportal.firefox.com/success.txt HTTP/1.1 from detectportal.firefox.com
+4: not in cache
+5: GET http://detectportal.firefox.com/success.txt?ipv4 HTTP/1.1 from 204.85.32.96 @ 2020-02-25 13:05:52
+6: Requesting GET http://detectportal.firefox.com/success.txt?ipv4 HTTP/1.1 from detectportal.firefox.com
+7: not in cache
+8: GET http://detectportal.firefox.com/success.txt?ipv6 HTTP/1.1 from 204.85.32.96 @ 2020-02-25 13:05:52
+9: Requesting GET http://detectportal.firefox.com/success.txt?ipv6 HTTP/1.1 from detectportal.firefox.com
+1: not in cache
+2: GET http://detectportal.firefox.com/success.txt HTTP/1.1 from 204.85.32.96 @ 2020-02-25 13:13:01
+3: Requesting GET http://detectportal.firefox.com/success.txt HTTP/1.1 from detectportal.firefox.com
+4: not in cache
+5: GET http://detectportal.firefox.com/success.txt?ipv4 HTTP/1.1 from 204.85.32.96 @ 2020-02-25 13:13:01
+6: Requesting GET http://detectportal.firefox.com/success.txt?ipv4 HTTP/1.1 from detectportal.firefox.com
+7: not in cache
+8: GET http://detectportal.firefox.com/success.txt?ipv6 HTTP/1.1 from 204.85.32.96 @ 2020-02-25 13:13:01
+9: Requesting GET http://detectportal.firefox.com/success.txt?ipv6 HTTP/1.1 from detectportal.firefox.com
+1: not in cache
+2: GET http://detectportal.firefox.com/success.txt HTTP/1.1 from 204.85.32.26 @ 2020-02-25 13:21:46
+3: Requesting GET http://detectportal.firefox.com/success.txt HTTP/1.1 from detectportal.firefox.com
+4: not in cache
+5: GET http://detectportal.firefox.com/success.txt?ipv4 HTTP/1.1 from 204.85.32.26 @ 2020-02-25 13:21:46
+6: Requesting GET http://detectportal.firefox.com/success.txt?ipv4 HTTP/1.1 from detectportal.firefox.com
+7: not in cache
+8: GET http://detectportal.firefox.com/success.txt?ipv6 HTTP/1.1 from 204.85.32.26 @ 2020-02-25 13:21:46
+9: Requesting GET http://detectportal.firefox.com/success.txt?ipv6 HTTP/1.1 from detectportal.firefox.com
+1: not in cache
+2: GET http://detectportal.firefox.com/success.txt HTTP/1.1 from 204.85.32.26 @ 2020-02-25 13:23:16
+3: Requesting GET http://detectportal.firefox.com/success.txt HTTP/1.1 from detectportal.firefox.com
+4: not in cache
+5: GET http://detectportal.firefox.com/success.txt?ipv6 HTTP/1.1 from 204.85.32.26 @ 2020-02-25 13:23:16
+6: Requesting GET http://detectportal.firefox.com/success.txt?ipv6 HTTP/1.1 from detectportal.firefox.com
+1: not in cache
+2: GET http://detectportal.firefox.com/success.txt HTTP/1.1 from 204.85.32.96 @ 2020-02-25 13:56:43
+3: Requesting GET http://detectportal.firefox.com/success.txt HTTP/1.1 from detectportal.firefox.com
+1: not in cache
+2: GET http://detectportal.firefox.com/success.txt HTTP/1.1 from 204.85.32.88 @ 2020-02-25 14:40:42
+3: Requesting GET http://detectportal.firefox.com/success.txt HTTP/1.1 from detectportal.firefox.com
+4: not in cache
+5: GET http://detectportal.firefox.com/success.txt?ipv4 HTTP/1.1 from 204.85.32.88 @ 2020-02-25 14:40:42
+6: Requesting GET http://detectportal.firefox.com/success.txt?ipv4 HTTP/1.1 from detectportal.firefox.com
+7: not in cache
+8: GET http://detectportal.firefox.com/success.txt?ipv6 HTTP/1.1 from 204.85.32.88 @ 2020-02-25 14:40:42
+9: Requesting GET http://detectportal.firefox.com/success.txt?ipv6 HTTP/1.1 from detectportal.firefox.com

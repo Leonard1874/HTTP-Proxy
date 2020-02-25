@@ -22,8 +22,8 @@ int main(int argc, char* argv[]){
       myProxy.handlePost(reqObj);
     }
     else{
-      continue;
-      //myProxy.handleConnect(reqObj);
+      //continue;
+      myProxy.handleConnect(reqObj);
     }
     myProxy.closeSockfds();
   }  
