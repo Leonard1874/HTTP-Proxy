@@ -16,11 +16,11 @@
 #include "Response.hpp"
 using namespace std;
 class Cache {
- private:
+private:
   class LRUNode {
-   public:
+  public:
     std::unordered_map<string, string>
-        information;  //Storing all the information about the node
+    information;  //Storing all the information about the node
     std::string key;
     Response value;
     LRUNode(const std::string & rkey, const Response & rval) : key(rkey), value(rval) {}
@@ -29,7 +29,7 @@ class Cache {
   std::map<std::string, std::list<LRUNode>::iterator> LRUMap;
   std::list<LRUNode> LRUlist;
 
- public:
+public:
   size_t capacity;
   Cache(size_t rcapacity) : capacity(rcapacity) {}
 
@@ -62,20 +62,20 @@ class Cache {
   void put(const std::string & key, Response & value) {
     if (value.canCache()) {
       if (LRUMap.count(key) != 0)  //exist
-      {
-        LRUlist.erase(LRUMap[key]);        // remove old place, add end
-        LRUlist.emplace_back(key, value);  // insert to end
-        std::list<LRUNode>::iterator it = LRUlist.end();
-        it--;
-        LRUMap[key] = it;  // update Map
-        it->information["expireTime"] = to_string(value.getExpireTime());
-        if (value.getRevalidate()) {
-          it->information["revalidate"] = "true";
+        {
+          LRUlist.erase(LRUMap[key]);        // remove old place, add end
+          LRUlist.emplace_back(key, value);  // insert to end
+          std::list<LRUNode>::iterator it = LRUlist.end();
+          it--;
+          LRUMap[key] = it;  // update Map
+          it->information["expireTime"] = to_string(value.getExpireTime());
+          if (value.getRevalidate()) {
+            it->information["revalidate"] = "true";
+          }
+          else {
+            it->information["revalidate"] = "false";
+          }
         }
-        else {
-          it->information["revalidate"] = "false";
-        }
-      }
       else {                               // not exist
         if (LRUlist.size() >= capacity) {  // not enough space
           LRUMap.erase(LRUlist.front().key);

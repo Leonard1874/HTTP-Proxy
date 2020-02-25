@@ -15,7 +15,7 @@
 #include "ResponseParser.hpp"
 
 class Response {
- private:
+private:
   ResponseParser myParser;
   std::string responseInfo;
   std::string type;
@@ -23,12 +23,12 @@ class Response {
   double expireTime;
   bool revalidate;
 
- public:
+public:
   Response(const std::string & resInfo, const std::string & rtype, const double rtime) :
-      myParser(),
-      responseInfo(resInfo),
-      type(rtype),
-      arriveTime(rtime) {
+    myParser(),
+    responseInfo(resInfo),
+    type(rtype),
+    arriveTime(rtime) {
     expireTime = myParser.parseExpire(responseInfo) + arriveTime;
     revalidate = myParser.needValidate(responseInfo);
     std::cout << expireTime << std::endl;

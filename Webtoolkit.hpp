@@ -90,7 +90,7 @@ public:
       for(int i = 0; i <= fdmax; i++) {
         if (FD_ISSET(i, &sockfds_temp)) {
           if(i == getSockfdB()){
-            std::cout << "B:" <<getSockfdB() << std::endl;
+            //std::cout << "B:" <<getSockfdB() << std::endl;
             char temp[65536];
             int numbytes = 0;
             if((numbytes = recv(getSockfdB(), temp, 65536, 0)) == -1) {
@@ -107,11 +107,11 @@ public:
               std::perror("connect send to host");
               return EXIT_FAILURE;
             }
-            std::cout << "send!" << std::endl;
+            //std::cout << "send!" << std::endl;
             continue;
           }
           else if(i == getSockfdO()){
-            std::cout << "O: " <<getSockfdO() << std::endl;
+            //std::cout << "O: " <<getSockfdO() << std::endl;
             char temp[65536];
             int numbytes = 0;
             if((numbytes = recv(getSockfdO(), temp, 65536, 0)) == -1) {
@@ -128,7 +128,7 @@ public:
               std::perror("connect send to client");
               return EXIT_FAILURE;
             }
-            std::cout << "Send!" << std::endl;
+            //std::cout << "Send!" << std::endl;
             continue;
             //temp.clear();
           }
