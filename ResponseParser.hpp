@@ -43,7 +43,7 @@ class ResponseParser {
         need = true;
       }
     }
-    std::cout<<"************Need validate or not: "<<need<<std::endl;
+    //    std::cout<<"************Need validate or not: "<<need<<std::endl;
     return need;
   }
 

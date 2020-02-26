@@ -51,10 +51,10 @@ class Cache {
       return "notfound";
     }
     else if (LRUMap[key]->information["revalidate"] == "true") {
-      cout<<"!@#$%!@#$!@#$!@#$::"<<key<<endl;
-    cout<<"!@#$%!@#$!@#$!@#$::"<<LRUMap[key]->information["revalidate"]<<endl;
+      //      cout<<"!@#$%!@#$!@#$!@#$::"<<key<<endl;
+      //cout<<"!@#$%!@#$!@#$!@#$::"<<LRUMap[key]->information["revalidate"]<<endl;
       string temp;
-      cout<<"********************666********************************\n";
+      //cout<<"********************666********************************\n";
       LRUMap[key]->value.validateParser();
       if (LRUMap[key]->value.getETAG() != "") {
         temp += "If-None-Match: ";
@@ -100,11 +100,11 @@ class Cache {
       LRUMap[key] = it;  // update Map
       it->information["expireTime"] = to_string(value.getExpireTime());
       if (value.getRevalidate()) {
-	cout<<"Revalidate already exist true********************"<<endl;
+	//cout<<"Revalidate already exist true********************"<<endl;
         it->information["revalidate"] = "true";
       }
       else {
-	cout<<"Revalidate already exist false********************"<<endl;
+	//	cout<<"Revalidate already exist false********************"<<endl;
         it->information["revalidate"] = "false";
       }
     }
@@ -119,13 +119,13 @@ class Cache {
       LRUMap[key] = it;  // update Map
       it->information["expireTime"] = to_string(value.getExpireTime());
       if (value.getRevalidate()) {
-	cout<<"Revalidate true**************************"<<endl;
+	//cout<<"Revalidate true**************************"<<endl;
         it->information["revalidate"] = "true";
-	cout<<"!!!!!!!!!!!!!!!!!::"<<it->information["revalidate"]<<endl;
-	cout<<"!!!!!!!!!!!!!!!!!!!!::"<<key<<endl;
+	//cout<<"!!!!!!!!!!!!!!!!!::"<<it->information["revalidate"]<<endl;
+	//cout<<"!!!!!!!!!!!!!!!!!!!!::"<<key<<endl;
       }
       else {
-	cout<<"Revalidate false**************************"<<endl;
+	//cout<<"Revalidate false**************************"<<endl;
         it->information["revalidate"] = "false";
       }
     }

@@ -51,7 +51,7 @@ class Response {
         pos++;
       }
     }
-    size_t pos1 = responseInfo.find("Etag:");
+    size_t pos1 = responseInfo.find("ETag:");
     if (pos1 != std::string::npos) {
       while (responseInfo[pos1] != ' ') {
         pos1++;

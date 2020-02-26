@@ -51,7 +51,7 @@ class Proxy {
       return EXIT_SUCCESS;
     }
     else if (cached == "notfound" || cached == "expires") {
-      std::cout << "****************Cache: not found or expire*******************" << std::endl;
+       std::cout << "****************Cache: not found or expire*******************" << std::endl;
       /*update cache*/
       std::string getInfo;
       if (myKit.getServerSendBrowser(
