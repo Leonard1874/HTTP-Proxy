@@ -44,8 +44,8 @@ class Cache {
   }
 
   std::string get(const std::string & key, const double curTime) {
-    cout<<"!@#$%!@#$!@#$!@#$::"<<LRUMap[key]->information["expireTime"]<<endl;
-    cout<<"!@#$%!@#$!@#$!@#$::"<<key<<endl;  
+    cout<<"!@#$%!@#$!@#$!@#$::"<<key<<endl;
+    cout<<"!@#$%!@#$!@#$!@#$::"<<LRUMap[key]->information["expireTime"]<<endl;  
     if (LRUMap.count(key) == 0) {
       return "notfound";
     }
@@ -98,7 +98,7 @@ class Cache {
         it->information["revalidate"] = "true";
       }
       else {
-	 cout<<"Revalidate already exist false********************"<<endl;
+	cout<<"Revalidate already exist false********************"<<endl;
         it->information["revalidate"] = "false";
       }
     }

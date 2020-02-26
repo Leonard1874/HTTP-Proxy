@@ -481,3 +481,17 @@
 11: in cache
 12: in cache
 13: in cache
+1: not in cache
+2: GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from 152.3.72.105 @ 2020-02-26 16:57:04
+3: Requesting GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from people.duke.edu
+4: not in cache
+5: GET http://people.duke.edu/~bmr23/style.css HTTP/1.1 from 152.3.72.105 @ 2020-02-26 16:57:04
+6: Requesting GET http://people.duke.edu/~bmr23/style.css HTTP/1.1 from people.duke.edu
+7: not in cache
+8: GET http://people.duke.edu/favicon.ico HTTP/1.1 from 152.3.72.105 @ 2020-02-26 16:57:04
+9: Requesting GET http://people.duke.edu/favicon.ico HTTP/1.1 from people.duke.edu
+10: in cache
+11: in cache
+12: not in cache
+13: GET http://people.duke.edu/favicon.ico HTTP/1.1 from 152.3.72.105 @ 2020-02-26 16:57:17
+14: Requesting GET http://people.duke.edu/favicon.ico HTTP/1.1 from people.duke.edu
