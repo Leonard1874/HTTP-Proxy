@@ -94,7 +94,7 @@ class Proxy {
                 reqObj.getHostname(), reqObj.getRequestInfo(), getInfo)) {
           return EXIT_FAILURE;
         }
-        std::cout << getInfo << std::endl;
+        //std::cout << getInfo << std::endl;
         Response resObj(getInfo, reqObj.getType(), myTimer.getCurrentSec());
         if (resObj.canCache()) {
           myCache.put(reqObj.getKey(), resObj);
