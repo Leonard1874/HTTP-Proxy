@@ -24,8 +24,8 @@ class Cache {
     std::string key;
     Response value;
     LRUNode(const std::string & rkey, const Response & rval) : key(rkey), value(rval){}
-    LRUNode(const std::string & rkey, const Response & rval,const std::unordered_map<string, string>&
-	    rinformation) : key(rkey), value(rval),information(rinformation) {}
+    
+    LRUNode(const std::string & rkey, const Response & rval, const std::unordered_map<string, string>& rinformation) : information(rinformation), key(rkey), value(rval) {}
   };
 
   std::map<std::string, std::list<LRUNode>::iterator> LRUMap;
