@@ -72,7 +72,7 @@ class Proxy {
     //Need revalidate
     else {
       //revalidate cache
-      cout<<"\\"<<cached<<"\\"<<endl;
+      //   cout<<"\\"<<cached<<"\\"<<endl;
       reqObj.setRequest(cached);
       std::string getInfo;
       cout << "*****************************Revalidate*****************\n";

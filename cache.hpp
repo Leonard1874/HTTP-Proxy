@@ -23,7 +23,9 @@ class Cache {
         information;  //Storing all the information about the node
     std::string key;
     Response value;
-    LRUNode(const std::string & rkey, const Response & rval) : key(rkey), value(rval) {}
+    LRUNode(const std::string & rkey, const Response & rval) : key(rkey), value(rval){}
+    LRUNode(const std::string & rkey, const Response & rval,const std::unordered_map<string, string>&
+	    rinformation) : key(rkey), value(rval),information(rinformation) {}
   };
 
   std::map<std::string, std::list<LRUNode>::iterator> LRUMap;
@@ -34,8 +36,9 @@ class Cache {
   Cache(size_t rcapacity) : capacity(rcapacity) {}
 
   std::string noModifyGet(const std::string & key) {
+    std::unordered_map<std::string,std::string> tempInformation = (*LRUMap[key]).information;
     Response tVal = (*LRUMap[key]).value;
-    LRUlist.emplace_back(key, tVal);  // insert to end
+    LRUlist.emplace_back(key, tVal,tempInformation);  // insert to end
     LRUlist.erase(LRUMap[key]);       //remove old place
     std::list<LRUNode>::iterator it = LRUlist.end();
     it--;
@@ -44,14 +47,15 @@ class Cache {
   }
 
   std::string get(const std::string & key, const double curTime) {
-    cout<<"!@#$%!@#$!@#$!@#$::"<<key<<endl;
-    cout<<"!@#$%!@#$!@#$!@#$::"<<LRUMap[key]->information["expireTime"]<<endl;  
     if (LRUMap.count(key) == 0) {
       return "notfound";
     }
     else if (LRUMap[key]->information["revalidate"] == "true") {
+      cout<<"!@#$%!@#$!@#$!@#$::"<<key<<endl;
+    cout<<"!@#$%!@#$!@#$!@#$::"<<LRUMap[key]->information["revalidate"]<<endl;
       string temp;
-      cout<<"****************************************************\n";
+      cout<<"********************666********************************\n";
+      LRUMap[key]->value.validateParser();
       if (LRUMap[key]->value.getETAG() != "") {
         temp += "If-None-Match: ";
         temp += LRUMap[key]->value.getETAG();
@@ -66,6 +70,7 @@ class Cache {
     }
     else {
       Response tVal = (*LRUMap[key]).value;
+      std::unordered_map<std::string,std::string> tempInformation = (*LRUMap[key]).information;
       if (tVal.getExpireTime() < curTime) {
         std::string tempKey = (*LRUMap[key]).key;
         LRUlist.erase(LRUMap[key]);  //remove old place
@@ -73,7 +78,7 @@ class Cache {
         return "expires";
       }
       else {
-        LRUlist.emplace_back(key, tVal);  // insert to end
+        LRUlist.emplace_back(key, tVal, tempInformation);  // insert to end
         LRUlist.erase(LRUMap[key]);       //remove old place
         std::list<LRUNode>::iterator it = LRUlist.end();
         it--;
@@ -87,8 +92,9 @@ class Cache {
   void put(const std::string & key, Response & value) {
     if (LRUMap.count(key) != 0)  //exist
     {
+      std::unordered_map<std::string,std::string> tempInformation = (*LRUMap[key]).information;
       LRUlist.erase(LRUMap[key]);        // remove old place, add end
-      LRUlist.emplace_back(key, value);  // insert to end
+      LRUlist.emplace_back(key, value, tempInformation);  // insert to end
       std::list<LRUNode>::iterator it = LRUlist.end();
       it--;
       LRUMap[key] = it;  // update Map

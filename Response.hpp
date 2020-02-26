@@ -31,15 +31,16 @@ class Response {
       responseInfo(resInfo),
       type(rtype),
       arriveTime(rtime) {
-    ETAG = "";
-    lastModified = "";
+    //ETAG = "";
+    // lastModified = "";
     expireTime = myParser.parseExpire(responseInfo) + arriveTime;
     revalidate = myParser.needValidate(responseInfo);
     std::cout << expireTime << std::endl;
   }
   //Get the etag or last modified
   void validateParser() {
-    size_t pos = responseInfo.find("Last_Modofied:");
+    std::cout<<"Starting parsing"<<"-------------------------------------"<<std::endl;
+    size_t pos = responseInfo.find("Last-Modified:");
     if (pos != std::string::npos) {
       while (responseInfo[pos] != ' ') {
         pos++;
@@ -50,7 +51,7 @@ class Response {
         pos++;
       }
     }
-    size_t pos1 = responseInfo.find("ETag:");
+    size_t pos1 = responseInfo.find("Etag:");
     if (pos1 != std::string::npos) {
       while (responseInfo[pos1] != ' ') {
         pos1++;
@@ -58,6 +59,7 @@ class Response {
       pos1++;
       while (responseInfo[pos1] != '\r') {
         ETAG += responseInfo[pos1];
+	pos1++;
       }
     }
   }
