@@ -64,9 +64,11 @@ class Proxy {
       if (resObj.canCache()) {
         myCache.put(reqObj.getKey(), resObj);
       }
+      myLogger.getrequest_time(ID, reqObj); 
+      myLogger.print_recieve_requestline();
       myLogger.printCache("not in cache", ID);
-      myLogger.getrequest(ID, reqObj);
-      myLogger.printlogline();
+      myLogger.getrequest_requesting(ID, reqObj);
+      myLogger.print_send_requestline();
       return EXIT_SUCCESS;
     }
     //Need revalidate
@@ -104,9 +106,11 @@ class Proxy {
         if (resObj.canCache()) {
           myCache.put(reqObj.getKey(), resObj);
         }
-        myLogger.printCache("not in cache", ID);
-        myLogger.getrequest(ID, reqObj);
-        myLogger.printlogline();
+      myLogger.getrequest_time(ID, reqObj); 
+      myLogger.print_recieve_requestline();
+      myLogger.printCache("not in cache", ID);
+      myLogger.getrequest_requesting(ID, reqObj);
+      myLogger.print_send_requestline();    
         return EXIT_SUCCESS;
       }
     }
@@ -128,8 +132,10 @@ class Proxy {
   }
 
   int handleConnect(Request & reqObj) {
-    myLogger.getrequest(ID, reqObj);
-    myLogger.printlogline();
+        myLogger.getrequest_time(ID, reqObj); 
+      myLogger.print_recieve_requestline();
+      myLogger.getrequest_requesting(ID, reqObj);
+      myLogger.print_send_requestline();
     if (myKit.selectBrowserServer(reqObj.getHostname(), reqObj.getPort())) {
       return EXIT_FAILURE;
     }

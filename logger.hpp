@@ -24,10 +24,15 @@ private:
   Timer logTimer;
 public:
   //Print the content into the logfile
-  void printlogline(){
+  void print_recieve_requestline(){
     string filePath = "./var/log/erss/proxy.log";
     ofstream os(filePath, ios::app );
     os << recieve_requestline;
+    os.close();
+  }
+  void print_send_requestline(){
+    string filePath = "./var/log/erss/proxy.log";
+    ofstream os(filePath, ios::app );
     os << send_requestline;
     os.close();
   }
@@ -44,7 +49,9 @@ public:
     os.close();
   }
   
-  void getrequest(int& ID, Request request){
+
+
+  void getrequest_time(int& ID, Request request){
     std::string requestInfo = request.getRequestInfo();
     std::string firstLine;
    
@@ -71,6 +78,24 @@ public:
     recieve_requestline += ip_address;
     recieve_requestline += " @ ";
     recieve_requestline = recieve_requestline + logTimer.getCurrentDateTime("now") + "\n"; 
+  }
+  void getrequest_requesting(int& ID, Request request){
+    std::string requestInfo = request.getRequestInfo();
+    std::string firstLine;
+   
+    size_t i = 0 ;
+    while(requestInfo[i] != '\r' && i < requestInfo.size()){
+      firstLine += requestInfo[i];
+      i++;
+    }
+    hostent * record = gethostbyname(request.getHostname().c_str());
+    if(record == NULL){
+        cerr<< "Can not get ip address"<<endl;
+        exit(1);
+      }
+    in_addr * address = (in_addr * )record->h_addr;
+    string ip_address = inet_ntoa(* address);
+    std::string temp;
     //Refresh send_requestline
     send_requestline = temp;
     ID++;
