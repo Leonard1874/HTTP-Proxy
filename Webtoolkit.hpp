@@ -147,29 +147,35 @@ public:
         return EXIT_FAILURE;
       }
 
-      if(!Send(getSockfdO(),requestInfo.c_str())){
+      if(!Send(getSockfdO(),requestInfo)){
         std::cerr << "send to origin error" << std::endl;
         return EXIT_FAILURE;
       }
-
+      
       int chunck = recieve_origin(getSockfdO(),getInfo);
       if(chunck < 0){
         std::cerr << "recv from origin error" << std::endl;
         return EXIT_FAILURE;
       }
-   
-      if(chunck == 0){
-        if(!recieve_unchunck(getSockfdO(),getInfo)){
+      std::cout << "chunck: " << chunck << std::endl;
+      if(chunck > 0){
+        if(!recieve_unchunck(getSockfdO(),getInfo,chunck)){
           std::cerr << "recv from unchuncked origin error" << std::endl;
           return EXIT_FAILURE;
         }
         std::cout << getInfo << std::endl;
+        //std::cout << getInfo.size() << std::endl;
         if(!Send(getSockfdB(),getInfo)){
           std::cerr << "send to browser" << std::endl;
           return EXIT_FAILURE;
         }
       }
-  
+      else{
+        if(!recieve_chunck(getSockfdO(),getInfo)){
+          std::cerr << "recv from chuncked origin error" << std::endl;
+          return EXIT_FAILURE;
+        }
+      }
       return EXIT_SUCCESS;
     }
   
@@ -183,7 +189,7 @@ public:
   
   private:
     bool Send(int sendFd, std::string toSend){
-      if (send(sendFd, toSend.c_str(), strlen(toSend.c_str()), 0) == -1){ 
+      if (send(sendFd, toSend.c_str(), toSend.size(), 0) == -1){ 
         std::perror("send port number");
         return false;
       }
@@ -204,7 +210,6 @@ public:
           }
           pos ++;
         }
-        std::cout << lengthStr << std::endl;
         return std::stoi(lengthStr);
       }
     }
@@ -218,10 +223,10 @@ public:
       return pos;
     }
 
-    bool recieve_unchunck(int sockfd, std::string& toGet){
+  bool recieve_unchunck(int sockfd, std::string& toGet, int hasGot){
       int allLen = 0;
-      int hasGot = toGet.size();
       int numbytes = 0;
+      //std::cout << toGet << std::endl;
       if(toGet.find("HTTP/1.1 200 OK") == std::string::npos){
         allLen = 0;
       }
@@ -236,14 +241,18 @@ public:
         }
         allLen = headlen + len;
       }
+      int i = 0;
       while(hasGot < allLen){
-        char temp[65536];
-        if((numbytes = recv(sockfd, temp, 65535, 0)) == -1) {
+        std::vector<char> temp;
+        temp.resize(65536);
+        if((numbytes = recv(sockfd, &temp[0], 65535, 0)) == -1) {
           std::perror("recv");
           return false;
         }
         hasGot += numbytes;
-        std::string tempStr(temp);
+        temp.resize(numbytes);
+        std::string tempStr(temp.begin(),temp.end());
+        //std::cout << "numBytes: " << numbytes <<" hasGot:" << hasGot << " all: " << allLen << std::endl;
         if(hasGot >= allLen){
           toGet += tempStr;	
           break;
@@ -251,30 +260,33 @@ public:
         else{
           toGet += tempStr;
         }
+        i++;
       }
       return true;
     }
-
     
   bool recieve_chunck(int sockfd, std::string& toGet){
-    int numbytes = 0;
-    char temp[65536];
+    if(!Send(getSockfdB(),toGet)){
+      std::cerr << "send to browser" << std::endl;
+      return false;
+    }
     while(true){
-      memset(temp,'\0',sizeof(temp));
-      std::string endMark = "0\r\n\r\n";
-      if((numbytes = recv(sockfd, temp, 65535, 0)) == -1) {
-        std::perror("recv");
+      std::cout << "start loop!" << std::endl;
+      char temp[65536];
+      int numbytes = 0;
+      if((numbytes = recv(sockfd, temp, 65536, 0)) == -1) {
+        std::perror("chuncked recv server");
         return false;
       }
-      std::string tempStr(temp);
-      if(tempStr.find(endMark)!=std::string::npos){
-        toGet += tempStr;
-        //std::cout << "end! " <<toGet << std::endl;
-        break;
+      std::cout << numbytes << std::endl;
+      if(numbytes == 0){
+        std::cout << "Over!" << std::endl;
+        return true;
       }
-      else{
-        //std::cout << toGet << std::endl;
-        toGet += tempStr;
+            
+      if (send(getSockfdB(), temp, numbytes, 0) == -1){ 
+        std::perror("chuncked send to client");
+        return false;
       }
     }
     return true;
@@ -283,7 +295,7 @@ public:
     bool isChuncked(const std::string& header){
       bool chunck = false;
       if(header.find("Transfer-Encoding:") != std::string::npos){
-        if(header.find("Chuncked") != std::string::npos){
+        if(header.find("chunked") != std::string::npos){
           chunck = true;
         }
       }
@@ -292,24 +304,26 @@ public:
   
     int recieve_origin(int sockfd, std::string& toGet){
       int numbytes = 0;
-      int hasGot = 0;
-      char temp[65536];
-      if((numbytes = recv(sockfd, temp, 65535, 0)) == -1) {
+      //char temp[65536];
+      std::vector<char> temp;
+      temp.resize(65536);
+      if((numbytes = recv(sockfd, &temp[0], 65535, 0)) == -1) {
         std::perror("recv");
         return -1;
       }
-      hasGot += numbytes;
-      std::string tempStr(temp);
+      temp.resize(numbytes);
+      std::string tempStr(temp.begin(),temp.end());
       toGet += tempStr;
+      std::cout <<"***************"<<tempStr << std::endl;
       if(tempStr.find("HTTP/1.1 200 OK") == std::string::npos){
-        return 0;
+        return numbytes;
       }
       else{
         if(isChuncked(tempStr)){
-          return 1;
+          return 0;
         }
       }
-      return 0;
+      return numbytes;
     }
   
     bool recieve(int sockfd, std::string& toGet){
