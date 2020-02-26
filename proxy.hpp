@@ -16,7 +16,7 @@ class Proxy {
   Proxy(const char * rhostname, const char * rport) :
       hostname(rhostname),
       port(rport),
-      myCache(20) {}
+      myCache(200) {}
 
   int lisenClient(std::string & requestInfo) {
     if (myKit.listenBrowser(hostname, port)) {
@@ -36,6 +36,8 @@ class Proxy {
 
   int handleGet(Request & reqObj) {
     std::string cached = myCache.get(reqObj.getKey(), myTimer.getCurrentSec());
+    std::cout << "****************Cached information*******************" << std::endl;
+    cout<<cached<<endl;
     if (cached != "notfound" && cached != "revalidate" && cached[0] != 'I' &&
         cached != "expires") {
       std::cout << "****************Cache: found*******************" << std::endl;
@@ -49,6 +51,7 @@ class Proxy {
       return EXIT_SUCCESS;
     }
     else if (cached == "notfound" || cached == "expires") {
+      std::cout << "****************Cache: not found or expire*******************" << std::endl;
       /*update cache*/
       std::string getInfo;
       if (myKit.getServerSendBrowser(
@@ -69,8 +72,10 @@ class Proxy {
     //Need revalidate
     else {
       //revalidate cache
+      cout<<"\\"<<cached<<"\\"<<endl;
       reqObj.setRequest(cached);
       std::string getInfo;
+      cout << "*****************************Revalidate*****************\n";
       if (myKit.getServerSendBrowser(
               reqObj.getHostname(), reqObj.getRequestInfo(), getInfo)) {
         return EXIT_FAILURE;

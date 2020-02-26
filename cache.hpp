@@ -44,20 +44,23 @@ class Cache {
   }
 
   std::string get(const std::string & key, const double curTime) {
+    cout<<"!@#$%!@#$!@#$!@#$::"<<LRUMap[key]->information["expireTime"]<<endl;
+    cout<<"!@#$%!@#$!@#$!@#$::"<<key<<endl;  
     if (LRUMap.count(key) == 0) {
       return "notfound";
     }
     else if (LRUMap[key]->information["revalidate"] == "true") {
       string temp;
+      cout<<"****************************************************\n";
       if (LRUMap[key]->value.getETAG() != "") {
         temp += "If-None-Match: ";
         temp += LRUMap[key]->value.getETAG();
-        temp += "\n";
+        temp += "\r\n";
       }
       if (LRUMap[key]->value.getLastModified() != "") {
         temp += "If-Modified-Since: ";
         temp += LRUMap[key]->value.getLastModified();
-        temp += "\n";
+        temp += "\r\n";
       }
       return temp;
     }
@@ -75,6 +78,7 @@ class Cache {
         std::list<LRUNode>::iterator it = LRUlist.end();
         it--;
         LRUMap[key] = it;  // update Map
+	
         return it->value.getResponseInfo();
       }
     }
@@ -90,9 +94,11 @@ class Cache {
       LRUMap[key] = it;  // update Map
       it->information["expireTime"] = to_string(value.getExpireTime());
       if (value.getRevalidate()) {
+	cout<<"Revalidate already exist true********************"<<endl;
         it->information["revalidate"] = "true";
       }
       else {
+	 cout<<"Revalidate already exist false********************"<<endl;
         it->information["revalidate"] = "false";
       }
     }
@@ -107,9 +113,13 @@ class Cache {
       LRUMap[key] = it;  // update Map
       it->information["expireTime"] = to_string(value.getExpireTime());
       if (value.getRevalidate()) {
+	cout<<"Revalidate true**************************"<<endl;
         it->information["revalidate"] = "true";
+	cout<<"!!!!!!!!!!!!!!!!!::"<<it->information["revalidate"]<<endl;
+	cout<<"!!!!!!!!!!!!!!!!!!!!::"<<key<<endl;
       }
       else {
+	cout<<"Revalidate false**************************"<<endl;
         it->information["revalidate"] = "false";
       }
     }

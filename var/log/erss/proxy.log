@@ -187,3 +187,297 @@
 14: Requesting GET http://people.duke.edu/favicon.ico HTTP/1.1 from people.duke.edu
 15: CONNECT aus5.mozilla.org:443 HTTP/1.1 from 13.249.122.54 @ 2020-02-26 14:30:05
 16: Requesting CONNECT aus5.mozilla.org:443 HTTP/1.1 from aus5.mozilla.org
+1: not in cache
+2: GET http://www.artsci.utoronto.ca/futurestudents HTTP/1.1 from 142.1.246.49 @ 2020-02-26 14:46:00
+3: Requesting GET http://www.artsci.utoronto.ca/futurestudents HTTP/1.1 from www.artsci.utoronto.ca
+4: CONNECT www.artsci.utoronto.ca:443 HTTP/1.1 from 142.1.246.49 @ 2020-02-26 14:46:00
+5: Requesting CONNECT www.artsci.utoronto.ca:443 HTTP/1.1 from www.artsci.utoronto.ca
+1: CONNECT www.artsci.utoronto.ca:443 HTTP/1.1 from 142.1.246.49 @ 2020-02-26 14:46:28
+2: Requesting CONNECT www.artsci.utoronto.ca:443 HTTP/1.1 from www.artsci.utoronto.ca
+1: CONNECT spocs.getpocket.com:443 HTTP/1.1 from 52.72.164.94 @ 2020-02-26 14:46:48
+2: Requesting CONNECT spocs.getpocket.com:443 HTTP/1.1 from spocs.getpocket.com
+1: CONNECT www.artsci.utoronto.ca:443 HTTP/1.1 from 142.1.246.49 @ 2020-02-26 14:47:11
+2: Requesting CONNECT www.artsci.utoronto.ca:443 HTTP/1.1 from www.artsci.utoronto.ca
+3: Tunnel closed
+4: CONNECT fonts.googleapis.com:443 HTTP/1.1 from 108.177.122.95 @ 2020-02-26 14:47:18
+5: Requesting CONNECT fonts.googleapis.com:443 HTTP/1.1 from fonts.googleapis.com
+1: not in cache
+2: GET http://www.mocky.io/v2/5e56cc6330000045d228ea1b HTTP/1.1 from 34.249.48.47 @ 2020-02-26 14:52:52
+3: Requesting GET http://www.mocky.io/v2/5e56cc6330000045d228ea1b HTTP/1.1 from www.mocky.io
+4: not in cache
+5: GET http://www.mocky.io/favicon.ico HTTP/1.1 from 34.249.48.47 @ 2020-02-26 14:52:53
+6: Requesting GET http://www.mocky.io/favicon.ico HTTP/1.1 from www.mocky.io
+1: not in cache
+2: GET http://www.mocky.io/v2/5e56cc6330000045d228ea1b HTTP/1.1 from 52.18.156.77 @ 2020-02-26 14:54:34
+3: Requesting GET http://www.mocky.io/v2/5e56cc6330000045d228ea1b HTTP/1.1 from www.mocky.io
+4: not in cache
+5: GET http://detectportal.firefox.com/success.txt HTTP/1.1 from 204.85.32.24 @ 2020-02-26 14:55:21
+6: Requesting GET http://detectportal.firefox.com/success.txt HTTP/1.1 from detectportal.firefox.com
+7: not in cache
+8: GET http://detectportal.firefox.com/success.txt?ipv4 HTTP/1.1 from 204.85.32.24 @ 2020-02-26 14:55:22
+9: Requesting GET http://detectportal.firefox.com/success.txt?ipv4 HTTP/1.1 from detectportal.firefox.com
+1: not in cache
+2: GET http://www.mocky.io/v2/5e56cd933000000f0028ea2d HTTP/1.1 from 52.213.230.141 @ 2020-02-26 14:57:24
+3: Requesting GET http://www.mocky.io/v2/5e56cd933000000f0028ea2d HTTP/1.1 from www.mocky.io
+4: not in cache
+5: GET http://www.mocky.io/v2/5e56cd933000000f0028ea2d HTTP/1.1 from 52.49.54.19 @ 2020-02-26 14:58:42
+6: Requesting GET http://www.mocky.io/v2/5e56cd933000000f0028ea2d HTTP/1.1 from www.mocky.io
+7: not in cache
+8: GET http://www.mocky.io/v2/5e56ce0730000046d228ea31 HTTP/1.1 from 52.49.54.19 @ 2020-02-26 14:59:12
+9: Requesting GET http://www.mocky.io/v2/5e56ce0730000046d228ea31 HTTP/1.1 from www.mocky.io
+10: in cache
+11: not in cache
+12: GET http://detectportal.firefox.com/success.txt HTTP/1.1 from 204.85.32.24 @ 2020-02-26 15:00:22
+13: Requesting GET http://detectportal.firefox.com/success.txt HTTP/1.1 from detectportal.firefox.com
+14: not in cache
+15: GET http://detectportal.firefox.com/success.txt?ipv4 HTTP/1.1 from 204.85.32.24 @ 2020-02-26 15:00:22
+16: Requesting GET http://detectportal.firefox.com/success.txt?ipv4 HTTP/1.1 from detectportal.firefox.com
+17: CONNECT getpocket.cdn.mozilla.net:443 HTTP/1.1 from 23.66.97.84 @ 2020-02-26 15:01:48
+18: Requesting CONNECT getpocket.cdn.mozilla.net:443 HTTP/1.1 from getpocket.cdn.mozilla.net
+1: not in cache
+2: GET http://www.mocky.io/v2/5e56ceb3300000590028ea36 HTTP/1.1 from 34.253.22.180 @ 2020-02-26 15:02:13
+3: Requesting GET http://www.mocky.io/v2/5e56ceb3300000590028ea36 HTTP/1.1 from www.mocky.io
+4: not in cache
+5: GET http://www.mocky.io/v2/5e56ceb3300000590028ea36 HTTP/1.1 from 34.253.22.180 @ 2020-02-26 15:02:36
+6: Requesting GET http://www.mocky.io/v2/5e56ceb3300000590028ea36 HTTP/1.1 from www.mocky.io
+7: not in cache
+8: GET http://www.mocky.io/v2/5e56ceb3300000590028ea36 HTTP/1.1 from 52.48.90.17 @ 2020-02-26 15:03:27
+9: Requesting GET http://www.mocky.io/v2/5e56ceb3300000590028ea36 HTTP/1.1 from www.mocky.io
+10: not in cache
+11: GET http://www.mocky.io/v2/5e56cf33300000590028ea39 HTTP/1.1 from 52.48.90.17 @ 2020-02-26 15:04:09
+12: Requesting GET http://www.mocky.io/v2/5e56cf33300000590028ea39 HTTP/1.1 from www.mocky.io
+1: not in cache
+2: GET http://www.mocky.io/v2/5e56cf33300000590028ea39 HTTP/1.1 from 52.48.90.17 @ 2020-02-26 15:04:15
+3: Requesting GET http://www.mocky.io/v2/5e56cf33300000590028ea39 HTTP/1.1 from www.mocky.io
+1: not in cache
+2: GET http://www.mocky.io/v2/5e56cf33300000590028ea39 HTTP/1.1 from 52.48.90.17 @ 2020-02-26 15:04:23
+3: Requesting GET http://www.mocky.io/v2/5e56cf33300000590028ea39 HTTP/1.1 from www.mocky.io
+4: not in cache
+5: GET http://www.mocky.io/v2/5e56cf33300000590028ea39 HTTP/1.1 from 52.30.46.210 @ 2020-02-26 15:04:38
+6: Requesting GET http://www.mocky.io/v2/5e56cf33300000590028ea39 HTTP/1.1 from www.mocky.io
+1: not in cache
+2: GET http://www.mocky.io/v2/5e56cf33300000590028ea39 HTTP/1.1 from 34.249.48.47 @ 2020-02-26 15:10:01
+3: Requesting GET http://www.mocky.io/v2/5e56cf33300000590028ea39 HTTP/1.1 from www.mocky.io
+4: not in cache
+5: GET http://www.mocky.io/v2/5e56cf33300000590028ea39 HTTP/1.1 from 34.249.48.47 @ 2020-02-26 15:10:11
+6: Requesting GET http://www.mocky.io/v2/5e56cf33300000590028ea39 HTTP/1.1 from www.mocky.io
+1: not in cache
+2: GET http://www.mocky.io/v2/5e56d1e5300000570028ea42 HTTP/1.1 from 34.243.24.182 @ 2020-02-26 15:16:55
+3: Requesting GET http://www.mocky.io/v2/5e56d1e5300000570028ea42 HTTP/1.1 from www.mocky.io
+4: not in cache
+5: GET http://www.mocky.io/v2/5e56d1e5300000570028ea42 HTTP/1.1 from 34.243.24.182 @ 2020-02-26 15:17:27
+6: Requesting GET http://www.mocky.io/v2/5e56d1e5300000570028ea42 HTTP/1.1 from www.mocky.io
+1: not in cache
+2: GET http://www.mocky.io/v2/5e56d1e5300000570028ea42 HTTP/1.1 from 52.17.188.166 @ 2020-02-26 15:20:49
+3: Requesting GET http://www.mocky.io/v2/5e56d1e5300000570028ea42 HTTP/1.1 from www.mocky.io
+4: not in cache
+5: GET http://www.mocky.io/v2/5e56d1e5300000570028ea42 HTTP/1.1 from 52.17.188.166 @ 2020-02-26 15:20:55
+6: Requesting GET http://www.mocky.io/v2/5e56d1e5300000570028ea42 HTTP/1.1 from www.mocky.io
+1: not in cache
+2: GET http://www.mocky.io/v2/5e56d34e300000355b28ea49 HTTP/1.1 from 52.17.188.166 @ 2020-02-26 15:21:44
+3: Requesting GET http://www.mocky.io/v2/5e56d34e300000355b28ea49 HTTP/1.1 from www.mocky.io
+4: CONNECT spocs.getpocket.com:443 HTTP/1.1 from 52.72.42.117 @ 2020-02-26 15:21:48
+5: Requesting CONNECT spocs.getpocket.com:443 HTTP/1.1 from spocs.getpocket.com
+1: not in cache
+2: GET http://www.mocky.io/v2/5e56d34e300000355b28ea49 HTTP/1.1 from 108.128.249.59 @ 2020-02-26 15:21:58
+3: Requesting GET http://www.mocky.io/v2/5e56d34e300000355b28ea49 HTTP/1.1 from www.mocky.io
+4: not in cache
+5: GET http://www.mocky.io/v2/5e56d34e300000355b28ea49 HTTP/1.1 from 108.128.249.59 @ 2020-02-26 15:22:04
+6: Requesting GET http://www.mocky.io/v2/5e56d34e300000355b28ea49 HTTP/1.1 from www.mocky.io
+1: not in cache
+2: GET http://www.mocky.io/v2/5e56d34e300000355b28ea49 HTTP/1.1 from 54.194.228.113 @ 2020-02-26 15:35:30
+3: Requesting GET http://www.mocky.io/v2/5e56d34e300000355b28ea49 HTTP/1.1 from www.mocky.io
+4: not in cache
+5: GET http://www.mocky.io/v2/5e56d34e300000355b28ea49 HTTP/1.1 from 54.194.228.113 @ 2020-02-26 15:35:46
+6: Requesting GET http://www.mocky.io/v2/5e56d34e300000355b28ea49 HTTP/1.1 from www.mocky.io
+1: not in cache
+2: GET http://www.mocky.io/v2/5e56d34e300000355b28ea49 HTTP/1.1 from 52.212.40.108 @ 2020-02-26 15:38:39
+3: Requesting GET http://www.mocky.io/v2/5e56d34e300000355b28ea49 HTTP/1.1 from www.mocky.io
+4: in cache
+1: not in cache
+2: GET http://www.mocky.io/v2/5e56d34e300000355b28ea49 HTTP/1.1 from 34.253.22.180 @ 2020-02-26 15:42:43
+3: Requesting GET http://www.mocky.io/v2/5e56d34e300000355b28ea49 HTTP/1.1 from www.mocky.io
+4: in cache
+1: CONNECT getpocket.cdn.mozilla.net:443 HTTP/1.1 from 23.66.97.84 @ 2020-02-26 15:46:48
+2: Requesting CONNECT getpocket.cdn.mozilla.net:443 HTTP/1.1 from getpocket.cdn.mozilla.net
+3: Tunnel closed
+4: not in cache
+5: GET http://www.mocky.io/v2/5e56d998300000fdb228ea6e HTTP/1.1 from 52.212.40.108 @ 2020-02-26 15:48:30
+6: Requesting GET http://www.mocky.io/v2/5e56d998300000fdb228ea6e HTTP/1.1 from www.mocky.io
+7: CONNECT firefox.settings.services.mozilla.com:443 HTTP/1.1 from 99.84.216.17 @ 2020-02-26 15:48:31
+8: Requesting CONNECT firefox.settings.services.mozilla.com:443 HTTP/1.1 from firefox.settings.services.mozilla.com
+1: not in cache
+2: GET http://www.mocky.io/v2/5e56d998300000fdb228ea6e HTTP/1.1 from 52.212.40.108 @ 2020-02-26 15:48:39
+3: Requesting GET http://www.mocky.io/v2/5e56d998300000fdb228ea6e HTTP/1.1 from www.mocky.io
+4: in cache
+1: not in cache
+2: GET http://www.mocky.io/v2/5e56d998300000fdb228ea6e HTTP/1.1 from 52.49.54.19 @ 2020-02-26 15:51:25
+3: Requesting GET http://www.mocky.io/v2/5e56d998300000fdb228ea6e HTTP/1.1 from www.mocky.io
+4: in cache
+1: not in cache
+2: GET http://www.mocky.io/v2/5e56d998300000fdb228ea6e HTTP/1.1 from 34.253.22.180 @ 2020-02-26 15:54:21
+3: Requesting GET http://www.mocky.io/v2/5e56d998300000fdb228ea6e HTTP/1.1 from www.mocky.io
+4: in cache
+1: not in cache
+2: GET http://www.mocky.io/v2/5e56d998300000fdb228ea6e HTTP/1.1 from 34.253.121.58 @ 2020-02-26 15:56:00
+3: Requesting GET http://www.mocky.io/v2/5e56d998300000fdb228ea6e HTTP/1.1 from www.mocky.io
+1: not in cache
+2: GET http://www.mocky.io/v2/5e56d998300000fdb228ea6e HTTP/1.1 from 108.128.249.59 @ 2020-02-26 15:57:37
+3: Requesting GET http://www.mocky.io/v2/5e56d998300000fdb228ea6e HTTP/1.1 from www.mocky.io
+1: not in cache
+2: GET http://www.mocky.io/v2/5e56d998300000fdb228ea6e HTTP/1.1 from 108.128.249.59 @ 2020-02-26 15:57:50
+3: Requesting GET http://www.mocky.io/v2/5e56d998300000fdb228ea6e HTTP/1.1 from www.mocky.io
+1: not in cache
+2: GET http://www.mocky.io/v2/5e56d998300000fdb228ea6e HTTP/1.1 from 108.128.200.220 @ 2020-02-26 15:59:42
+3: Requesting GET http://www.mocky.io/v2/5e56d998300000fdb228ea6e HTTP/1.1 from www.mocky.io
+1: not in cache
+2: GET http://www.mocky.io/v2/5e56d998300000fdb228ea6e HTTP/1.1 from 52.212.40.108 @ 2020-02-26 16:01:13
+3: Requesting GET http://www.mocky.io/v2/5e56d998300000fdb228ea6e HTTP/1.1 from www.mocky.io
+4: in cache
+5: in cache
+6: in cache
+7: in cache
+8: in cache
+9: in cache
+10: in cache
+11: in cache
+12: in cache
+13: in cache
+14: CONNECT spocs.getpocket.com:443 HTTP/1.1 from 34.230.234.167 @ 2020-02-26 16:01:48
+15: Requesting CONNECT spocs.getpocket.com:443 HTTP/1.1 from spocs.getpocket.com
+1: not in cache
+2: GET http://www.mocky.io/v2/5e56d998300000fdb228ea6e HTTP/1.1 from 52.19.53.27 @ 2020-02-26 16:08:38
+3: Requesting GET http://www.mocky.io/v2/5e56d998300000fdb228ea6e HTTP/1.1 from www.mocky.io
+4: in cache
+5: in cache
+6: in cache
+7: in cache
+8: in cache
+9: in cache
+10: in cache
+11: in cache
+12: in cache
+13: in cache
+1: not in cache
+2: GET http://www.mocky.io/v2/5e56d998300000fdb228ea6e HTTP/1.1 from 54.194.49.179 @ 2020-02-26 16:11:10
+3: Requesting GET http://www.mocky.io/v2/5e56d998300000fdb228ea6e HTTP/1.1 from www.mocky.io
+1: not in cache
+2: GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from 152.3.72.105 @ 2020-02-26 16:17:44
+3: Requesting GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from people.duke.edu
+1: not in cache
+2: GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from 152.3.72.105 @ 2020-02-26 16:23:21
+3: Requesting GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from people.duke.edu
+4: not in cache
+5: GET http://people.duke.edu/~bmr23/style.css HTTP/1.1 from 152.3.72.105 @ 2020-02-26 16:23:22
+6: Requesting GET http://people.duke.edu/~bmr23/style.css HTTP/1.1 from people.duke.edu
+7: not in cache
+8: GET http://people.duke.edu/favicon.ico HTTP/1.1 from 152.3.72.105 @ 2020-02-26 16:23:22
+9: Requesting GET http://people.duke.edu/favicon.ico HTTP/1.1 from people.duke.edu
+1: not in cache
+2: GET http://www.mocky.io/v2/5e56d998300000fdb228ea6e HTTP/1.1 from 52.212.40.108 @ 2020-02-26 16:23:58
+3: Requesting GET http://www.mocky.io/v2/5e56d998300000fdb228ea6e HTTP/1.1 from www.mocky.io
+4: not in cache
+5: GET http://www.mocky.io/favicon.ico HTTP/1.1 from 52.212.40.108 @ 2020-02-26 16:23:58
+6: Requesting GET http://www.mocky.io/favicon.ico HTTP/1.1 from www.mocky.io
+7: in cache
+8: in cache
+9: in cache
+10: in cache
+11: in cache
+12: in cache
+13: in cache
+14: in cache
+15: in cache
+16: in cache
+1: not in cache
+2: GET http://www.mocky.io/v2/5e56d998300000fdb228ea6e HTTP/1.1 from 34.252.13.12 @ 2020-02-26 16:26:34
+3: Requesting GET http://www.mocky.io/v2/5e56d998300000fdb228ea6e HTTP/1.1 from www.mocky.io
+4: in cache
+5: in cache
+6: in cache
+7: in cache
+8: in cache
+9: in cache
+10: in cache
+11: in cache
+12: in cache
+13: in cache
+14: CONNECT getpocket.cdn.mozilla.net:443 HTTP/1.1 from 23.66.97.84 @ 2020-02-26 16:26:48
+15: Requesting CONNECT getpocket.cdn.mozilla.net:443 HTTP/1.1 from getpocket.cdn.mozilla.net
+1: not in cache
+2: GET http://www.mocky.io/v2/5e56d998300000fdb228ea6e HTTP/1.1 from 34.252.13.12 @ 2020-02-26 16:26:55
+3: Requesting GET http://www.mocky.io/v2/5e56d998300000fdb228ea6e HTTP/1.1 from www.mocky.io
+4: in cache
+5: in cache
+6: in cache
+7: in cache
+8: in cache
+9: in cache
+10: in cache
+11: in cache
+12: in cache
+13: in cache
+1: not in cache
+2: GET http://www.mocky.io/v2/5e56d998300000fdb228ea6e HTTP/1.1 from 34.252.13.12 @ 2020-02-26 16:27:16
+3: Requesting GET http://www.mocky.io/v2/5e56d998300000fdb228ea6e HTTP/1.1 from www.mocky.io
+4: in cache
+5: in cache
+6: in cache
+7: in cache
+8: in cache
+9: in cache
+10: in cache
+11: in cache
+12: in cache
+13: in cache
+1: not in cache
+2: GET http://www.mocky.io/v2/5e56d998300000fdb228ea6e HTTP/1.1 from 52.30.46.210 @ 2020-02-26 16:28:35
+3: Requesting GET http://www.mocky.io/v2/5e56d998300000fdb228ea6e HTTP/1.1 from www.mocky.io
+4: not in cache
+5: GET http://www.mocky.io/favicon.ico HTTP/1.1 from 52.30.46.210 @ 2020-02-26 16:28:36
+6: Requesting GET http://www.mocky.io/favicon.ico HTTP/1.1 from www.mocky.io
+7: in cache
+8: in cache
+9: in cache
+10: in cache
+11: in cache
+12: in cache
+13: in cache
+14: in cache
+15: in cache
+16: in cache
+1: not in cache
+2: GET http://www.mocky.io/v2/5e56d998300000fdb228ea6e HTTP/1.1 from 52.49.54.19 @ 2020-02-26 16:29:58
+3: Requesting GET http://www.mocky.io/v2/5e56d998300000fdb228ea6e HTTP/1.1 from www.mocky.io
+4: not in cache
+5: GET http://www.mocky.io/favicon.ico HTTP/1.1 from 52.49.54.19 @ 2020-02-26 16:29:58
+6: Requesting GET http://www.mocky.io/favicon.ico HTTP/1.1 from www.mocky.io
+7: in cache
+8: in cache
+9: in cache
+10: in cache
+11: in cache
+12: in cache
+13: in cache
+14: in cache
+15: in cache
+16: in cache
+1: not in cache
+2: GET http://www.mocky.io/v2/5e56d998300000fdb228ea6e HTTP/1.1 from 52.212.40.108 @ 2020-02-26 16:34:37
+3: Requesting GET http://www.mocky.io/v2/5e56d998300000fdb228ea6e HTTP/1.1 from www.mocky.io
+4: not in cache
+5: GET http://www.mocky.io/favicon.ico HTTP/1.1 from 52.212.40.108 @ 2020-02-26 16:34:37
+6: Requesting GET http://www.mocky.io/favicon.ico HTTP/1.1 from www.mocky.io
+1: not in cache
+2: GET http://www.mocky.io/v2/5e56d998300000fdb228ea6e HTTP/1.1 from 54.194.49.179 @ 2020-02-26 16:43:10
+3: Requesting GET http://www.mocky.io/v2/5e56d998300000fdb228ea6e HTTP/1.1 from www.mocky.io
+4: in cache
+5: in cache
+6: in cache
+7: in cache
+8: in cache
+9: in cache
+10: in cache
+11: in cache
+12: in cache
+13: in cache

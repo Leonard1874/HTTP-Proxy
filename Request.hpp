@@ -48,14 +48,11 @@ class Request {
   void setRequest(std::string tobeAdd) {
     size_t pos = requestInfo.find("\r\n\r\n");
     requestInfo += tobeAdd;
+    pos +=2;
     for (size_t i = 0; i < tobeAdd.size(); i++) {
       requestInfo[pos] = tobeAdd[i];
       pos++;
     }
-    requestInfo[pos] = '\r';
-    pos++;
-    requestInfo[pos] = '\n';
-    pos++;
     requestInfo[pos] = '\r';
     pos++;
     requestInfo[pos] = '\n';

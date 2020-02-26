@@ -35,7 +35,7 @@ class ResponseParser {
 
   bool needValidate(const std::string & responseInfo) {
     bool need = false;
-    if (responseInfo.find("cache-control") != std::string::npos) {
+    if (responseInfo.find("Cache-Control") != std::string::npos) {
       //responseInfo.find("must-revalidate") != std::string::npos
       //responseInfo.find("proxy-revalidate") != std::string::npos
       if (responseInfo.find("no-cache") != std::string::npos ||
@@ -43,12 +43,13 @@ class ResponseParser {
         need = true;
       }
     }
+    std::cout<<"************Need validate or not: "<<need<<std::endl;
     return need;
   }
 
   bool canCache(const std::string & responseInfo) {
     bool cache = true;
-    if (responseInfo.find("cache-control") != std::string::npos) {
+    if (responseInfo.find("Cache-Control") != std::string::npos) {
       if (responseInfo.find("no-store") != std::string::npos ||
           responseInfo.find("private") != std::string::npos) {
         cache = false;
@@ -90,7 +91,7 @@ class ResponseParser {
     }
     else {
       std::cout << "other cache control!" << std::endl;
-      return -1;
+      return INT_MAX;
     }
   }
 

@@ -31,6 +31,8 @@ class Response {
       responseInfo(resInfo),
       type(rtype),
       arriveTime(rtime) {
+    ETAG = "";
+    lastModified = "";
     expireTime = myParser.parseExpire(responseInfo) + arriveTime;
     revalidate = myParser.needValidate(responseInfo);
     std::cout << expireTime << std::endl;
