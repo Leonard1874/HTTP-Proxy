@@ -33,12 +33,33 @@ class Cache {
   size_t capacity;
   Cache(size_t rcapacity) : capacity(rcapacity) {}
 
+  std::string noModifyGet(const std::string & key) {
+    Response tVal = (*LRUMap[key]).value;
+    LRUlist.emplace_back(key, tVal);  // insert to end
+    LRUlist.erase(LRUMap[key]);       //remove old place
+    std::list<LRUNode>::iterator it = LRUlist.end();
+    it--;
+    LRUMap[key] = it;  // update Map
+    return it->value.getResponseInfo();
+  }
+
   std::string get(const std::string & key, const double curTime) {
     if (LRUMap.count(key) == 0) {
       return "notfound";
     }
     else if (LRUMap[key]->information["revalidate"] == "true") {
-      return "revalidate";
+      string temp;
+      if (LRUMap[key]->value.getETAG() != "") {
+        temp += "If-None-Match: ";
+        temp += LRUMap[key]->value.getETAG();
+        temp += "\n";
+      }
+      if (LRUMap[key]->value.getLastModified() != "") {
+        temp += "If-Modified-Since: ";
+        temp += LRUMap[key]->value.getLastModified();
+        temp += "\n";
+      }
+      return temp;
     }
     else {
       Response tVal = (*LRUMap[key]).value;

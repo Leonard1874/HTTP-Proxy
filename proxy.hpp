@@ -36,7 +36,8 @@ class Proxy {
 
   int handleGet(Request & reqObj) {
     std::string cached = myCache.get(reqObj.getKey(), myTimer.getCurrentSec());
-    if (cached != "notfound" && cached != "revalidate") {
+    if (cached != "notfound" && cached != "revalidate" && cached[0] != 'I' &&
+        cached != "expires") {
       std::cout << "****************Cache: found*******************" << std::endl;
       //std::cout << cached << std::endl;
       if (myKit.sendCacheBrowser(cached)) {
@@ -47,7 +48,7 @@ class Proxy {
       /*in cache situations*/
       return EXIT_SUCCESS;
     }
-    else if (cached == "notfound") {
+    else if (cached == "notfound" || cached == "expires") {
       /*update cache*/
       std::string getInfo;
       if (myKit.getServerSendBrowser(
@@ -67,12 +68,48 @@ class Proxy {
     }
     //Need revalidate
     else {
-      return EXIT_SUCCESS;
+      //revalidate cache
+      reqObj.setRequest(cached);
+      std::string getInfo;
+      if (myKit.getServerSendBrowser(
+              reqObj.getHostname(), reqObj.getRequestInfo(), getInfo)) {
+        return EXIT_FAILURE;
+      }
+      std::cout << getInfo << std::endl;
+      if (getInfo.find("304 Not Modified") != std::string::npos) {
+        //Get from cache directly
+        string temp = myCache.noModifyGet(reqObj.getKey());
+        if (myKit.sendCacheBrowser(temp)) {
+          std::cerr << "get error!" << std::endl;
+          return EXIT_FAILURE;
+        }
+        //myLogger.printCache("in cache", ID);
+        /*in cache situations*/
+        return EXIT_SUCCESS;
+      }
+      //Request a new response from the origin server
+      else {
+        std::string getInfo;
+        if (myKit.getServerSendBrowser(
+                reqObj.getHostname(), reqObj.getRequestInfo(), getInfo)) {
+          return EXIT_FAILURE;
+        }
+        std::cout << getInfo << std::endl;
+        Response resObj(getInfo, reqObj.getType(), myTimer.getCurrentSec());
+        if (resObj.canCache()) {
+          myCache.put(reqObj.getKey(), resObj);
+        }
+        myLogger.printCache("not in cache", ID);
+        myLogger.getrequest(ID, reqObj);
+        myLogger.printlogline();
+        return EXIT_SUCCESS;
+      }
     }
   }
 
   int handlePost(Request & reqObj) {
     std::string getInfo;
+
     if (myKit.getServerSendBrowser(
             reqObj.getHostname(), reqObj.getRequestInfo(), getInfo)) {
       return EXIT_FAILURE;

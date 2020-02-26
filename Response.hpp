@@ -15,24 +15,54 @@
 #include "ResponseParser.hpp"
 
 class Response {
-private:
+ private:
   ResponseParser myParser;
   std::string responseInfo;
   std::string type;
   double arriveTime;
   double expireTime;
   bool revalidate;
+  std::string ETAG;
+  std::string lastModified;
 
-public:
+ public:
   Response(const std::string & resInfo, const std::string & rtype, const double rtime) :
-    myParser(),
-    responseInfo(resInfo),
-    type(rtype),
-    arriveTime(rtime) {
+      myParser(),
+      responseInfo(resInfo),
+      type(rtype),
+      arriveTime(rtime) {
     expireTime = myParser.parseExpire(responseInfo) + arriveTime;
     revalidate = myParser.needValidate(responseInfo);
     std::cout << expireTime << std::endl;
   }
+  //Get the etag or last modified
+  void validateParser() {
+    size_t pos = responseInfo.find("Last_Modofied:");
+    if (pos != std::string::npos) {
+      while (responseInfo[pos] != ' ') {
+        pos++;
+      }
+      pos++;
+      while (responseInfo[pos] != '\r') {
+        lastModified += responseInfo[pos];
+        pos++;
+      }
+    }
+    size_t pos1 = responseInfo.find("ETag:");
+    if (pos1 != std::string::npos) {
+      while (responseInfo[pos1] != ' ') {
+        pos1++;
+      }
+      pos1++;
+      while (responseInfo[pos1] != '\r') {
+        ETAG += responseInfo[pos1];
+      }
+    }
+  }
+
+  //validation
+  std::string getETAG() { return ETAG; }
+  std::string getLastModified() { return lastModified; }
 
   //test
   std::string getResponseInfo() { return responseInfo; }

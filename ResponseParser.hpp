@@ -38,7 +38,8 @@ class ResponseParser {
     if (responseInfo.find("cache-control") != std::string::npos) {
       //responseInfo.find("must-revalidate") != std::string::npos
       //responseInfo.find("proxy-revalidate") != std::string::npos
-      if (responseInfo.find("no-cache") != std::string::npos) {
+      if (responseInfo.find("no-cache") != std::string::npos ||
+          std::stoi(getMarkedLine("max-age=", responseInfo)) == 0) {
         need = true;
       }
     }
