@@ -65,6 +65,7 @@ class ResponseParser {
 
   double parseExpire(const std::string & responseInfo) {
     double freshtime = INT_MAX;
+    freshtime += INT_MAX;
     if (responseInfo.find("Cache-Control: ") != std::string::npos) {
       std::cout << "cache-contrl found!" << std::endl;
       freshtime = freshExpireControl(responseInfo);

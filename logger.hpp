@@ -1,3 +1,4 @@
+#include <mutex>
 #include <arpa/inet.h>
 #include <errno.h>
 #include <netdb.h>
@@ -17,7 +18,7 @@
 
 #include "Request.hpp"
 #include "Timer.hpp"
-
+std::mutex logMutex;
 using namespace std;
 class logger {
  private:
@@ -42,12 +43,14 @@ class logger {
   */
   //Print the content into the logfile
   void print_response_recieveline() {
+    std::lock_guard<std::mutex> lck(logMutex);
     string filePath = "./var/log/erss/proxy.log";
     ofstream os(filePath, ios::app);
     os << response_recieveline;
     os.close();
   }
   void print_response_sendline() {
+    std::lock_guard<std::mutex> lck(logMutex);
     string filePath = "./var/log/erss/proxy.log";
     ofstream os(filePath, ios::app);
     os << response_sendline;
@@ -55,12 +58,14 @@ class logger {
   }
 
   void print_recieve_requestline() {
+    std::lock_guard<std::mutex> lck(logMutex);
     string filePath = "./var/log/erss/proxy.log";
     ofstream os(filePath, ios::app);
     os << recieve_requestline;
     os.close();
   }
   void print_send_requestline() {
+    std::lock_guard<std::mutex> lck(logMutex);
     string filePath = "./var/log/erss/proxy.log";
     ofstream os(filePath, ios::app);
     os << send_requestline;
@@ -68,6 +73,7 @@ class logger {
   }
 
   void printCache(string content, int & ID) {
+    std::lock_guard<std::mutex> lck(logMutex);
     string temp;
     temp += to_string(ID);
     temp += ": ";
@@ -79,6 +85,7 @@ class logger {
   }
 
   void getrequest_time(int & ID, Request request) {
+    std::lock_guard<std::mutex> lck(logMutex);
     std::string requestInfo = request.getRequestInfo();
     std::string firstLine;
 
@@ -107,6 +114,7 @@ class logger {
   }
 
   void getrequest_requesting(int & ID, Request request) {
+    std::lock_guard<std::mutex> lck(logMutex);
     std::string requestInfo = request.getRequestInfo();
     std::string firstLine;
 
@@ -132,6 +140,7 @@ class logger {
     send_requestline = send_requestline + " from " + request.getHostname() + "\n";
   }
   void getresponse_recieve(int & ID, string responseInfo, string hostname) {
+    std::lock_guard<std::mutex> lck(logMutex);
     std::string firstLine;
     size_t i = 0;
     while (responseInfo[i] != '\r' && i < responseInfo.size()) {
@@ -148,6 +157,7 @@ class logger {
     response_recieveline = response_recieveline + " from " + hostname + "\n";
   }
   void getresponse_send(int & ID, string responseInfo) {
+    std::lock_guard<std::mutex> lck(logMutex);
     std::string firstLine;
     size_t i = 0;
     while (responseInfo[i] != '\r' && i < responseInfo.size()) {

@@ -2,6 +2,8 @@
 #include <cstdlib>
 #include <string>
 class Timer{
+private:
+  long maxAge = 5000000000;
 public:
   Timer() = default;
   std::string getCurrentDateTime(std::string s){
@@ -21,11 +23,15 @@ public:
   }
 
   std::string getlocalTimeStr(long timeNum){
-    time_t rawtime = timeNum;
-    struct tm * timeinfo;
-    timeinfo = localtime (&rawtime);
-    std::string timeStr(asctime(timeinfo));
-    return timeStr.substr(0,timeStr.size() -1);
-  }
-  
+    if(timeNum > maxAge){
+      return " Never Expire";
+    }
+    else{
+      time_t rawtime = timeNum;
+      struct tm * timeinfo;
+      timeinfo = localtime (&rawtime);
+      std::string timeStr(asctime(timeinfo));
+      return timeStr.substr(0,timeStr.size() -1);
+    }
+  }  
 };

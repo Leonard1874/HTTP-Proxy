@@ -1,45 +1,510 @@
-1: GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from 152.3.72.105 @ 2020-02-27 01:43:51
+1: GET http://www.rabihyounes.com/ HTTP/1.1 from 67.20.82.142 @ 2020-02-27 14:02:04
 1: not in cache
-1: Requesting GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from people.duke.edu
-1: Recieved HTTP/1.1 200 OK from people.duke.edu
-1: cached, expires at Thu Feb 27 16:29:05 2020
-1: Responding HTTP/1.1 200 OK
-2: GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from 152.3.72.105 @ 2020-02-27 01:43:51
-3: GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from 152.3.72.105 @ 2020-02-27 01:43:51
-4: GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from 152.3.72.105 @ 2020-02-27 01:43:51
-5: GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from 152.3.72.105 @ 2020-02-27 01:43:51
-6: GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from 152.3.72.105 @ 2020-02-27 01:43:51
-7: GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from 152.3.72.105 @ 2020-02-27 01:43:51
-8: GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from 152.3.72.105 @ 2020-02-27 01:43:51
-9: GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from 152.3.72.105 @ 2020-02-27 01:43:51
-10: GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from 152.3.72.105 @ 2020-02-27 01:43:51
-1: GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from 152.3.72.105 @ 2020-02-27 01:44:18
+1: Requesting GET http://www.rabihyounes.com/ HTTP/1.1 from www.rabihyounes.com
+1: Recieved HTTP/1.1 304 Not Modified from www.rabihyounes.com
+1: not cacheable because NOT 200 OK
+1: Responding HTTP/1.1 304 Not Modified
+3: CONNECT use.fontawesome.com:443 HTTP/1.1 from 23.111.9.35 @ 2020-02-27 14:02:04
+3: Requesting CONNECT use.fontawesome.com:443 HTTP/1.1 from use.fontawesome.com
+2: CONNECT fonts.googleapis.com:443 HTTP/1.1 from 74.125.136.95 @ 2020-02-27 14:02:04
+2: Requesting CONNECT fonts.googleapis.com:443 HTTP/1.1 from fonts.googleapis.com
+4: GET http://www.rabihyounes.com/css/cssNewest.css HTTP/1.1 from 67.20.82.142 @ 2020-02-27 14:02:04
+5: GET http://www.rabihyounes.com/scripts/scriptNewest.js HTTP/1.1 from 67.20.82.142 @ 2020-02-27 14:02:04
+6: GET http://www.rabihyounes.com/scripts/analytics.js HTTP/1.1 from 67.20.82.142 @ 2020-02-27 14:02:04
+4: not in cache
+4: Requesting GET http://www.rabihyounes.com/css/cssNewest.css HTTP/1.1 from www.rabihyounes.com
+4: Recieved HTTP/1.1 304 Not Modified from www.rabihyounes.com
+4: not cacheable because NOT 200 OK
+4: Responding HTTP/1.1 304 Not Modified
+5: not in cache
+5: Requesting GET http://www.rabihyounes.com/scripts/scriptNewest.js HTTP/1.1 from www.rabihyounes.com
+5: Recieved HTTP/1.1 304 Not Modified from www.rabihyounes.com
+5: not cacheable because NOT 200 OK
+5: Responding HTTP/1.1 304 Not Modified
+8: GET http://www.rabihyounes.com/images/Freya.jpg HTTP/1.1 from 67.20.82.142 @ 2020-02-27 14:02:04
+7: GET http://www.rabihyounes.com/images/me.jpg HTTP/1.1 from 67.20.82.142 @ 2020-02-27 14:02:04
+7: not in cache
+7: Requesting GET http://www.rabihyounes.com/images/me.jpg HTTP/1.1 from www.rabihyounes.com
+7: Recieved HTTP/1.1 304 Not Modified from www.rabihyounes.com
+7: not cacheable because NOT 200 OK
+7: Responding HTTP/1.1 304 Not Modified
+8: not in cache
+8: Requesting GET http://www.rabihyounes.com/images/Freya.jpg HTTP/1.1 from www.rabihyounes.com
+8: Recieved HTTP/1.1 304 Not Modified from www.rabihyounes.com
+8: not cacheable because NOT 200 OK
+8: Responding HTTP/1.1 304 Not Modified
+6: not in cache
+6: Requesting GET http://www.rabihyounes.com/scripts/analytics.js HTTP/1.1 from www.rabihyounes.com
+6: Recieved HTTP/1.1 304 Not Modified from www.rabihyounes.com
+6: not cacheable because NOT 200 OK
+6: Responding HTTP/1.1 304 Not Modified
+9: CONNECT www.google-analytics.com:443 HTTP/1.1 from 64.233.177.101 @ 2020-02-27 14:02:04
+9: Requesting CONNECT www.google-analytics.com:443 HTTP/1.1 from www.google-analytics.com
+10: CONNECT platform.twitter.com:443 HTTP/1.1 from 199.232.32.157 @ 2020-02-27 14:02:04
+10: Requesting CONNECT platform.twitter.com:443 HTTP/1.1 from platform.twitter.com
+11: CONNECT syndication.twitter.com:443 HTTP/1.1 from 104.244.42.136 @ 2020-02-27 14:02:05
+11: Requesting CONNECT syndication.twitter.com:443 HTTP/1.1 from syndication.twitter.com
+12: POST http://ocsp.digicert.com/ HTTP/1.1 from 72.21.91.29 @ 2020-02-27 14:02:05
+15: CONNECT i.ytimg.com:443 HTTP/1.1 from 108.177.122.119 @ 2020-02-27 14:02:14
+15: Requesting CONNECT i.ytimg.com:443 HTTP/1.1 from i.ytimg.com
+14: CONNECT www.youtube.com:443 HTTP/1.1 from 216.58.193.174 @ 2020-02-27 14:02:14
+14: Requesting CONNECT www.youtube.com:443 HTTP/1.1 from www.youtube.com
+13: CONNECT i.ytimg.com:443 HTTP/1.1 from 108.177.122.119 @ 2020-02-27 14:02:14
+13: Requesting CONNECT i.ytimg.com:443 HTTP/1.1 from i.ytimg.com
+13: Tunnel closed
+17: CONNECT r3---sn-hjoj-jaul.googlevideo.com:443 HTTP/1.1 from 204.85.30.142 @ 2020-02-27 14:02:14
+17: Requesting CONNECT r3---sn-hjoj-jaul.googlevideo.com:443 HTTP/1.1 from r3---sn-hjoj-jaul.googlevideo.com
+16: CONNECT r3---sn-hjoj-jaul.googlevideo.com:443 HTTP/1.1 from 204.85.30.142 @ 2020-02-27 14:02:14
+16: Requesting CONNECT r3---sn-hjoj-jaul.googlevideo.com:443 HTTP/1.1 from r3---sn-hjoj-jaul.googlevideo.com
+18: POST http://ocsp.pki.goog/gts1o1 HTTP/1.1 from 172.217.12.99 @ 2020-02-27 14:02:14
+19: POST http://ocsp.pki.goog/gts1o1 HTTP/1.1 from 172.217.12.99 @ 2020-02-27 14:02:14
+20: CONNECT r3---sn-hjoj-jaul.googlevideo.com:443 HTTP/1.1 from 204.85.30.142 @ 2020-02-27 14:02:14
+20: Requesting CONNECT r3---sn-hjoj-jaul.googlevideo.com:443 HTTP/1.1 from r3---sn-hjoj-jaul.googlevideo.com
+21: CONNECT r3---sn-hjoj-jaul.googlevideo.com:443 HTTP/1.1 from 204.85.30.142 @ 2020-02-27 14:02:14
+21: Requesting CONNECT r3---sn-hjoj-jaul.googlevideo.com:443 HTTP/1.1 from r3---sn-hjoj-jaul.googlevideo.com
+22: POST http://ocsp.pki.goog/gts1o1 HTTP/1.1 from 172.217.12.99 @ 2020-02-27 14:02:14
+23: POST http://ocsp.pki.goog/gts1o1 HTTP/1.1 from 172.217.12.99 @ 2020-02-27 14:02:14
+24: CONNECT tpc.googlesyndication.com:443 HTTP/1.1 from 74.125.136.132 @ 2020-02-27 14:02:15
+24: Requesting CONNECT tpc.googlesyndication.com:443 HTTP/1.1 from tpc.googlesyndication.com
+25: CONNECT static.doubleclick.net:443 HTTP/1.1 from 64.233.177.148 @ 2020-02-27 14:02:15
+25: Requesting CONNECT static.doubleclick.net:443 HTTP/1.1 from static.doubleclick.net
+26: CONNECT r2---sn-hjoj-jaul.googlevideo.com:443 HTTP/1.1 from 204.85.30.141 @ 2020-02-27 14:02:15
+26: Requesting CONNECT r2---sn-hjoj-jaul.googlevideo.com:443 HTTP/1.1 from r2---sn-hjoj-jaul.googlevideo.com
+27: CONNECT r2---sn-hjoj-jaul.googlevideo.com:443 HTTP/1.1 from 204.85.30.141 @ 2020-02-27 14:02:15
+27: Requesting CONNECT r2---sn-hjoj-jaul.googlevideo.com:443 HTTP/1.1 from r2---sn-hjoj-jaul.googlevideo.com
+29: CONNECT yt3.ggpht.com:443 HTTP/1.1 from 108.177.122.132 @ 2020-02-27 14:02:15
+29: Requesting CONNECT yt3.ggpht.com:443 HTTP/1.1 from yt3.ggpht.com
+28: CONNECT pagead2.googlesyndication.com:443 HTTP/1.1 from 64.233.177.155 @ 2020-02-27 14:02:15
+28: Requesting CONNECT pagead2.googlesyndication.com:443 HTTP/1.1 from pagead2.googlesyndication.com
+30: CONNECT googleads.g.doubleclick.net:443 HTTP/1.1 from 108.177.122.155 @ 2020-02-27 14:02:15
+30: Requesting CONNECT googleads.g.doubleclick.net:443 HTTP/1.1 from googleads.g.doubleclick.net
+31: CONNECT lh6.googleusercontent.com:443 HTTP/1.1 from 74.125.21.132 @ 2020-02-27 14:02:15
+31: Requesting CONNECT lh6.googleusercontent.com:443 HTTP/1.1 from lh6.googleusercontent.com
+32: CONNECT ad.doubleclick.net:443 HTTP/1.1 from 108.177.122.149 @ 2020-02-27 14:02:15
+32: Requesting CONNECT ad.doubleclick.net:443 HTTP/1.1 from ad.doubleclick.net
+33: CONNECT securepubads.g.doubleclick.net:443 HTTP/1.1 from 64.233.177.156 @ 2020-02-27 14:02:15
+33: Requesting CONNECT securepubads.g.doubleclick.net:443 HTTP/1.1 from securepubads.g.doubleclick.net
+35: CONNECT ade.googlesyndication.com:443 HTTP/1.1 from 172.217.11.130 @ 2020-02-27 14:02:15
+35: Requesting CONNECT ade.googlesyndication.com:443 HTTP/1.1 from ade.googlesyndication.com
+34: CONNECT ade.googlesyndication.com:443 HTTP/1.1 from 172.217.11.130 @ 2020-02-27 14:02:15
+34: Requesting CONNECT ade.googlesyndication.com:443 HTTP/1.1 from ade.googlesyndication.com
+34: Tunnel closed
+36: CONNECT www.google.com:443 HTTP/1.1 from 172.217.0.132 @ 2020-02-27 14:02:16
+36: Requesting CONNECT www.google.com:443 HTTP/1.1 from www.google.com
+1: CONNECT cdn.syndication.twimg.com:443 HTTP/1.1 from 72.21.91.70 @ 2020-02-27 14:09:05
+1: Requesting CONNECT cdn.syndication.twimg.com:443 HTTP/1.1 from cdn.syndication.twimg.com
+2: CONNECT yt3.ggpht.com:443 HTTP/1.1 from 172.217.215.132 @ 2020-02-27 14:09:09
+2: Requesting CONNECT yt3.ggpht.com:443 HTTP/1.1 from yt3.ggpht.com
+3: CONNECT www.youtube.com:443 HTTP/1.1 from 172.217.215.190 @ 2020-02-27 14:09:10
+3: Requesting CONNECT www.youtube.com:443 HTTP/1.1 from www.youtube.com
+4: CONNECT ade.googlesyndication.com:443 HTTP/1.1 from 172.217.12.98 @ 2020-02-27 14:09:10
+4: Requesting CONNECT ade.googlesyndication.com:443 HTTP/1.1 from ade.googlesyndication.com
+5: CONNECT pagead2.googlesyndication.com:443 HTTP/1.1 from 64.233.177.157 @ 2020-02-27 14:09:10
+5: Requesting CONNECT pagead2.googlesyndication.com:443 HTTP/1.1 from pagead2.googlesyndication.com
+6: CONNECT r3---sn-hjoj-jaul.googlevideo.com:443 HTTP/1.1 from 204.85.30.142 @ 2020-02-27 14:09:23
+6: Requesting CONNECT r3---sn-hjoj-jaul.googlevideo.com:443 HTTP/1.1 from r3---sn-hjoj-jaul.googlevideo.com
+7: CONNECT i.ytimg.com:443 HTTP/1.1 from 74.125.136.119 @ 2020-02-27 14:09:23
+7: Requesting CONNECT i.ytimg.com:443 HTTP/1.1 from i.ytimg.com
+8: CONNECT www.google.com:443 HTTP/1.1 from 64.233.177.99 @ 2020-02-27 14:09:23
+8: Requesting CONNECT www.google.com:443 HTTP/1.1 from www.google.com
+9: CONNECT googleads.g.doubleclick.net:443 HTTP/1.1 from 172.217.0.66 @ 2020-02-27 14:09:23
+9: Requesting CONNECT googleads.g.doubleclick.net:443 HTTP/1.1 from googleads.g.doubleclick.net
+10: CONNECT shavar.services.mozilla.com:443 HTTP/1.1 from 35.163.131.59 @ 2020-02-27 14:09:28
+10: Requesting CONNECT shavar.services.mozilla.com:443 HTTP/1.1 from shavar.services.mozilla.com
+11: CONNECT i9.ytimg.com:443 HTTP/1.1 from 74.125.21.101 @ 2020-02-27 14:09:31
+11: Requesting CONNECT i9.ytimg.com:443 HTTP/1.1 from i9.ytimg.com
+12: CONNECT www.google.com:443 HTTP/1.1 from 64.233.177.99 @ 2020-02-27 14:09:40
+12: Requesting CONNECT www.google.com:443 HTTP/1.1 from www.google.com
+12: Tunnel closed
+13: CONNECT www.google.com:443 HTTP/1.1 from 64.233.177.99 @ 2020-02-27 14:09:40
+13: Requesting CONNECT www.google.com:443 HTTP/1.1 from www.google.com
+14: CONNECT www.gov.cn:443 HTTP/1.1 from 65.153.158.198 @ 2020-02-27 14:09:45
+14: Requesting CONNECT www.gov.cn:443 HTTP/1.1 from www.gov.cn
+15: POST http://ocsp.globalsign.com/gsrsaovsslca2018 HTTP/1.1 from 104.18.20.226 @ 2020-02-27 14:09:45
+17: CONNECT www.gov.cn:443 HTTP/1.1 from 65.153.158.198 @ 2020-02-27 14:09:47
+17: Requesting CONNECT www.gov.cn:443 HTTP/1.1 from www.gov.cn
+18: CONNECT www.gov.cn:443 HTTP/1.1 from 65.153.158.198 @ 2020-02-27 14:09:47
+18: Requesting CONNECT www.gov.cn:443 HTTP/1.1 from www.gov.cn
+19: CONNECT www.gov.cn:443 HTTP/1.1 from 65.153.158.198 @ 2020-02-27 14:09:47
+19: Requesting CONNECT www.gov.cn:443 HTTP/1.1 from www.gov.cn
+20: CONNECT www.gov.cn:443 HTTP/1.1 from 65.153.158.198 @ 2020-02-27 14:09:47
+20: Requesting CONNECT www.gov.cn:443 HTTP/1.1 from www.gov.cn
+21: CONNECT www.gov.cn:443 HTTP/1.1 from 65.153.158.198 @ 2020-02-27 14:09:47
+21: Requesting CONNECT www.gov.cn:443 HTTP/1.1 from www.gov.cn
+22: CONNECT res.wx.qq.com:443 HTTP/1.1 from 150.109.206.166 @ 2020-02-27 14:09:48
+22: Requesting CONNECT res.wx.qq.com:443 HTTP/1.1 from res.wx.qq.com
+16: CONNECT ysp.www.gov.cn:443 HTTP/1.1 from 65.153.158.203 @ 2020-02-27 14:09:48
+16: Requesting CONNECT ysp.www.gov.cn:443 HTTP/1.1 from ysp.www.gov.cn
+24: CONNECT static.gridsumdissector.com:443 HTTP/1.1 from 221.235.187.200 @ 2020-02-27 14:09:48
+24: Requesting CONNECT static.gridsumdissector.com:443 HTTP/1.1 from static.gridsumdissector.com
+23: CONNECT user.www.gov.cn:443 HTTP/1.1 from 65.153.158.204 @ 2020-02-27 14:09:48
+23: Requesting CONNECT user.www.gov.cn:443 HTTP/1.1 from user.www.gov.cn
+25: POST http://ocsp2.globalsign.com/gsorganizationvalsha2g2 HTTP/1.1 from 104.18.20.226 @ 2020-02-27 14:09:48
+27: GET http://www.gov.cn/zhuanti/20190109weixinfenxiangimg/150.jpg HTTP/1.1 from 65.153.158.203 @ 2020-02-27 14:09:48
+26: GET http://www.gov.cn/govweb/xhtml/2016gov/images/public/icon_101.jpg HTTP/1.1 from 65.153.158.203 @ 2020-02-27 14:09:48
+27: not in cache
+27: Requesting GET http://www.gov.cn/zhuanti/20190109weixinfenxiangimg/150.jpg HTTP/1.1 from www.gov.cn
+27: Recieved HTTP/1.1 200 OK from www.gov.cn
+26: not in cache
+26: Requesting GET http://www.gov.cn/govweb/xhtml/2016gov/images/public/icon_101.jpg HTTP/1.1 from www.gov.cn
+26: Recieved HTTP/1.1 200 OK from www.gov.cn
+26: cached, expires at Mon Jul 13 23:54:09 2020
+26: Responding HTTP/1.1 200 OK
+27: cached, expires at Mon Mar  2 16:58:19 2020
+27: Responding HTTP/1.1 200 OK
+28: POST http://ocsp.globalsign.com/gsrsaovsslca2018 HTTP/1.1 from 104.18.20.226 @ 2020-02-27 14:09:49
+30: CONNECT user.www.gov.cn:443 HTTP/1.1 from 65.153.158.204 @ 2020-02-27 14:09:51
+30: Requesting CONNECT user.www.gov.cn:443 HTTP/1.1 from user.www.gov.cn
+31: CONNECT recv-wd.gridsumdissector.com:443 HTTP/1.1 from 121.52.219.230 @ 2020-02-27 14:09:52
+31: Requesting CONNECT recv-wd.gridsumdissector.com:443 HTTP/1.1 from recv-wd.gridsumdissector.com
+32: CONNECT recv.egovsum.com:443 HTTP/1.1 from 203.207.220.34 @ 2020-02-27 14:09:52
+32: Requesting CONNECT recv.egovsum.com:443 HTTP/1.1 from recv.egovsum.com
+33: CONNECT recv-bak-wd.gridsumdissector.com:443 HTTP/1.1 from 40.125.211.229 @ 2020-02-27 14:09:52
+33: Requesting CONNECT recv-bak-wd.gridsumdissector.com:443 HTTP/1.1 from recv-bak-wd.gridsumdissector.com
+34: CONNECT stat.www.gov.cn:443 HTTP/1.1 from 111.13.175.220 @ 2020-02-27 14:09:52
+34: Requesting CONNECT stat.www.gov.cn:443 HTTP/1.1 from stat.www.gov.cn
+32: Tunnel closed
+35: GET http://detectportal.firefox.com/success.txt HTTP/1.1 from 204.85.32.24 @ 2020-02-27 14:09:52
+35: not in cache
+35: Requesting GET http://detectportal.firefox.com/success.txt HTTP/1.1 from detectportal.firefox.com
+35: Recieved HTTP/1.1 200 OK from detectportal.firefox.com
+35: not cacheable because no-store
+35: Responding HTTP/1.1 200 OK
+37: GET http://detectportal.firefox.com/success.txt?ipv4 HTTP/1.1 from 204.85.32.24 @ 2020-02-27 14:09:52
+38: GET http://detectportal.firefox.com/success.txt?ipv6 HTTP/1.1 from 204.85.32.24 @ 2020-02-27 14:09:52
+37: not in cache
+37: Requesting GET http://detectportal.firefox.com/success.txt?ipv4 HTTP/1.1 from detectportal.firefox.com
+37: Recieved HTTP/1.1 200 OK from detectportal.firefox.com
+38: not in cache
+38: Requesting GET http://detectportal.firefox.com/success.txt?ipv6 HTTP/1.1 from detectportal.firefox.com
+38: Recieved HTTP/1.1 200 OK from detectportal.firefox.com
+37: not cacheable because no-store
+37: Responding HTTP/1.1 200 OK
+38: not cacheable because no-store
+38: Responding HTTP/1.1 200 OK
+36: CONNECT diag-wd.gridsumdissector.com:443 HTTP/1.1 from 42.159.5.43 @ 2020-02-27 14:09:52
+36: Requesting CONNECT diag-wd.gridsumdissector.com:443 HTTP/1.1 from diag-wd.gridsumdissector.com
+40: GET http://www.gov.cn/govweb/xhtml/2016gov/images/index/banner_li1.jpg HTTP/1.1 from 65.153.158.203 @ 2020-02-27 14:09:53
+41: GET http://www.gov.cn/govweb/xhtml/2016gov/images/index/banner_li2.jpg HTTP/1.1 from 65.153.158.203 @ 2020-02-27 14:09:53
+40: not in cache
+40: Requesting GET http://www.gov.cn/govweb/xhtml/2016gov/images/index/banner_li1.jpg HTTP/1.1 from www.gov.cn
+40: Recieved HTTP/1.1 200 OK from www.gov.cn
+40: cached, expires at Sat Jul 25 09:05:13 2020
+40: Responding HTTP/1.1 200 OK
+41: not in cache
+41: Requesting GET http://www.gov.cn/govweb/xhtml/2016gov/images/index/banner_li2.jpg HTTP/1.1 from www.gov.cn
+41: Recieved HTTP/1.1 200 OK from www.gov.cn
+41: cached, expires at Sat Jul 25 09:05:13 2020
+41: Responding HTTP/1.1 200 OK
+39: CONNECT search.www.gov.cn:443 HTTP/1.1 from 65.153.158.199 @ 2020-02-27 14:09:53
+39: Requesting CONNECT search.www.gov.cn:443 HTTP/1.1 from search.www.gov.cn
+42: CONNECT certify.alexametrics.com:443 HTTP/1.1 from 54.230.252.103 @ 2020-02-27 14:09:53
+42: Requesting CONNECT certify.alexametrics.com:443 HTTP/1.1 from certify.alexametrics.com
+43: CONNECT img-getpocket.cdn.mozilla.net:443 HTTP/1.1 from 23.66.97.84 @ 2020-02-27 14:09:56
+43: Requesting CONNECT img-getpocket.cdn.mozilla.net:443 HTTP/1.1 from img-getpocket.cdn.mozilla.net
+44: GET http://www.gov.cn/govweb/xhtml/2016gov/images/public/index_btn01.png HTTP/1.1 from 65.153.158.203 @ 2020-02-27 14:10:01
+45: GET http://www.gov.cn/govweb/xhtml/2016gov/images/public/index_btn02.png HTTP/1.1 from 65.153.158.203 @ 2020-02-27 14:10:01
+44: not in cache
+44: Requesting GET http://www.gov.cn/govweb/xhtml/2016gov/images/public/index_btn01.png HTTP/1.1 from www.gov.cn
+44: Recieved HTTP/1.1 200 OK from www.gov.cn
+44: cached, expires at Sat Jul 18 01:43:08 2020
+44: Responding HTTP/1.1 200 OK
+45: not in cache
+45: Requesting GET http://www.gov.cn/govweb/xhtml/2016gov/images/public/index_btn02.png HTTP/1.1 from www.gov.cn
+45: Recieved HTTP/1.1 200 OK from www.gov.cn
+45: cached, expires at Sat Jul 18 01:43:08 2020
+45: Responding HTTP/1.1 200 OK
+6: Tunnel closed
+34: Tunnel closed
+5: Tunnel closed
+52: CONNECT r3---sn-5uaeznrz.googlevideo.com:443 HTTP/1.1 from 74.125.7.72 @ 2020-02-27 14:10:26
+52: Requesting CONNECT r3---sn-5uaeznrz.googlevideo.com:443 HTTP/1.1 from r3---sn-5uaeznrz.googlevideo.com
+23: Tunnel closed
+19: Tunnel closed
+17: Tunnel closed
+14: Tunnel closed
+53: CONNECT r3---sn-5uaeznrz.googlevideo.com:443 HTTP/1.1 from 74.125.7.72 @ 2020-02-27 14:10:26
+53: Requesting CONNECT r3---sn-5uaeznrz.googlevideo.com:443 HTTP/1.1 from r3---sn-5uaeznrz.googlevideo.com
+51: CONNECT r3---sn-5uaeznrz.googlevideo.com:443 HTTP/1.1 from 74.125.7.72 @ 2020-02-27 14:10:26
+51: Requesting CONNECT r3---sn-5uaeznrz.googlevideo.com:443 HTTP/1.1 from r3---sn-5uaeznrz.googlevideo.com
+51: Tunnel closed
+21: Tunnel closed
+57: POST http://ocsp.pki.goog/gts1o1 HTTP/1.1 from 64.233.177.94 @ 2020-02-27 14:10:26
+20: Tunnel closed
+58: POST http://ocsp.pki.goog/gts1o1 HTTP/1.1 from 64.233.177.94 @ 2020-02-27 14:10:26
+56: CONNECT incoming.telemetry.mozilla.org:443 HTTP/1.1 from 52.34.188.145 @ 2020-02-27 14:10:26
+56: Requesting CONNECT incoming.telemetry.mozilla.org:443 HTTP/1.1 from incoming.telemetry.mozilla.org
+55: CONNECT incoming.telemetry.mozilla.org:443 HTTP/1.1 from 52.34.188.145 @ 2020-02-27 14:10:26
+55: Requesting CONNECT incoming.telemetry.mozilla.org:443 HTTP/1.1 from incoming.telemetry.mozilla.org
+16: Tunnel closed
+30: Tunnel closed
+52: Tunnel closed
+53: Tunnel closed
+10: Tunnel closed
+39: Tunnel closed
+62: CONNECT snippets.cdn.mozilla.net:443 HTTP/1.1 from 52.85.80.46 @ 2020-02-27 14:10:30
+62: Requesting CONNECT snippets.cdn.mozilla.net:443 HTTP/1.1 from snippets.cdn.mozilla.net
+61: CONNECT snippets.cdn.mozilla.net:443 HTTP/1.1 from 52.85.80.46 @ 2020-02-27 14:10:30
+61: Requesting CONNECT snippets.cdn.mozilla.net:443 HTTP/1.1 from snippets.cdn.mozilla.net
+59: CONNECT r3---sn-hjoj-jaul.googlevideo.com:443 HTTP/1.1 from 204.85.30.142 @ 2020-02-27 14:10:31
+59: Requesting CONNECT r3---sn-hjoj-jaul.googlevideo.com:443 HTTP/1.1 from r3---sn-hjoj-jaul.googlevideo.com
+60: CONNECT r3---sn-hjoj-jaul.googlevideo.com:443 HTTP/1.1 from 204.85.30.142 @ 2020-02-27 14:10:31
+60: Requesting CONNECT r3---sn-hjoj-jaul.googlevideo.com:443 HTTP/1.1 from r3---sn-hjoj-jaul.googlevideo.com
+54: CONNECT r3---sn-hjoj-jaul.googlevideo.com:443 HTTP/1.1 from 204.85.30.142 @ 2020-02-27 14:10:31
+54: Requesting CONNECT r3---sn-hjoj-jaul.googlevideo.com:443 HTTP/1.1 from r3---sn-hjoj-jaul.googlevideo.com
+63: CONNECT incoming.telemetry.mozilla.org:443 HTTP/1.1 from 34.212.242.166 @ 2020-02-27 14:10:34
+63: Requesting CONNECT incoming.telemetry.mozilla.org:443 HTTP/1.1 from incoming.telemetry.mozilla.org
+64: CONNECT www.gstatic.com:443 HTTP/1.1 from 64.233.177.94 @ 2020-02-27 14:10:35
+64: Requesting CONNECT www.gstatic.com:443 HTTP/1.1 from www.gstatic.com
+65: CONNECT apis.google.com:443 HTTP/1.1 from 172.217.215.113 @ 2020-02-27 14:10:35
+65: Requesting CONNECT apis.google.com:443 HTTP/1.1 from apis.google.com
+66: CONNECT adservice.google.com:443 HTTP/1.1 from 142.250.9.156 @ 2020-02-27 14:10:36
+66: Requesting CONNECT adservice.google.com:443 HTTP/1.1 from adservice.google.com
+67: CONNECT ogs.google.com:443 HTTP/1.1 from 108.177.122.139 @ 2020-02-27 14:10:36
+67: Requesting CONNECT ogs.google.com:443 HTTP/1.1 from ogs.google.com
+68: CONNECT chinamediaproject.org:443 HTTP/1.1 from 104.26.8.226 @ 2020-02-27 14:10:36
+68: Requesting CONNECT chinamediaproject.org:443 HTTP/1.1 from chinamediaproject.org
+69: CONNECT fonts.googleapis.com:443 HTTP/1.1 from 108.177.122.95 @ 2020-02-27 14:10:39
+69: Requesting CONNECT fonts.googleapis.com:443 HTTP/1.1 from fonts.googleapis.com
+70: CONNECT fonts.gstatic.com:443 HTTP/1.1 from 216.58.194.227 @ 2020-02-27 14:10:39
+70: Requesting CONNECT fonts.gstatic.com:443 HTTP/1.1 from fonts.gstatic.com
+71: CONNECT ajax.cloudflare.com:443 HTTP/1.1 from 104.17.65.4 @ 2020-02-27 14:10:43
+71: Requesting CONNECT ajax.cloudflare.com:443 HTTP/1.1 from ajax.cloudflare.com
+24: Tunnel closed
+31: Tunnel closed
+33: Tunnel closed
+72: CONNECT recv.egovsum.com:443 HTTP/1.1 from 203.207.220.34 @ 2020-02-27 14:10:54
+72: Requesting CONNECT recv.egovsum.com:443 HTTP/1.1 from recv.egovsum.com
+72: Tunnel closed
+18: Tunnel closed
+73: GET http://scholar.google.com/citations?user=8qyLVIMAAAAJ HTTP/1.1 from 142.250.9.103 @ 2020-02-27 14:11:30
+73: not in cache
+73: Requesting GET http://scholar.google.com/citations?user=8qyLVIMAAAAJ HTTP/1.1 from scholar.google.com
+73: Recieved HTTP/1.1 302 Found from scholar.google.com
+73: not cacheable because NOT 200 OK
+73: Responding HTTP/1.1 302 Found
+74: CONNECT scholar.google.com:443 HTTP/1.1 from 142.250.9.103 @ 2020-02-27 14:11:30
+74: Requesting CONNECT scholar.google.com:443 HTTP/1.1 from scholar.google.com
+75: CONNECT scholar.googleusercontent.com:443 HTTP/1.1 from 108.177.122.132 @ 2020-02-27 14:11:30
+75: Requesting CONNECT scholar.googleusercontent.com:443 HTTP/1.1 from scholar.googleusercontent.com
+76: CONNECT id.google.com:443 HTTP/1.1 from 216.58.197.3 @ 2020-02-27 14:11:30
+76: Requesting CONNECT id.google.com:443 HTTP/1.1 from id.google.com
+55: Tunnel closed
+56: Tunnel closed
+63: Tunnel closed
+77: GET http://www.rabihyounes.com/Rabih%20Younes%20-%20CV.pdf HTTP/1.1 from 67.20.82.142 @ 2020-02-27 14:11:39
+77: not in cache
+77: Requesting GET http://www.rabihyounes.com/Rabih%20Younes%20-%20CV.pdf HTTP/1.1 from www.rabihyounes.com
+77: Recieved HTTP/1.1 200 OK from www.rabihyounes.com
+77: cached, expires at Sat Mar 28 15:11:40 2020
+77: Responding HTTP/1.1 200 OK
+78: GET http://www.rabihyounes.com/favicon.ico HTTP/1.1 from 67.20.82.142 @ 2020-02-27 14:11:40
+78: not in cache
+78: Requesting GET http://www.rabihyounes.com/favicon.ico HTTP/1.1 from www.rabihyounes.com
+78: Recieved HTTP/1.1 500 Internal Server Error from www.rabihyounes.com
+78: not cacheable because NOT 200 OK
+78: Responding HTTP/1.1 500 Internal Server Error
+42: Tunnel closed
+36: Tunnel closed
+79: GET http://www.httpwatch.com/httpgallery/chunked/chunkedimage.aspx HTTP/1.1 from 191.236.16.125 @ 2020-02-27 14:12:09
+79: not in cache
+79: Requesting GET http://www.httpwatch.com/httpgallery/chunked/chunkedimage.aspx HTTP/1.1 from www.httpwatch.com
+79: Recieved HTTP/1.1 200 OK from www.httpwatch.com
+79: not cacheable because no-store
+79: Responding HTTP/1.1 200 OK
+80: GET http://www.httpwatch.com/favicon.ico HTTP/1.1 from 191.236.16.125 @ 2020-02-27 14:12:14
+7: Tunnel closed
+4: Tunnel closed
+2: Tunnel closed
+80: not in cache
+80: Requesting GET http://www.httpwatch.com/favicon.ico HTTP/1.1 from www.httpwatch.com
+80: Recieved HTTP/1.1 200 OK from www.httpwatch.com
+80: cached, but requires re-validation
+80: Responding HTTP/1.1 200 OK
+81: GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from 152.3.72.105 @ 2020-02-27 14:12:21
+81: not in cache
+81: Requesting GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from people.duke.edu
+81: Recieved HTTP/1.1 200 OK from people.duke.edu
+81: cached, expires at Fri Feb 28 06:18:26 2020
+81: Responding HTTP/1.1 200 OK
+82: GET http://people.duke.edu/~bmr23/style.css HTTP/1.1 from 152.3.72.105 @ 2020-02-27 14:12:21
+82: not in cache
+82: Requesting GET http://people.duke.edu/~bmr23/style.css HTTP/1.1 from people.duke.edu
+82: Recieved HTTP/1.1 200 OK from people.duke.edu
+82: cached, expires at Tue Sep 15 22:10:17 2020
+82: Responding HTTP/1.1 200 OK
+83: GET http://people.duke.edu/favicon.ico HTTP/1.1 from 152.3.72.105 @ 2020-02-27 14:12:21
+83: not in cache
+83: Requesting GET http://people.duke.edu/favicon.ico HTTP/1.1 from people.duke.edu
+83: Recieved HTTP/1.1 404 Not Found from people.duke.edu
+83: not cacheable because NOT 200 OK
+83: Responding HTTP/1.1 404 Not Found
+11: Tunnel closed
+62: Tunnel closed
+61: Tunnel closed
+59: Tunnel closed
+84: GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from 152.3.72.105 @ 2020-02-27 14:12:31
+84: in cache, valid
+84: Responding HTTP/1.1 200 OK
+85: GET http://people.duke.edu/~bmr23/style.css HTTP/1.1 from 152.3.72.105 @ 2020-02-27 14:12:31
+85: in cache, valid
+85: Responding HTTP/1.1 200 OK
+86: GET http://people.duke.edu/favicon.ico HTTP/1.1 from 152.3.72.105 @ 2020-02-27 14:12:31
+86: not in cache
+86: Requesting GET http://people.duke.edu/favicon.ico HTTP/1.1 from people.duke.edu
+86: Recieved HTTP/1.1 404 Not Found from people.duke.edu
+86: not cacheable because NOT 200 OK
+86: Responding HTTP/1.1 404 Not Found
+22: Tunnel closed
+54: Tunnel closed
+87: CONNECT incoming.telemetry.mozilla.org:443 HTTP/1.1 from 34.223.140.98 @ 2020-02-27 14:12:47
+87: Requesting CONNECT incoming.telemetry.mozilla.org:443 HTTP/1.1 from incoming.telemetry.mozilla.org
+88: CONNECT snippets.cdn.mozilla.net:443 HTTP/1.1 from 54.230.75.99 @ 2020-02-27 14:12:47
+88: Requesting CONNECT snippets.cdn.mozilla.net:443 HTTP/1.1 from snippets.cdn.mozilla.net
+89: CONNECT snippets.cdn.mozilla.net:443 HTTP/1.1 from 54.230.75.99 @ 2020-02-27 14:12:47
+89: Requesting CONNECT snippets.cdn.mozilla.net:443 HTTP/1.1 from snippets.cdn.mozilla.net
+90: CONNECT incoming.telemetry.mozilla.org:443 HTTP/1.1 from 34.223.140.98 @ 2020-02-27 14:12:50
+90: Requesting CONNECT incoming.telemetry.mozilla.org:443 HTTP/1.1 from incoming.telemetry.mozilla.org
+93: CONNECT hbr.org:443 HTTP/1.1 from 52.85.80.32 @ 2020-02-27 14:12:50
+93: Requesting CONNECT hbr.org:443 HTTP/1.1 from hbr.org
+91: CONNECT incoming.telemetry.mozilla.org:443 HTTP/1.1 from 34.223.140.98 @ 2020-02-27 14:12:50
+92: CONNECT incoming.telemetry.mozilla.org:443 HTTP/1.1 from 34.223.140.98 @ 2020-02-27 14:12:50
+92: Requesting CONNECT incoming.telemetry.mozilla.org:443 HTTP/1.1 from incoming.telemetry.mozilla.org
+92: Requesting CONNECT incoming.telemetry.mozilla.org:443 HTTP/1.1 from incoming.telemetry.mozilla.org
+97: CONNECT hbr.org:443 HTTP/1.1 from 52.85.80.32 @ 2020-02-27 14:12:51
+97: Requesting CONNECT hbr.org:443 HTTP/1.1 from hbr.org
+99: CONNECT hbr.org:443 HTTP/1.1 from 52.85.80.32 @ 2020-02-27 14:12:51
+99: Requesting CONNECT hbr.org:443 HTTP/1.1 from hbr.org
+101: CONNECT hbr.org:443 HTTP/1.1 from 52.85.80.32 @ 2020-02-27 14:12:51
+101: Requesting CONNECT hbr.org:443 HTTP/1.1 from hbr.org
+95: CONNECT assets.adobedtm.com:443 HTTP/1.1 from 184.28.89.84 @ 2020-02-27 14:12:51
+95: Requesting CONNECT assets.adobedtm.com:443 HTTP/1.1 from assets.adobedtm.com
+100: CONNECT embed-player.newsoveraudio.com:443 HTTP/1.1 from 54.230.75.114 @ 2020-02-27 14:12:51
+100: Requesting CONNECT embed-player.newsoveraudio.com:443 HTTP/1.1 from embed-player.newsoveraudio.com
+98: CONNECT cdns.gigya.com:443 HTTP/1.1 from 184.28.89.104 @ 2020-02-27 14:12:51
+98: Requesting CONNECT cdns.gigya.com:443 HTTP/1.1 from cdns.gigya.com
+96: CONNECT media.richrelevance.com:443 HTTP/1.1 from 184.24.104.183 @ 2020-02-27 14:12:51
+96: Requesting CONNECT media.richrelevance.com:443 HTTP/1.1 from media.richrelevance.com
+102: POST http://ocsp.sca1b.amazontrust.com/ HTTP/1.1 from 54.230.72.98 @ 2020-02-27 14:12:51
+103: CONNECT spocs.getpocket.com:443 HTTP/1.1 from 3.221.201.246 @ 2020-02-27 14:12:52
+103: Requesting CONNECT spocs.getpocket.com:443 HTTP/1.1 from spocs.getpocket.com
+94: CONNECT hbr.org:443 HTTP/1.1 from 52.85.80.32 @ 2020-02-27 14:12:52
+94: Requesting CONNECT hbr.org:443 HTTP/1.1 from hbr.org
+104: CONNECT getpocket.cdn.mozilla.net:443 HTTP/1.1 from 23.66.97.84 @ 2020-02-27 14:12:52
+104: Requesting CONNECT getpocket.cdn.mozilla.net:443 HTTP/1.1 from getpocket.cdn.mozilla.net
+105: CONNECT hbr.org:443 HTTP/1.1 from 52.85.80.32 @ 2020-02-27 14:12:52
+105: Requesting CONNECT hbr.org:443 HTTP/1.1 from hbr.org
+106: CONNECT js.maxmind.com:443 HTTP/1.1 from 104.16.38.47 @ 2020-02-27 14:12:52
+106: Requesting CONNECT js.maxmind.com:443 HTTP/1.1 from js.maxmind.com
+107: CONNECT hbr.org:443 HTTP/1.1 from 52.85.80.32 @ 2020-02-27 14:12:52
+107: Requesting CONNECT hbr.org:443 HTTP/1.1 from hbr.org
+108: POST http://ocsp.comodoca.com/ HTTP/1.1 from 151.139.128.14 @ 2020-02-27 14:12:52
+109: CONNECT dpm.demdex.net:443 HTTP/1.1 from 52.71.65.65 @ 2020-02-27 14:12:52
+109: Requesting CONNECT dpm.demdex.net:443 HTTP/1.1 from dpm.demdex.net
+110: CONNECT cdns.us1.gigya.com:443 HTTP/1.1 from 184.28.89.104 @ 2020-02-27 14:12:52
+110: Requesting CONNECT cdns.us1.gigya.com:443 HTTP/1.1 from cdns.us1.gigya.com
+111: CONNECT smetrics.hbr.org:443 HTTP/1.1 from 3.208.14.195 @ 2020-02-27 14:12:52
+111: Requesting CONNECT smetrics.hbr.org:443 HTTP/1.1 from smetrics.hbr.org
+112: CONNECT accounts.us1.gigya.com:443 HTTP/1.1 from 23.2.9.39 @ 2020-02-27 14:12:52
+112: Requesting CONNECT accounts.us1.gigya.com:443 HTTP/1.1 from accounts.us1.gigya.com
+113: POST http://ocsp.digicert.com/ HTTP/1.1 from 72.21.91.29 @ 2020-02-27 14:12:52
+114: CONNECT js.maxmind.com:443 HTTP/1.1 from 104.16.38.47 @ 2020-02-27 14:12:53
+114: Requesting CONNECT js.maxmind.com:443 HTTP/1.1 from js.maxmind.com
+115: POST http://ocsp.comodoca.com/ HTTP/1.1 from 151.139.128.14 @ 2020-02-27 14:12:53
+116: CONNECT www.googletagmanager.com:443 HTTP/1.1 from 172.217.11.136 @ 2020-02-27 14:12:53
+116: Requesting CONNECT www.googletagmanager.com:443 HTTP/1.1 from www.googletagmanager.com
+117: CONNECT bat.bing.com:443 HTTP/1.1 from 13.107.21.200 @ 2020-02-27 14:12:53
+117: Requesting CONNECT bat.bing.com:443 HTTP/1.1 from bat.bing.com
+118: CONNECT 8604778.fls.doubleclick.net:443 HTTP/1.1 from 64.233.177.148 @ 2020-02-27 14:12:53
+118: Requesting CONNECT 8604778.fls.doubleclick.net:443 HTTP/1.1 from 8604778.fls.doubleclick.net
+119: CONNECT comments.us1.gigya.com:443 HTTP/1.1 from 23.2.9.39 @ 2020-02-27 14:12:53
+119: Requesting CONNECT comments.us1.gigya.com:443 HTTP/1.1 from comments.us1.gigya.com
+120: CONNECT adservice.google.com:443 HTTP/1.1 from 64.233.177.157 @ 2020-02-27 14:12:53
+120: Requesting CONNECT adservice.google.com:443 HTTP/1.1 from adservice.google.com
+122: CONNECT www.googletagservices.com:443 HTTP/1.1 from 64.233.177.155 @ 2020-02-27 14:12:54
+121: CONNECT www.google-analytics.com:443 HTTP/1.1 from 172.217.2.46 @ 2020-02-27 14:12:54
+121: Requesting CONNECT www.google-analytics.com:443 HTTP/1.1 from www.google-analytics.com
+128: CONNECT connect.facebook.net:443 HTTP/1.1 from 31.13.66.19 @ 2020-02-27 14:12:54
+128: Requesting CONNECT connect.facebook.net:443 HTTP/1.1 from connect.facebook.net
+128: Requesting CONNECT connect.facebook.net:443 HTTP/1.1 from connect.facebook.net
+126: CONNECT connect.facebook.net:443 HTTP/1.1 from 31.13.66.19 @ 2020-02-27 14:12:54
+126: Requesting CONNECT connect.facebook.net:443 HTTP/1.1 from connect.facebook.net
+129: CONNECT googleads.g.doubleclick.net:443 HTTP/1.1 from 64.233.177.155 @ 2020-02-27 14:12:54
+129: Requesting CONNECT googleads.g.doubleclick.net:443 HTTP/1.1 from googleads.g.doubleclick.net
+124: CONNECT platform.twitter.com:443 HTTP/1.1 from 199.232.64.157 @ 2020-02-27 14:12:54
+124: Requesting CONNECT platform.twitter.com:443 HTTP/1.1 from platform.twitter.com
+125: CONNECT sb.scorecardresearch.com:443 HTTP/1.1 from 184.26.36.119 @ 2020-02-27 14:12:54
+125: Requesting CONNECT sb.scorecardresearch.com:443 HTTP/1.1 from sb.scorecardresearch.com
+125: CONNECT sb.scorecardresearch.com:443 HTTP/1.1 from 184.26.36.119 @ 2020-02-27 14:12:54
+123: Requesting CONNECT connect.facebook.net:443 HTTP/1.1 from connect.facebook.net
+127: CONNECT recs.richrelevance.com:443 HTTP/1.1 from 64.95.182.2 @ 2020-02-27 14:12:54
+127: Requesting CONNECT recs.richrelevance.com:443 HTTP/1.1 from recs.richrelevance.com
+123: Tunnel closed
+128: Tunnel closed
+130: POST http://ocsp.godaddy.com/ HTTP/1.1 from 192.124.249.36 @ 2020-02-27 14:12:54
+131: CONNECT syndication.twitter.com:443 HTTP/1.1 from 104.244.42.72 @ 2020-02-27 14:12:54
+131: Requesting CONNECT syndication.twitter.com:443 HTTP/1.1 from syndication.twitter.com
+132: POST http://ocsp.digicert.com/ HTTP/1.1 from 72.21.91.29 @ 2020-02-27 14:12:54
+133: CONNECT connect.facebook.net:443 HTTP/1.1 from 31.13.66.19 @ 2020-02-27 14:12:54
+133: Requesting CONNECT connect.facebook.net:443 HTTP/1.1 from connect.facebook.net
+134: CONNECT securepubads.g.doubleclick.net:443 HTTP/1.1 from 108.177.122.154 @ 2020-02-27 14:12:54
+134: Requesting CONNECT securepubads.g.doubleclick.net:443 HTTP/1.1 from securepubads.g.doubleclick.net
+135: CONNECT stats.g.doubleclick.net:443 HTTP/1.1 from 142.250.9.156 @ 2020-02-27 14:12:54
+135: Requesting CONNECT stats.g.doubleclick.net:443 HTTP/1.1 from stats.g.doubleclick.net
+136: CONNECT harvardbusinessrevie.tt.omtrdc.net:443 HTTP/1.1 from 66.235.147.240 @ 2020-02-27 14:12:55
+136: Requesting CONNECT harvardbusinessrevie.tt.omtrdc.net:443 HTTP/1.1 from harvardbusinessrevie.tt.omtrdc.net
+137: POST http://ocsp.digicert.com/ HTTP/1.1 from 72.21.91.29 @ 2020-02-27 14:12:55
+138: CONNECT hbr.demdex.net:443 HTTP/1.1 from 34.226.15.163 @ 2020-02-27 14:12:55
+138: Requesting CONNECT hbr.demdex.net:443 HTTP/1.1 from hbr.demdex.net
+139: CONNECT www.facebook.com:443 HTTP/1.1 from 31.13.66.35 @ 2020-02-27 14:12:55
+139: Requesting CONNECT www.facebook.com:443 HTTP/1.1 from www.facebook.com
+140: CONNECT pagead2.googlesyndication.com:443 HTTP/1.1 from 172.217.164.66 @ 2020-02-27 14:12:55
+140: Requesting CONNECT pagead2.googlesyndication.com:443 HTTP/1.1 from pagead2.googlesyndication.com
+114: Tunnel closed
+142: CONNECT www.facebook.com:443 HTTP/1.1 from 31.13.66.35 @ 2020-02-27 14:12:55
+142: Requesting CONNECT www.facebook.com:443 HTTP/1.1 from www.facebook.com
+141: CONNECT cm.everesttech.net:443 HTTP/1.1 from 192.243.250.58 @ 2020-02-27 14:12:55
+141: Requesting CONNECT cm.everesttech.net:443 HTTP/1.1 from cm.everesttech.net
+142: Tunnel closed
+143: CONNECT zn4pzx5r5auu7w4rx-hbp.siteintercept.qualtrics.com:443 HTTP/1.1 from 104.17.209.240 @ 2020-02-27 14:12:56
+143: Requesting CONNECT zn4pzx5r5auu7w4rx-hbp.siteintercept.qualtrics.com:443 HTTP/1.1 from zn4pzx5r5auu7w4rx-hbp.siteintercept.qualtrics.com
+144: POST http://ocsp.digicert.com/ HTTP/1.1 from 72.21.91.29 @ 2020-02-27 14:12:56
+145: GET http://chinamediaproject.org/wp-content/uploads/2019/01/quanjian.png HTTP/1.1 from 104.26.8.226 @ 2020-02-27 14:12:56
+146: CONNECT tpc.googlesyndication.com:443 HTTP/1.1 from 172.217.12.97 @ 2020-02-27 14:12:57
+146: Requesting CONNECT tpc.googlesyndication.com:443 HTTP/1.1 from tpc.googlesyndication.com
+148: CONNECT static.chartbeat.com:443 HTTP/1.1 from 54.239.180.190 @ 2020-02-27 14:12:57
+148: Requesting CONNECT static.chartbeat.com:443 HTTP/1.1 from static.chartbeat.com
+147: CONNECT js-agent.newrelic.com:443 HTTP/1.1 from 151.101.250.110 @ 2020-02-27 14:12:57
+147: Requesting CONNECT js-agent.newrelic.com:443 HTTP/1.1 from js-agent.newrelic.com
+149: CONNECT gscounters.us1.gigya.com:443 HTTP/1.1 from 52.2.141.183 @ 2020-02-27 14:12:57
+149: Requesting CONNECT gscounters.us1.gigya.com:443 HTTP/1.1 from gscounters.us1.gigya.com
+151: CONNECT ping.chartbeat.net:443 HTTP/1.1 from 18.209.91.145 @ 2020-02-27 14:12:57
+151: Requesting CONNECT ping.chartbeat.net:443 HTTP/1.1 from ping.chartbeat.net
+150: CONNECT bam.nr-data.net:443 HTTP/1.1 from 162.247.242.21 @ 2020-02-27 14:12:57
+150: Requesting CONNECT bam.nr-data.net:443 HTTP/1.1 from bam.nr-data.net
+152: POST http://ocsp.comodoca.com/ HTTP/1.1 from 151.139.128.14 @ 2020-02-27 14:12:57
+153: POST http://status.thawte.com/ HTTP/1.1 from 72.21.91.29 @ 2020-02-27 14:12:57
+154: CONNECT siteintercept.qualtrics.com:443 HTTP/1.1 from 104.17.209.240 @ 2020-02-27 14:12:58
+154: Requesting CONNECT siteintercept.qualtrics.com:443 HTTP/1.1 from siteintercept.qualtrics.com
+127: Tunnel closed
+149: Tunnel closed
+111: Tunnel closed
+155: CONNECT smetrics.hbr.org:443 HTTP/1.1 from 3.208.14.195 @ 2020-02-27 14:13:03
+155: Requesting CONNECT smetrics.hbr.org:443 HTTP/1.1 from smetrics.hbr.org
+157: CONNECT az1.qualtrics.com:443 HTTP/1.1 from 104.108.122.55 @ 2020-02-27 14:13:03
+157: Requesting CONNECT az1.qualtrics.com:443 HTTP/1.1 from az1.qualtrics.com
+156: CONNECT az1.qualtrics.com:443 HTTP/1.1 from 104.108.122.55 @ 2020-02-27 14:13:03
+156: Requesting CONNECT az1.qualtrics.com:443 HTTP/1.1 from az1.qualtrics.com
+156: Tunnel closed
+60: Tunnel closed
+141: Tunnel closed
+155: Tunnel closed
+1: GET http://httpbin.org/forms/post HTTP/1.1 from 3.232.168.170 @ 2020-02-27 14:32:54
 1: not in cache
-1: Requesting GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from people.duke.edu
-1: Recieved HTTP/1.1 200 OK from people.duke.edu
-1: cached, expires at Thu Feb 27 16:35:34 2020
+1: Requesting GET http://httpbin.org/forms/post HTTP/1.1 from httpbin.org
+1: Recieved HTTP/1.1 200 OK from httpbin.org
+1: cached, expires at Sun Apr  4 22:01:08 2156
 1: Responding HTTP/1.1 200 OK
-2: GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from 152.3.72.105 @ 2020-02-27 01:44:18
-3: GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from 152.3.72.105 @ 2020-02-27 01:44:18
-4: GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from 152.3.72.105 @ 2020-02-27 01:44:18
-5: GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from 152.3.72.105 @ 2020-02-27 01:44:18
-6: GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from 152.3.72.105 @ 2020-02-27 01:44:18
-7: GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from 152.3.72.105 @ 2020-02-27 01:44:18
-8: GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from 152.3.72.105 @ 2020-02-27 01:44:18
-9: GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from 152.3.72.105 @ 2020-02-27 01:44:18
-10: GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from 152.3.72.105 @ 2020-02-27 01:44:18
-1: GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from 152.3.72.105 @ 2020-02-27 01:48:01
-1: not in cache
-1: Requesting GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from people.duke.edu
-1: Recieved HTTP/1.1 200 OK from people.duke.edu
-1: cached, expires at Thu Feb 27 16:39:43 2020
-1: Responding HTTP/1.1 200 OK
-2: GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from 152.3.72.105 @ 2020-02-27 01:48:04
-3: GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from 152.3.72.105 @ 2020-02-27 01:48:04
-5: GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from 152.3.72.105 @ 2020-02-27 01:48:04
-4: GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from 152.3.72.105 @ 2020-02-27 01:48:04
-6: GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from 152.3.72.105 @ 2020-02-27 01:48:04
-7: GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from 152.3.72.105 @ 2020-02-27 01:48:04
-8: GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from 152.3.72.105 @ 2020-02-27 01:48:04
-9: GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from 152.3.72.105 @ 2020-02-27 01:48:04
-10: GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from 152.3.72.105 @ 2020-02-27 01:48:04
+2: GET http://httpbin.org/forms/post HTTP/1.1 from 35.170.216.115 @ 2020-02-27 14:33:04
+2: in cache, valid
+2: Responding HTTP/1.1 200 OK
