@@ -50,10 +50,11 @@ class Cache {
     if (LRUMap.count(key) == 0) {
       return "notfound";
     }
+    
     else if (LRUMap[key]->information["revalidate"] == "true") {
       //      cout<<"!@#$%!@#$!@#$!@#$::"<<key<<endl;
       //cout<<"!@#$%!@#$!@#$!@#$::"<<LRUMap[key]->information["revalidate"]<<endl;
-      string temp;
+      string temp = "revalidate:";
       //cout<<"********************666********************************\n";
       LRUMap[key]->value.validateParser();
       if (LRUMap[key]->value.getETAG() != "") {
@@ -75,7 +76,9 @@ class Cache {
         std::string tempKey = (*LRUMap[key]).key;
         LRUlist.erase(LRUMap[key]);  //remove old place
         LRUMap.erase(tempKey);
-        return "expires";
+        std::string expireString = "expires:";
+        expireString += std::to_string(tVal.getExpireTime());
+        return expireString;
       }
       else {
         LRUlist.emplace_back(key, tVal, tempInformation);  // insert to end

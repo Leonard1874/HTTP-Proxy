@@ -270,6 +270,7 @@ public:
       std::cerr << "send to browser" << std::endl;
       return false;
     }
+    std::string endMark = "0\r\n\r\n";
     while(true){
       std::cout << "start loop!" << std::endl;
       char temp[65536];
@@ -279,14 +280,13 @@ public:
         return false;
       }
       std::cout << numbytes << std::endl;
-      if(numbytes == 0){
-        std::cout << "Over!" << std::endl;
-        return true;
-      }
-            
       if (send(getSockfdB(), temp, numbytes, 0) == -1){ 
         std::perror("chuncked send to client");
         return false;
+      }
+      std::string tempStr(temp);
+      if(tempStr.find(endMark)!=std::string::npos){
+        return true;
       }
     }
     return true;

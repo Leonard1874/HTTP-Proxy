@@ -7,8 +7,12 @@ int main(int argc, char* argv[]){
   const char *hostname = argv[1];
   const char *port     = argv[2];
   Proxy myProxy(hostname,port);
-  
+  Timer myTimer;
+  logger myLogger;
+  Cache myCache(50);
+  int ID = 0;
   while(true){
+    ID++;
     std::string requestInfo;
     if(myProxy.lisenClient(requestInfo)){
       return EXIT_FAILURE;
@@ -16,14 +20,14 @@ int main(int argc, char* argv[]){
     Request reqObj(requestInfo);
     //std::string cached = "";
     if(reqObj.getType() == "GET"){
-      myProxy.handleGet(reqObj);
+      myProxy.handleGet(reqObj, myCache, myTimer, myLogger, ID);
     }
     else if(reqObj.getType() == "POST"){
-      myProxy.handlePost(reqObj);
+      myProxy.handlePost(reqObj, myCache, myTimer, myLogger, ID);
     }
     else{
       //continue;
-      myProxy.handleConnect(reqObj);
+      myProxy.handleConnect(reqObj, myLogger, ID);
     }
     myProxy.closeSockfds();
   }  

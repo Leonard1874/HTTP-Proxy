@@ -18,6 +18,14 @@ public:
 
   double getCurrentSec(){
     return time(0);
-  } 
+  }
+
+  std::string getlocalTimeStr(long timeNum){
+    time_t rawtime = timeNum;
+    struct tm * timeinfo;
+    timeinfo = localtime (&rawtime);
+    std::string timeStr(asctime(timeinfo));
+    return timeStr;
+  }
   
 };

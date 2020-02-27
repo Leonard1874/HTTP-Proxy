@@ -23,6 +23,18 @@ private:
   std::string recieve_requestline;
   Timer logTimer;
 public:
+  logger() = default;
+  /*
+  //lazy initialization
+  logger* getLogger(){
+    if(thisLogger == NULL){
+      return new logger();
+    }
+    else{
+      return thisLogger;
+    }
+  }
+  */
   //Print the content into the logfile
   void print_recieve_requestline(){
     string filePath = "./var/log/erss/proxy.log";
@@ -37,8 +49,7 @@ public:
     os.close();
   }
 
-  void printCache(string content,int& ID){
-    ID++;
+  void printCache(string content, int& ID){
     string temp;
     temp += to_string(ID);
     temp += ": ";
@@ -49,8 +60,6 @@ public:
     os.close();
   }
   
-
-
   void getrequest_time(int& ID, Request request){
     std::string requestInfo = request.getRequestInfo();
     std::string firstLine;
@@ -70,7 +79,6 @@ public:
     std::string temp;
     //Refresh recieve_requestline
     recieve_requestline = temp;
-    ID++;
     recieve_requestline += std::to_string(ID);
     recieve_requestline += ": ";
     recieve_requestline += firstLine;//First line in the request
@@ -79,6 +87,7 @@ public:
     recieve_requestline += " @ ";
     recieve_requestline = recieve_requestline + logTimer.getCurrentDateTime("now") + "\n"; 
   }
+  
   void getrequest_requesting(int& ID, Request request){
     std::string requestInfo = request.getRequestInfo();
     std::string firstLine;
@@ -98,7 +107,6 @@ public:
     std::string temp;
     //Refresh send_requestline
     send_requestline = temp;
-    ID++;
     send_requestline += std::to_string(ID);
     send_requestline += ": ";
     send_requestline += "Requesting ";
