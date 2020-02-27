@@ -25,7 +25,7 @@ public:
     struct tm * timeinfo;
     timeinfo = localtime (&rawtime);
     std::string timeStr(asctime(timeinfo));
-    return timeStr;
+    return timeStr.substr(0,timeStr.size() -1);
   }
   
 };

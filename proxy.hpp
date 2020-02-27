@@ -62,19 +62,6 @@ class Proxy {
       std::cout << getInfo << std::endl;
       Response resObj(getInfo, reqObj.getType(), myTimer.getCurrentSec());
 
-      if (resObj.canCache() == "Can cache") {
-        myCache.put(reqObj.getKey(), resObj);
-        if (resObj.getRevalidate()) {
-          myLogger.printCache("cached, but requires re-validation", ID);
-        }
-        else {
-          myLogger.printCache(
-              "cached, expires at" + myTimer.getlocalTimeStr(resObj.getExpireTime()), ID);
-        }
-      }
-      else {
-        myLogger.printCache("not cacheable because" + resObj.canCache(), ID);
-      }
       if (cached == "notfound") {
         myLogger.printCache("not in cache", ID);
       }
@@ -89,6 +76,19 @@ class Proxy {
       myLogger.print_send_requestline();
       myLogger.getresponse_recieve(ID, resObj.getResponseInfo(), reqObj.getHostname());
       myLogger.print_response_recieveline();
+      if (resObj.canCache() == "Can cache") {
+        myCache.put(reqObj.getKey(), resObj);
+        if (resObj.getRevalidate()) {
+          myLogger.printCache("cached, but requires re-validation", ID);
+        }
+        else {
+          myLogger.printCache(
+              "cached, expires at" + myTimer.getlocalTimeStr(resObj.getExpireTime()), ID);
+        }
+      }
+      else {
+        myLogger.printCache("not cacheable because " + resObj.canCache(), ID);
+      }
       myLogger.getresponse_send(ID, resObj.getResponseInfo());
       myLogger.print_response_sendline();
     }
@@ -124,7 +124,12 @@ class Proxy {
         }
         //std::cout << getInfo << std::endl;
         Response resObj(getInfo, reqObj.getType(), myTimer.getCurrentSec());
-        if (resObj.canCache() == "Can cache") {
+        myLogger.printCache("NOTE revalidate fail", ID);
+        myLogger.getrequest_requesting(ID, reqObj);
+        myLogger.print_send_requestline();
+        myLogger.getresponse_recieve(ID, resObj.getResponseInfo(), reqObj.getHostname());
+        myLogger.print_response_recieveline();
+	if (resObj.canCache() == "Can cache") {
           myCache.put(reqObj.getKey(), resObj);
           if (resObj.getRevalidate()) {
             myLogger.printCache("cached, but requires re-validation", ID);
@@ -136,13 +141,8 @@ class Proxy {
           }
         }
         else {
-          myLogger.printCache("not cacheable because" + resObj.canCache(), ID);
+          myLogger.printCache("not cacheable because " + resObj.canCache(), ID);
         }
-        myLogger.printCache("NOTE revalidate fail", ID);
-        myLogger.getrequest_requesting(ID, reqObj);
-        myLogger.print_send_requestline();
-        myLogger.getresponse_recieve(ID, resObj.getResponseInfo(), reqObj.getHostname());
-        myLogger.print_response_recieveline();
         myLogger.getresponse_send(ID, resObj.getResponseInfo());
         myLogger.print_response_sendline();
       }

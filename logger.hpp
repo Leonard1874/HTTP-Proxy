@@ -145,7 +145,7 @@ class logger {
     response_recieveline += ": ";
     response_recieveline += "Recieved ";
     response_recieveline += firstLine;  //First line in the response
-    response_recieveline = send_requestline + " from " + hostname + "\n";
+    response_recieveline = response_recieveline + " from " + hostname + "\n";
   }
   void getresponse_send(int & ID, string responseInfo) {
     std::string firstLine;
