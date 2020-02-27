@@ -39,7 +39,8 @@ class Response {
   }
   //Get the etag or last modified
   void validateParser() {
-    std::cout<<"Starting parsing"<<"-------------------------------------"<<std::endl;
+    std::cout << "Starting parsing"
+              << "-------------------------------------" << std::endl;
     size_t pos = responseInfo.find("Last-Modified:");
     if (pos != std::string::npos) {
       while (responseInfo[pos] != ' ') {
@@ -59,7 +60,7 @@ class Response {
       pos1++;
       while (responseInfo[pos1] != '\r') {
         ETAG += responseInfo[pos1];
-	pos1++;
+        pos1++;
       }
     }
   }
@@ -76,18 +77,18 @@ class Response {
   bool getRevalidate() { return revalidate; }
 
   //for cache
-  bool canCache() {
+  std::string canCache() {
     if (type != "GET") {
-      return false;
+      return "GET";
     }
     else if (responseInfo.find("HTTP/1.1 200 OK") == std::string::npos) {
-      return false;
+      return "NOT 200 OK";
     }
-    else if (!myParser.canCache(responseInfo)) {
-      return false;
+    else if (myParser.canCache(responseInfo) != "Can cache") {
+      return myParser.canCache(responseInfo);
     }
     else {
-      return true;
+      return "Can cache";
     }
   }
 };

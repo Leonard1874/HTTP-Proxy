@@ -62,8 +62,18 @@ class Proxy {
       std::cout << getInfo << std::endl;
       Response resObj(getInfo, reqObj.getType(), myTimer.getCurrentSec());
 
-      if (resObj.canCache()) {
+      if (resObj.canCache() == "Can cache") {
         myCache.put(reqObj.getKey(), resObj);
+        if (resObj.getRevalidate()) {
+          myLogger.printCache("cached, but requires re-validation", ID);
+        }
+        else {
+          myLogger.printCache(
+              "cached, expires at" + myTimer.getlocalTimeStr(resObj.getExpireTime()), ID);
+        }
+      }
+      else {
+        myLogger.printCache("not cacheable because" + resObj.canCache(), ID);
       }
       if (cached == "notfound") {
         myLogger.printCache("not in cache", ID);
@@ -114,8 +124,19 @@ class Proxy {
         }
         //std::cout << getInfo << std::endl;
         Response resObj(getInfo, reqObj.getType(), myTimer.getCurrentSec());
-        if (resObj.canCache()) {
+        if (resObj.canCache() == "Can cache") {
           myCache.put(reqObj.getKey(), resObj);
+          if (resObj.getRevalidate()) {
+            myLogger.printCache("cached, but requires re-validation", ID);
+          }
+          else {
+            myLogger.printCache(
+                "cached, expires at" + myTimer.getlocalTimeStr(resObj.getExpireTime()),
+                ID);
+          }
+        }
+        else {
+          myLogger.printCache("not cacheable because" + resObj.canCache(), ID);
         }
         myLogger.printCache("NOTE revalidate fail", ID);
         myLogger.getrequest_requesting(ID, reqObj);
@@ -129,11 +150,7 @@ class Proxy {
     return EXIT_SUCCESS;
   }
 
-  int handlePost(Request & reqObj,
-                 Cache & myCache,
-                 Timer & myTimer,
-                 logger & myLogger,
-                 int & ID) {
+  int handlePost(Request & reqObj, Timer & myTimer, logger & myLogger, int & ID) {
     myLogger.getrequest_time(ID, reqObj);
     myLogger.print_recieve_requestline();
     std::string getInfo;
@@ -144,9 +161,6 @@ class Proxy {
     }
     std::cout << getInfo << std::endl;
     Response resObj(getInfo, reqObj.getType(), myTimer.getCurrentSec());
-    if (resObj.canCache()) {
-      myCache.put(reqObj.getKey(), resObj);
-    }
     myLogger.getrequest_requesting(ID, reqObj);
     myLogger.print_send_requestline();
     myLogger.getresponse_recieve(ID, resObj.getResponseInfo(), reqObj.getHostname());

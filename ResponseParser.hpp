@@ -47,15 +47,16 @@ class ResponseParser {
     return need;
   }
 
-  bool canCache(const std::string & responseInfo) {
-    bool cache = true;
+  std::string canCache(const std::string & responseInfo) {
     if (responseInfo.find("Cache-Control") != std::string::npos) {
-      if (responseInfo.find("no-store") != std::string::npos ||
-          responseInfo.find("private") != std::string::npos) {
-        cache = false;
+      if (responseInfo.find("no-store") != std::string::npos) {
+        return "no-store";
+      }
+      else if (responseInfo.find("private") != std::string::npos) {
+        return "private";
       }
     }
-    return cache;
+    return "Can cache";
   }
 
   double parseExpire(const std::string & responseInfo) {
