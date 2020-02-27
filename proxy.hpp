@@ -83,7 +83,7 @@ class Proxy {
         }
         else {
           myLogger.printCache(
-              "cached, expires at" + myTimer.getlocalTimeStr(resObj.getExpireTime()), ID);
+              "cached, expires at " + myTimer.getlocalTimeStr(resObj.getExpireTime()), ID);
         }
       }
       else {
@@ -136,7 +136,7 @@ class Proxy {
           }
           else {
             myLogger.printCache(
-                "cached, expires at" + myTimer.getlocalTimeStr(resObj.getExpireTime()),
+                "cached, expires at " + myTimer.getlocalTimeStr(resObj.getExpireTime()),
                 ID);
           }
         }

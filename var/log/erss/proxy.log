@@ -1,6 +1,100 @@
-1: GET http://www.mocky.io/v2/5e5748d43000002b00fd38c7 HTTP/1.1 from 52.19.53.27 @ 2020-02-27 00:11:39
+1: GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from 152.3.72.105 @ 2020-02-27 00:13:42
 1: not in cache
-1: Requesting GET http://www.mocky.io/v2/5e5748d43000002b00fd38c7 HTTP/1.1 from www.mocky.io
-1: Recieved HTTP/1.1 200 OK from www.mocky.io
+1: Requesting GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from people.duke.edu
+1: Recieved HTTP/1.1 200 OK from people.duke.edu
+1: cached, expires atThu Feb 27 14:49:55 2020
+1: Responding HTTP/1.1 200 OK
+2: GET http://people.duke.edu/~bmr23/style.css HTTP/1.1 from 152.3.72.105 @ 2020-02-27 00:13:42
+2: not in cache
+2: Requesting GET http://people.duke.edu/~bmr23/style.css HTTP/1.1 from people.duke.edu
+2: Recieved HTTP/1.1 200 OK from people.duke.edu
+2: cached, expires atTue Sep 15 06:47:46 2020
+2: Responding HTTP/1.1 200 OK
+3: GET http://people.duke.edu/favicon.ico HTTP/1.1 from 152.3.72.105 @ 2020-02-27 00:13:42
+3: not in cache
+3: Requesting GET http://people.duke.edu/favicon.ico HTTP/1.1 from people.duke.edu
+3: Recieved HTTP/1.1 404 Not Found from people.duke.edu
+3: not cacheable because NOT 200 OK
+3: Responding HTTP/1.1 404 Not Found
+4: GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from 152.3.72.105 @ 2020-02-27 00:13:55
+4: in cache, valid
+4: Responding HTTP/1.1 200 OK
+5: GET http://people.duke.edu/~bmr23/style.css HTTP/1.1 from 152.3.72.105 @ 2020-02-27 00:13:55
+5: in cache, valid
+5: Responding HTTP/1.1 200 OK
+6: GET http://people.duke.edu/favicon.ico HTTP/1.1 from 152.3.72.105 @ 2020-02-27 00:13:55
+6: not in cache
+6: Requesting GET http://people.duke.edu/favicon.ico HTTP/1.1 from people.duke.edu
+6: Recieved HTTP/1.1 404 Not Found from people.duke.edu
+6: not cacheable because NOT 200 OK
+6: Responding HTTP/1.1 404 Not Found
+7: GET http://httpbin.org/forms/post HTTP/1.1 from 35.170.216.115 @ 2020-02-27 00:14:02
+7: not in cache
+7: Requesting GET http://httpbin.org/forms/post HTTP/1.1 from httpbin.org
+7: Recieved HTTP/1.1 200 OK from httpbin.org
+7: cached, expires atTue Mar 16 04:28:09 2088
+7: Responding HTTP/1.1 200 OK
+8: GET http://httpbin.org/favicon.ico HTTP/1.1 from 34.230.193.231 @ 2020-02-27 00:14:02
+8: not in cache
+8: Requesting GET http://httpbin.org/favicon.ico HTTP/1.1 from httpbin.org
+8: Recieved HTTP/1.1 404 NOT FOUND from httpbin.org
+8: not cacheable because NOT 200 OK
+8: Responding HTTP/1.1 404 NOT FOUND
+9: GET http://httpbin.org/forms/post HTTP/1.1 from 34.230.193.231 @ 2020-02-27 00:14:05
+9: in cache, valid
+9: Responding HTTP/1.1 200 OK
+10: GET http://httpbin.org/favicon.ico HTTP/1.1 from 34.230.193.231 @ 2020-02-27 00:14:05
+10: not in cache
+10: Requesting GET http://httpbin.org/favicon.ico HTTP/1.1 from httpbin.org
+10: Recieved HTTP/1.1 404 NOT FOUND from httpbin.org
+10: not cacheable because NOT 200 OK
+10: Responding HTTP/1.1 404 NOT FOUND
+11: POST http://httpbin.org/post HTTP/1.1 from 34.230.193.231 @ 2020-02-27 00:14:17
+11: Requesting POST http://httpbin.org/post HTTP/1.1 from httpbin.org
+11: Recieved HTTP/1.1 200 OK from httpbin.org
+11: Responding HTTP/1.1 200 OK
+12: CONNECT www.google.com:443 HTTP/1.1 from 172.217.12.228 @ 2020-02-27 00:14:24
+12: Requesting CONNECT www.google.com:443 HTTP/1.1 from www.google.com
+12: Tunnel closed
+13: CONNECT www.google.com:443 HTTP/1.1 from 172.217.12.228 @ 2020-02-27 00:14:25
+13: Requesting CONNECT www.google.com:443 HTTP/1.1 from www.google.com
+1: CONNECT www.google.com:443 HTTP/1.1 from 172.217.12.228 @ 2020-02-27 00:14:42
+1: Requesting CONNECT www.google.com:443 HTTP/1.1 from www.google.com
+1: GET http://www.httpwatch.com/httpgallery/chunked/chunckedimage.aspx HTTP/1.1 from 191.236.16.125 @ 2020-02-27 00:15:05
+1: not in cache
+1: Requesting GET http://www.httpwatch.com/httpgallery/chunked/chunckedimage.aspx HTTP/1.1 from www.httpwatch.com
+1: Recieved HTTP/1.1 404 Not Found from www.httpwatch.com
+1: not cacheable because NOT 200 OK
+1: Responding HTTP/1.1 404 Not Found
+2: CONNECT www.google.com:443 HTTP/1.1 from 172.217.12.228 @ 2020-02-27 00:15:05
+2: Requesting CONNECT www.google.com:443 HTTP/1.1 from www.google.com
+1: GET http://www.httpwatch.com/httpgallery/chunked/chunkedimage.aspx HTTP/1.1 from 191.236.16.125 @ 2020-02-27 00:15:14
+1: not in cache
+1: Requesting GET http://www.httpwatch.com/httpgallery/chunked/chunkedimage.aspx HTTP/1.1 from www.httpwatch.com
+1: Recieved HTTP/1.1 200 OK from www.httpwatch.com
 1: not cacheable because no-store
 1: Responding HTTP/1.1 200 OK
+2: GET http://www.httpwatch.com/favicon.ico HTTP/1.1 from 191.236.16.125 @ 2020-02-27 00:15:18
+2: not in cache
+2: Requesting GET http://www.httpwatch.com/favicon.ico HTTP/1.1 from www.httpwatch.com
+2: Recieved HTTP/1.1 200 OK from www.httpwatch.com
+2: cached, but requires re-validation
+2: Responding HTTP/1.1 200 OK
+3: GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from 152.3.72.105 @ 2020-02-27 00:15:34
+3: not in cache
+3: Requesting GET http://people.duke.edu/~bmr23/ece568/class.html HTTP/1.1 from people.duke.edu
+3: Recieved HTTP/1.1 200 OK from people.duke.edu
+3: cached, expires atThu Feb 27 14:52:02 2020
+3: Responding HTTP/1.1 200 OK
+4: GET http://people.duke.edu/~bmr23/style.css HTTP/1.1 from 152.3.72.105 @ 2020-02-27 00:15:38
+4: not in cache
+4: Requesting GET http://people.duke.edu/~bmr23/style.css HTTP/1.1 from people.duke.edu
+4: Recieved HTTP/1.1 200 OK from people.duke.edu
+4: cached, expires atTue Sep 15 06:49:53 2020
+4: Responding HTTP/1.1 200 OK
+5: GET http://people.duke.edu/favicon.ico HTTP/1.1 from 152.3.72.105 @ 2020-02-27 00:15:38
+5: not in cache
+5: Requesting GET http://people.duke.edu/favicon.ico HTTP/1.1 from people.duke.edu
+5: Recieved HTTP/1.1 404 Not Found from people.duke.edu
+5: not cacheable because NOT 200 OK
+5: Responding HTTP/1.1 404 Not Found
