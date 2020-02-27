@@ -1,17 +1,17 @@
 #include "Webtoolkit.hpp"
 #include "cache.hpp"
 #include "logger.hpp"
-
+#include <thread>
+#include <mutex>
+std::mutex myMutex;
 class Proxy {
  private:
   const char * hostname;
   const char * port;
-  WebToolKit myKit;
-
  public:
   Proxy(const char * rhostname, const char * rport) : hostname(rhostname), port(rport) {}
 
-  int lisenClient(std::string & requestInfo) {
+  int lisenClient(std::string & requestInfo, WebToolKit& myKit) {
     if (myKit.listenBrowser(hostname, port)) {
       std::cerr << "listen error!" << std::endl;
       return EXIT_FAILURE;
@@ -27,11 +27,12 @@ class Proxy {
     return EXIT_SUCCESS;
   }
 
-  int handleGet(Request & reqObj,
+  int static handleGet(Request reqObj,
                 Cache & myCache,
                 Timer & myTimer,
                 logger & myLogger,
-                int & ID) {
+                       int ID, WebToolKit myKit) {
+    myMutex.lock();
     myLogger.getrequest_time(ID, reqObj);
     myLogger.print_recieve_requestline();
 
@@ -44,6 +45,7 @@ class Proxy {
       //std::cout << cached << std::endl;
       if (myKit.sendCacheBrowser(cached)) {
         std::cerr << "send cached error!" << std::endl;
+        myMutex.unlock();
         return EXIT_FAILURE;
       }
       myLogger.printCache("in cache, valid", ID);
@@ -57,6 +59,7 @@ class Proxy {
       std::string getInfo;
       if (myKit.getServerSendBrowser(
               reqObj.getHostname(), reqObj.getRequestInfo(), getInfo)) {
+        myMutex.unlock();
         return EXIT_FAILURE;
       }
       std::cout << getInfo << std::endl;
@@ -100,6 +103,7 @@ class Proxy {
       cout << "*****************************Revalidate*****************\n";
       if (myKit.getServerSendBrowser(
               reqObj.getHostname(), reqObj.getRequestInfo(), getInfo)) {
+        myMutex.unlock();
         return EXIT_FAILURE;
       }
       std::cout << getInfo << std::endl;
@@ -109,6 +113,7 @@ class Proxy {
         string temp = myCache.noModifyGet(reqObj.getKey());
         if (myKit.sendCacheBrowser(temp)) {
           std::cerr << "get error!" << std::endl;
+          myMutex.unlock();
           return EXIT_FAILURE;
         }
         myLogger.printCache("NOTE revalidate success", ID);
@@ -120,6 +125,7 @@ class Proxy {
         std::string getInfo;
         if (myKit.getServerSendBrowser(
                 reqObj.getHostname(), reqObj.getRequestInfo(), getInfo)) {
+          myMutex.unlock();
           return EXIT_FAILURE;
         }
         //std::cout << getInfo << std::endl;
@@ -147,16 +153,19 @@ class Proxy {
         myLogger.print_response_sendline();
       }
     }
+    myMutex.unlock();
     return EXIT_SUCCESS;
   }
 
-  int handlePost(Request & reqObj, Timer & myTimer, logger & myLogger, int & ID) {
+  int static handlePost(Request reqObj, Timer & myTimer, logger & myLogger, int ID, WebToolKit myKit) {
+    myMutex.lock();
     myLogger.getrequest_time(ID, reqObj);
     myLogger.print_recieve_requestline();
     std::string getInfo;
 
     if (myKit.getServerSendBrowser(
             reqObj.getHostname(), reqObj.getRequestInfo(), getInfo)) {
+      myMutex.unlock();
       return EXIT_FAILURE;
     }
     std::cout << getInfo << std::endl;
@@ -167,20 +176,23 @@ class Proxy {
     myLogger.print_response_recieveline();
     myLogger.getresponse_send(ID, resObj.getResponseInfo());
     myLogger.print_response_sendline();
+    myMutex.unlock();
     return EXIT_SUCCESS;
   }
 
-  int handleConnect(Request & reqObj, logger & myLogger, int & ID) {
+  int static handleConnect(Request reqObj, logger & myLogger, int ID, WebToolKit myKit) {
+    myMutex.lock();
     myLogger.getrequest_time(ID, reqObj);
     myLogger.print_recieve_requestline();
     myLogger.getrequest_requesting(ID, reqObj);
     myLogger.print_send_requestline();
     if (myKit.selectBrowserServer(reqObj.getHostname(), reqObj.getPort())) {
+      myMutex.unlock();
       return EXIT_FAILURE;
     }
     myLogger.printCache("Tunnel closed", ID);
+    myMutex.unlock();
     return EXIT_SUCCESS;
   }
-
-  void closeSockfds() { myKit.closeSockfds(); }
+  
 };
